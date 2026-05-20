@@ -6,44 +6,47 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
+using WizardMod.WizardModCode.Cards.Basic;
+using WizardMod.WizardModCode.Relics;
 
 namespace WizardMod.WizardModCode.Character;
+
 
 public class WizardMod : PlaceholderCharacterModel
 {
     public const string CharacterId = "WizardMod";
-    
-    public static readonly Color Color = new("ffffff");
+
+    public static readonly Color Color = new("#f0f4ff");
 
     public override Color NameColor => Color;
-    public override CharacterGender Gender => CharacterGender.Neutral;
-    public override int StartingHp => 70;
-    
-    public override IEnumerable<CardModel> StartingDeck => [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+    public override CharacterGender Gender => CharacterGender.Feminine;
+    public override int StartingHp => 60;
+
+    public override IEnumerable<CardModel> StartingDeck =>
+    [
+        ModelDb.Card<StrikeWizard>(),
+        ModelDb.Card<StrikeWizard>(),
+        ModelDb.Card<StrikeWizard>(),
+        ModelDb.Card<StrikeWizard>(),
+        ModelDb.Card<DefendWizard>(),
+        ModelDb.Card<DefendWizard>(),
+        ModelDb.Card<DefendWizard>(),
+        ModelDb.Card<DefendWizard>(),
+        ModelDb.Card<Fire>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<ManaOrb>()
     ];
-    
+
     public override CardPoolModel CardPool => ModelDb.CardPool<WizardModCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<WizardModRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<WizardModPotionPool>();
-    
+
     /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
-        override all the other methods that define those assets. 
-        These are just some of the simplest assets, given some placeholders to differentiate your character with. 
+        override all the other methods that define those assets.
+        These are just some of the simplest assets, given some placeholders to differentiate your character with.
         You don't have to, but you're suggested to rename these images. */
     public override Control CustomIcon
     {
@@ -54,6 +57,7 @@ public class WizardMod : PlaceholderCharacterModel
             return icon;
         }
     }
+
     public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();

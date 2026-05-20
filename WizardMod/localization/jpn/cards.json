@@ -1,0 +1,8 @@
+{
+  "WIZARDMOD-STRIKE_WIZARD.description": "{Damage:diff()}ダメージを与える。",
+  "WIZARDMOD-STRIKE_WIZARD.title": "ストライク",
+  "WIZARDMOD-DEFEND_WIZARD.description": "{Block:diff()}を得る。",
+  "WIZARDMOD-DEFEND_WIZARD.title": "防御",
+  "WIZARDMOD-FIRE.description": "すべての敵に{Damage:diff()}を与え、弱体{VulnerablePower:diff()}と脱力{WeakPower:diff()}を付与する。MP2失う" ,
+  "WIZARDMOD-FIRE.title": "火炎"
+}
