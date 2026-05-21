@@ -62,6 +62,7 @@
 
     <ItemGroup>
         <Folder Include="WizardModCode\Cards\Common\" />
+        <Folder Include="WizardModCode\Nodes\" />
         <Folder Include="WizardMod\images\card_portraits\big\"/>
         <Folder Include="WizardMod\images\powers\big\"/>
         <Folder Include="WizardMod\images\relics\big\"/>

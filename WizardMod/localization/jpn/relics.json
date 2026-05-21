@@ -1,5 +1,5 @@
 {
-  "WIZARDMOD-MANA_ORB.description": "戦闘終了時、Mpが5回復する。MP: {CurrentMp} / {MaxMp}",
+  "WIZARDMOD-MANA_ORB.description": "戦闘終了時、Mpが5回復する。",
   "WIZARDMOD-MANA_ORB.flavor": "魔法の源",
   "WIZARDMOD-MANA_ORB.title": "マナオーブ"
 }

@@ -5,33 +5,51 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace WizardMod.WizardModCode.Mp;
 
-/// <summary>
-/// WizardModのMPをランをまたいで保持するための静的セーブデータクラス。
-/// SaveManager.Instance.GetProfileScopedPath()を利用してゲームと同じプロファイルフォルダに保存する。
-/// </summary>
 public static class MpSaveData
 {
     private const string FileName = "wizardmod_mp.json";
 
-    public static int CurrentMp { get; set; } = 0;
-    public static int MaxMp { get; set; } = 0;
+    public static event Action? MpChanged;
 
-    private static string SavePath => SaveManager.Instance.GetProfileScopedPath(FileName);
+    private static int _currentMp = 0;
+    private static int _maxMp = 0;
 
-    /// <summary>
-    /// MPデータをJSONファイルに保存する。
-    /// MP変動時に呼ぶ。
-    /// </summary>
+    public static int CurrentMp
+    {
+        get => _currentMp;
+        set
+        {
+            _currentMp = value;
+            MpChanged?.Invoke();
+        }
+    }
+
+    public static int MaxMp
+    {
+        get => _maxMp;
+        set
+        {
+            _maxMp = value;
+            MpChanged?.Invoke();
+        }
+    }
+
+    private static string SavePath =>
+        ProjectSettings.GlobalizePath(
+            SaveManager.Instance.GetProfileScopedPath(FileName)
+        );
+
     public static void Save()
     {
         try
         {
-            string json = JsonSerializer.Serialize(new MpSavePayload
+            var payload = new MpSavePayload
             {
                 CurrentMp = CurrentMp,
-                MaxMp = MaxMp
-            });
-            File.WriteAllText(SavePath, json);
+                MaxMp = MaxMp,
+                CombatStartMp = _combatStartMp
+            };
+            File.WriteAllText(SavePath, JsonSerializer.Serialize(payload));
         }
         catch (Exception e)
         {
@@ -39,23 +57,18 @@ public static class MpSaveData
         }
     }
 
-    /// <summary>
-    /// JSONファイルからMPデータを読み込む。
-    /// ファイルが存在しない場合は初期値のまま（新規ラン扱い）。
-    /// ラン開始時またはゲーム起動時に呼ぶ。
-    /// </summary>
     public static void Load()
     {
         try
         {
             if (!File.Exists(SavePath)) return;
 
-            string json = File.ReadAllText(SavePath);
-            var payload = JsonSerializer.Deserialize<MpSavePayload>(json);
+            var payload = JsonSerializer.Deserialize<MpSavePayload>(File.ReadAllText(SavePath));
             if (payload == null) return;
-
-            CurrentMp = payload.CurrentMp;
+            
+            _combatStartMp = payload.CombatStartMp;
             MaxMp = payload.MaxMp;
+            CurrentMp = _combatStartMp ?? payload.CurrentMp;
         }
         catch (Exception e)
         {
@@ -63,10 +76,6 @@ public static class MpSaveData
         }
     }
 
-    /// <summary>
-    /// ランが終了したときにセーブファイルを削除する。
-    /// ラン終了（勝利・敗北）時に呼ぶ。
-    /// </summary>
     public static void Delete()
     {
         try
@@ -74,8 +83,10 @@ public static class MpSaveData
             if (File.Exists(SavePath))
                 File.Delete(SavePath);
 
-            CurrentMp = 0;
-            MaxMp = 0;
+            _combatStartMp = null;
+            _currentMp = 0;
+            _maxMp = 0;
+            MpChanged?.Invoke(); 
         }
         catch (Exception e)
         {
@@ -83,10 +94,6 @@ public static class MpSaveData
         }
     }
 
-    /// <summary>
-    /// MPを消費する。0未満にはならない。
-    /// 消費できた場合はtrueを返す。
-    /// </summary>
     public static bool TryConsume(int amount)
     {
         if (CurrentMp < amount) return false;
@@ -95,23 +102,31 @@ public static class MpSaveData
         return true;
     }
 
-    /// <summary>
-    /// MPを回復する。MaxMpを超えない。
-    /// </summary>
     public static void Restore(int amount)
     {
         CurrentMp = Math.Min(CurrentMp + amount, MaxMp);
         Save();
     }
 
-    /// <summary>
-    /// MPを初期化する（MaxMpをセットして現在値もMaxMpにする）。
-    /// 新規ランの開始時に呼ぶ。
-    /// </summary>
     public static void Initialize(int maxMp)
     {
+        _combatStartMp = null;
         MaxMp = maxMp;
         CurrentMp = maxMp;
+        Save();
+    }
+    
+    private static int? _combatStartMp = null;
+
+    public static void SaveCombatStart()
+    {
+        _combatStartMp = CurrentMp;
+        Save();
+    }
+    
+    public static void ClearCombatStart()
+    {
+        _combatStartMp = null;
         Save();
     }
 
@@ -119,5 +134,6 @@ public static class MpSaveData
     {
         public int CurrentMp { get; set; }
         public int MaxMp { get; set; }
+        public int? CombatStartMp { get; set; }
     }
 }

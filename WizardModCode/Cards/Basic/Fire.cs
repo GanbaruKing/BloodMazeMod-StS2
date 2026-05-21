@@ -1,3 +1,4 @@
+using BaseLib.Cards.Variables;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -8,17 +9,21 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using WizardMod.WizardModCode.Mp;
+using WizardMod.WizardModCode.Relics;
 
 
 namespace WizardMod.WizardModCode.Cards.Basic;
 
 
 
-public class Fire() : WizardModCard(1,
+public class Fire() : MpConsumeCard(1,
     CardType.Attack, CardRarity.Basic,
-    TargetType.AllEnemies)
+    TargetType.AllEnemies, 2)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move), new PowerVar<VulnerablePower>(1m), new PowerVar<WeakPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(8m, ValueProp.Move), new PowerVar<VulnerablePower>(1m), new PowerVar<WeakPower>(1m)];
+
+    protected override bool IsPlayable => MpSaveData.CurrentMp >= MpCost;
+
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
