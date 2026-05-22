@@ -61,6 +61,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="WizardModCode\Cards\Rare\" />
         <Folder Include="WizardModCode\Nodes\" />
         <Folder Include="WizardMod\images\card_portraits\big\"/>
         <Folder Include="WizardMod\images\powers\big\"/>

@@ -1,16 +1,16 @@
 {
   "WIZARDMOD-STRIKE_WIZARD.description": "{Damage:diff()}ダメージを与える。",
   "WIZARDMOD-STRIKE_WIZARD.title": "ストライク",
-  "WIZARDMOD-DEFEND_WIZARD.description": "{Block:diff()}ブロックを得る。",
+  "WIZARDMOD-DEFEND_WIZARD.description": "#{Block:diff()}*ブロック*を得る。",
   "WIZARDMOD-DEFEND_WIZARD.title": "防御", 
-  "WIZARDMOD-BLIZZARD.description": "すべての敵に{Damage:diff()}を与え、弱体{VulnerablePower:diff()}と脱力{WeakPower:diff()}を付与する。\nMPを{ConsumeMp}失う。",
+  "WIZARDMOD-BLIZZARD.description": "#すべての敵に{Damage:diff()}を与え、*弱体*{VulnerablePower:diff()}と*脱力*{WeakPower:diff()}を付与する。\nMPを{ConsumeMp}失う。",
   "WIZARDMOD-BLIZZARD.title": "ブリザード",
-  "WIZARDMOD-TORNADO.description": "すべての敵に{Damage:diff()}を与え、\nMPを{ConsumeMp}失う。",
+  "WIZARDMOD-TORNADO.description": "MPを{ConsumeMp}失う。\nすべての敵に{Damage:diff()}を与える。",
   "WIZARDMOD-TORNADO.title": "トルネード",
-  "WIZARDMOD-LIGHTNING.description": "{Damage:diff()}を与える。カードを{Cards:diff()}を引く。\nMPを{ConsumeMp}失う。",
+  "WIZARDMOD-LIGHTNING.description": "MPを{ConsumeMp}失う。\n{Damage:diff()}を与える。\nカードを{Cards:diff()}を引く。",
   "WIZARDMOD-LIGHTNING.title": "電光石火",
-  "WIZARDMOD-MANA_DRAIN.description": "敵に{Damage:diff()}を与える。\n与えたダメージに等しいMPを回復する。\nMPを{ConsumeMp}失う",
+  "WIZARDMOD-MANA_DRAIN.description": "MPを{ConsumeMp}失う。\n敵に{Damage:diff()}を与える。\n与えたダメージに等しいMPを回復する。",
   "WIZARDMOD-MANA_DRAIN.title": "マナドレイン",
-  "WIZARDMOD-BITE.description": "{Damage:diff()}を与える。\n与えたダメージに等しいHPを回復する。\nHPを{HpLoss:diff()}失う",
+  "WIZARDMOD-BITE.description": "#HPを{HpLoss:diff()}失う。\n{Damage:diff()}ダメージを与える。\n*吸血*",
   "WIZARDMOD-BITE.title": "噛みつく"
 }
