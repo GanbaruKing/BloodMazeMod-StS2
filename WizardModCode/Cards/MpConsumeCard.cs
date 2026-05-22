@@ -12,4 +12,6 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
     [
         new DisplayVar<MpConsumeCard>("ConsumeMp", (_) => MpCost.ToString()),
     ];
+    
+    protected override bool IsPlayable => Mp.MpSaveData.CurrentMp >= MpCost;
 }

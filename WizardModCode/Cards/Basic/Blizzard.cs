@@ -16,21 +16,21 @@ namespace WizardMod.WizardModCode.Cards.Basic;
 
 
 
-public class Fire() : MpConsumeCard(1,
-    CardType.Attack, CardRarity.Basic,
-    TargetType.AllEnemies, 2)
-{
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(8m, ValueProp.Move), new PowerVar<VulnerablePower>(1m), new PowerVar<WeakPower>(1m)];
 
-    protected override bool IsPlayable => MpSaveData.CurrentMp >= MpCost;
+public class Blizzard() : MpConsumeCard(0,
+    CardType.Attack, CardRarity.Basic,
+    TargetType.AllEnemies, 3)
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(2m, ValueProp.Move), new PowerVar<VulnerablePower>(1m), new PowerVar<WeakPower>(1m)];
+    
 
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        MpSaveData.TryConsume(2);
-        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
+        MpSaveData.TryConsume(MpCost);
+        await CommonActions.CardAttack(this, play).Execute(choiceContext);
         await PowerCmd.Apply<VulnerablePower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Vulnerable.BaseValue, this.Owner.Creature, (CardModel) this); 
         await PowerCmd.Apply<WeakPower>((IEnumerable<Creature>)this.CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, this.Owner.Creature, (CardModel) this);
     }

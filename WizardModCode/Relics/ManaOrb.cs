@@ -10,7 +10,7 @@ namespace WizardMod.WizardModCode.Relics;
 
 public class ManaOrb : WizardModRelic
 {
-    public const int InitialMaxMp = 50;
+    public const int InitialMaxMp = 40;
     public const int CombatEndRestore = 5;
 
     public override RelicRarity Rarity => RelicRarity.Starter;

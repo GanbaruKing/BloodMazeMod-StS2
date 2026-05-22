@@ -1,8 +1,6 @@
-using BaseLib.Abstracts;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using WizardMod.WizardModCode.Mp;
 
@@ -36,7 +34,6 @@ public class MpBarPatch
         float barWidth = fullWidth * 0.94f;
         float offsetX   = hpBar!.Position.X + (fullWidth - barWidth) / 2f + 2f;
         float offsetY  = hpBar != null ? hpBar.Position.Y + hpBar.Size.Y + 3f : 48f;
-        GD.Print($"[WizardMod] fullWidth={fullWidth}, barWidth={barWidth}, offsetX={offsetX}");
         
         var bg = new Panel();
         bg.Name = MpBarBgName;
@@ -75,13 +72,19 @@ public class MpBarPatch
         label.AddThemeColorOverride("font_outline_color", OutlineColor);
         bg.AddChild(label);
         
-        MpSaveData.MpChanged += () =>
+        Action? mpChangedHandler = null;
+        mpChangedHandler = () =>
         {
-            if (!GodotObject.IsInstanceValid(fill)) return;
+            if (!GodotObject.IsInstanceValid(fill))
+            {
+                MpSaveData.MpChanged -= mpChangedHandler;
+                return;
+            }
             fill.Size = new Vector2(GetFillWidth(barWidth), BarHeight);
             if (GodotObject.IsInstanceValid(label))
                 label.Text = GetMpText();
         };
+        MpSaveData.MpChanged += mpChangedHandler;
     }
 
     private static float GetFillWidth(float barWidth)

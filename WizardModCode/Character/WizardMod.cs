@@ -20,7 +20,7 @@ public class WizardMod : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Feminine;
-    public override int StartingHp => 60;
+    public override int StartingHp => 50;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
@@ -32,13 +32,11 @@ public class WizardMod : PlaceholderCharacterModel
         ModelDb.Card<DefendWizard>(),
         ModelDb.Card<DefendWizard>(),
         ModelDb.Card<DefendWizard>(),
-        ModelDb.Card<Fire>(),
+        ModelDb.Card<Blizzard>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
-    [
-        ModelDb.Relic<ManaOrb>()
-    ];
+    [ModelDb.Relic<ManaOrb>()];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<WizardModCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<WizardModRelicPool>();
