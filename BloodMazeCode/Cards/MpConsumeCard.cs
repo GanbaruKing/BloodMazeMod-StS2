@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BaseLib.Cards.Variables;
 using BloodMaze.BloodMazeCode.Mp;
 using MegaCrit.Sts2.Core.Entities.Cards;

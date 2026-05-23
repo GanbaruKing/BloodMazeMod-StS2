@@ -1,0 +1,16 @@
+{
+  "BLOODMAZE-BLOOD_MAZE.aromaPrinciple": "魔法",
+  "BLOODMAZE-BLOOD_MAZE.banter.alive.endTurnPing": "ねえ、遅い",
+  "BLOODMAZE-BLOOD_MAZE.banter.dead.endTurnPing": "...",
+  "BLOODMAZE-BLOOD_MAZE.cardsModifierDescription": "ブラッドメイジのカードが報酬とショップに出現するようになる。",
+  "BLOODMAZE-BLOOD_MAZE.cardsModifierTitle": "ブラッドメイジのカード",
+  "BLOODMAZE-BLOOD_MAZE.description": "魔法の力で敵を打ち倒す魔女",
+  "BLOODMAZE-BLOOD_MAZE.eventDeathPrevention": "倒れるわけにはいかない！",
+  "BLOODMAZE-BLOOD_MAZE.goldMonologue": "これだけあれば十分ね。",
+  "BLOODMAZE-BLOOD_MAZE.possessiveAdjective": "彼女の",
+  "BLOODMAZE-BLOOD_MAZE.pronounObject": "彼女を",
+  "BLOODMAZE-BLOOD_MAZE.pronounPossessive": "彼女のもの",
+  "BLOODMAZE-BLOOD_MAZE.pronounSubject": "彼女",
+  "BLOODMAZE-BLOOD_MAZE.title": "ブラッドメイジ",
+  "BLOODMAZE-BLOOD_MAZE.titleObject": "ブラッドメイジ"
+}

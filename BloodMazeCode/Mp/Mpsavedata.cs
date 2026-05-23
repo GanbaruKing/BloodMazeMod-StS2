@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Text.Json;
 using Godot;
 using MegaCrit.Sts2.Core.Saves;
