@@ -7,7 +7,7 @@ using BloodMaze.BloodMazeCode.Extensions;
 namespace BloodMaze.BloodMazeCode.Relics;
 
 [Pool(typeof(BloodMazeRelicPool))]
-public abstract class WizardModRelic : CustomRelicModel
+public abstract class BloodMazeRelic : CustomRelicModel
 {
     public override string PackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".RelicImagePath();
 

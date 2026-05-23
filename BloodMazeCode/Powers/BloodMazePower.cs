@@ -4,7 +4,7 @@ using BloodMaze.BloodMazeCode.Extensions;
 
 namespace BloodMaze.BloodMazeCode.Powers;
 
-public abstract class WizardModPower : CustomPowerModel
+public abstract class BloodMazePower : CustomPowerModel
 {
     //Loads from BloodMaze/images/powers/your_power.png
     public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();

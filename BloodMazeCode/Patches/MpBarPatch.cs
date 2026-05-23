@@ -9,7 +9,7 @@ namespace BloodMaze.BloodMazeCode.Patches;
 [HarmonyPatch(typeof(NHealthBar), nameof(NHealthBar.SetCreature))]
 public class MpBarPatch
 {
-    private const string MpBarBgName = "WizardModMpBarBg";
+    private const string MpBarBgName = "BloodMazeMpBarBg";
     private const float BarHeight = 10f;
     private const float CornerRadius = 5f;
     private const float FontSize = 20f;

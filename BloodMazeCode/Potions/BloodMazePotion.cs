@@ -5,4 +5,4 @@ using BloodMaze.BloodMazeCode.Character;
 namespace BloodMaze.BloodMazeCode.Potions;
 
 [Pool(typeof(BloodMazePotionPool))]
-public abstract class WizardModPotion : CustomPotionModel;
+public abstract class BloodMazePotion : CustomPotionModel;

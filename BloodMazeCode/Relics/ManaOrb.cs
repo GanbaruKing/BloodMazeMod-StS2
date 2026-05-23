@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Rooms;
 
 namespace BloodMaze.BloodMazeCode.Relics;
 
-public class ManaOrb : WizardModRelic
+public class ManaOrb : BloodMazeRelic
 {
     public const int InitialMaxMp = 40;
     public const int CombatEndRestore = 5;

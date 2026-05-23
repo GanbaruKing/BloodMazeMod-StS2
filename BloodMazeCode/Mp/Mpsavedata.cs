@@ -6,7 +6,7 @@ namespace BloodMaze.BloodMazeCode.Mp;
 
 public static class MpSaveData
 {
-    private const string FileName = "wizardmod_mp.json";
+    private const string FileName = "bloodmaze_mp.json";
 
     public static event Action? MpChanged;
 
