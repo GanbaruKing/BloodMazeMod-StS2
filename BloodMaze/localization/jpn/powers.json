@@ -1,8 +1,14 @@
 {
-  "BLOODMAZE-OVERFLOW.description": "MPの消費が2倍になる代わりに魔法カードが2回発動する",
-  "BLOODMAZE-OVERFLOW.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}の魔法カードが[blue]{Amount}[/blue]ターンの間2回発動する",
-  "BLOODMAZE-OVERFLOW.title": "オーバーフロー",
-  "BLOODMAZE-FREE_MP_ATTACK_POWER.description": "次にプレイするアタックカードのMPコストが0になる。",
-  "BLOODMAZE-FREE_MP_ATTACK_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のアタックカードのMPコストが0になる",
-  "BLOODMAZE-FREE_MP_ATTACK_POWER.title": "魔法解放"
+  "BLOODMAZE-OVERFLOW_POWER.description": "MPの消費が2倍になる代わりに魔法カードが2回発動する",
+  "BLOODMAZE-OVERFLOW_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}の魔法カードが[blue]{Amount}[/blue]ターンの間2回発動する",
+  "BLOODMAZE-OVERFLOW_POWER.title": "オーバーフロー",
+  "BLOODMAZE-FREE_MP_ATTACK_POWER.description": "次にプレイする魔法アタックカードのMPコストが0になる。",
+  "BLOODMAZE-FREE_MP_ATTACK_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}の魔法攻撃カードのMPコストが0になる",
+  "BLOODMAZE-FREE_MP_ATTACK_POWER.title": "魔法解放",
+  "BLOODMAZE-VAMPIRE_FORM_POWER.description": "魔法アタックカードのMP消費がHP消費に変わり、吸血を付与する。ターン開始時にHP6失う。",
+  "BLOODMAZE-VAMPIRE_FORM_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}の魔法アタックカードが吸血化する。ターン開始時HP-6。",
+  "BLOODMAZE-VAMPIRE_FORM_POWER.title": "吸血鬼化",
+  "BLOODMAZE-DESPERATION_POWER.description": "このターン敵から受けたダメージだけ敵にダメージを与える",
+  "BLOODMAZE-DESPERATION_POWER.smartDescription": "敵から受けたダメージだけ敵にダメージを与える",
+  "BLOODMAZE-DESPERATION_POWER.title": "ヤケクソ"
 }

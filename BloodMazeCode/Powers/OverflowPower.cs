@@ -13,7 +13,8 @@ using MegaCrit.Sts2.Core.Models;
 namespace BloodMaze.BloodMazeCode.Powers;
 
 
-public sealed class Overflow : BloodMazePower
+
+public sealed class OverflowPower : BloodMazePower
 {
 
     public override PowerType Type => PowerType.Buff;

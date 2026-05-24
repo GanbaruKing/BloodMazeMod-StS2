@@ -19,14 +19,14 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
 {
     protected readonly int MpCost = mpCost;
     public bool IsFreeThisPlay { get; set; } = false;
-    public bool IsVampireThisPlay { get; set; } = false;
+    public bool IsVampireForm { get; set; } = false;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DisplayVar<MpConsumeCard>("ConsumeMp", (_) => MpCost.ToString()),
     ];
 
-    protected override bool IsPlayable => MpSaveData.CurrentMp >= (Owner.Creature.HasPower<BloodMaze.BloodMazeCode.Powers.Overflow>() ? MpCost * 2 : MpCost);
+    protected override bool IsPlayable => MpSaveData.CurrentMp >= (Owner.Creature.HasPower<BloodMaze.BloodMazeCode.Powers.OverflowPower>() ? MpCost * 2 : MpCost);
 
     protected void ConsumeMp()
     {
@@ -40,12 +40,12 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
 
     protected async Task VampirePlay(PlayerChoiceContext choiceContext, Creature? target)
     {
-        if (IsVampireThisPlay)
+        if (IsVampireForm)
         {
             await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
-                ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+                ValueProp.Unblockable | ValueProp.Unpowered, this);
             await VampireAttack(choiceContext, target);
-            IsVampireThisPlay = false;
+            IsVampireForm = false;
         }
         else
         {
@@ -54,9 +54,11 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         }
     }
     
+    
+    
     protected async Task VampirePlayAllEnemies(PlayerChoiceContext choiceContext)
     {
-        if (IsVampireThisPlay)
+        if (IsVampireForm)
         {
             await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
@@ -64,7 +66,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
                 .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
             decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
             await CreatureCmd.Heal(this.Owner.Creature, restore);
-            IsVampireThisPlay = false;
+            IsVampireForm = false;
         }
         else
         {
@@ -73,16 +75,18 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
                 .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
         }
     }
+    
+    
     protected async Task VampirePlayMultiHit(PlayerChoiceContext choiceContext, Creature? target, int hitCount)
     {
-        if (IsVampireThisPlay)
+        if (IsVampireForm)
         {
             await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
             AttackCommand attack = await CommonActions.CardAttack(this, target, hitCount).Execute(choiceContext);
             decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
             await CreatureCmd.Heal(this.Owner.Creature, restore);
-            IsVampireThisPlay = false;
+            IsVampireForm = false;
         }
         else
         {
