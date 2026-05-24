@@ -14,6 +14,9 @@ public static class MpSaveData
 
     private static int _currentMp = 0;
     private static int _maxMp = 0;
+    private static int? _combatStartMp = null;
+    private static int? _restSiteEnteredMp = null;
+    private static bool _restSiteHealed = false;
 
     public static int CurrentMp
     {
@@ -35,6 +38,10 @@ public static class MpSaveData
         }
     }
 
+    public static int? CombatStartMp => _combatStartMp;
+    public static int? RestSiteEnteredMp => _restSiteEnteredMp;
+    public static bool RestSiteHealed => _restSiteHealed;
+
     private static string SavePath =>
         ProjectSettings.GlobalizePath(
             SaveManager.Instance.GetProfileScopedPath(FileName)
@@ -48,8 +55,9 @@ public static class MpSaveData
             {
                 CurrentMp = CurrentMp,
                 MaxMp = MaxMp,
-                CombatStartMp = _combatStartMp
-                
+                CombatStartMp = _combatStartMp,
+                RestSiteEnteredMp = _restSiteEnteredMp,
+                RestSiteHealed = _restSiteHealed
             };
             File.WriteAllText(SavePath, JsonSerializer.Serialize(payload));
         }
@@ -68,8 +76,10 @@ public static class MpSaveData
 
             var payload = JsonSerializer.Deserialize<MpSavePayload>(File.ReadAllText(SavePath));
             if (payload == null) return;
-            
+
             _combatStartMp = payload.CombatStartMp;
+            _restSiteEnteredMp = payload.RestSiteEnteredMp;
+            _restSiteHealed = payload.RestSiteHealed;
             MaxMp = payload.MaxMp;
             CurrentMp = _combatStartMp ?? payload.CurrentMp;
         }
@@ -78,7 +88,6 @@ public static class MpSaveData
             GD.PrintErr($"[BloodMaze] MpSaveData.Load failed: {e}");
         }
     }
-    public static int? CombatStartMp => _combatStartMp;
 
     public static void Delete()
     {
@@ -88,9 +97,11 @@ public static class MpSaveData
                 File.Delete(SavePath);
 
             _combatStartMp = null;
+            _restSiteEnteredMp = null;
+            _restSiteHealed = false;
             _currentMp = 0;
             _maxMp = 0;
-            MpChanged?.Invoke(); 
+            MpChanged?.Invoke();
         }
         catch (Exception e)
         {
@@ -115,22 +126,42 @@ public static class MpSaveData
     public static void Initialize(int maxMp)
     {
         _combatStartMp = null;
+        _restSiteEnteredMp = null;
+        _restSiteHealed = false;
         MaxMp = maxMp;
         CurrentMp = maxMp;
         Save();
     }
-    
-    private static int? _combatStartMp = null;
 
     public static void SaveCombatStart()
     {
         _combatStartMp = CurrentMp;
         Save();
     }
-    
+
     public static void ClearCombatStart()
     {
         _combatStartMp = null;
+        Save();
+    }
+
+    public static void SaveRestSiteEntered()
+    {
+        _restSiteEnteredMp = CurrentMp;
+        _restSiteHealed = false;
+        Save();
+    }
+
+    public static void SetRestSiteHealed()
+    {
+        _restSiteHealed = true;
+        Save();
+    }
+
+    public static void ClearRestSiteEntered()
+    {
+        _restSiteEnteredMp = null;
+        _restSiteHealed = false;
         Save();
     }
 
@@ -139,5 +170,7 @@ public static class MpSaveData
         public int CurrentMp { get; set; }
         public int MaxMp { get; set; }
         public int? CombatStartMp { get; set; }
+        public int? RestSiteEnteredMp { get; set; }
+        public bool RestSiteHealed { get; set; }
     }
 }

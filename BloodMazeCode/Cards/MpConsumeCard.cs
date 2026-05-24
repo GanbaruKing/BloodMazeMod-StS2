@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Cards.Variables;
 using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Mp;
+using BloodMaze.BloodMazeCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -26,7 +27,9 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         new DisplayVar<MpConsumeCard>("ConsumeMp", (_) => MpCost.ToString()),
     ];
 
-    protected override bool IsPlayable => MpSaveData.CurrentMp >= (Owner.Creature.HasPower<BloodMaze.BloodMazeCode.Powers.OverflowPower>() ? MpCost * 2 : MpCost);
+    protected override bool IsPlayable => 
+        Owner.Creature.HasPower<FreeMpAttackPower>() ||
+        MpSaveData.CurrentMp >= (Owner.Creature.HasPower<OverflowPower>() ? MpCost * 2 : MpCost);
 
     protected void ConsumeMp()
     {

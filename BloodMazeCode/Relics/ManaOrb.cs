@@ -4,6 +4,7 @@ using BaseLib.Cards.Variables;
 using BloodMaze.BloodMazeCode.Mp;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -25,11 +26,28 @@ public class ManaOrb : BloodMazeRelic
         new DisplayVar<ManaOrb>("MaxMp", (_) => MpSaveData.MaxMp.ToString()),
     ];
 
+    public override Task AfterRestSiteHeal(Player player, bool isMimicked)
+    {
+        if (MpSaveData.RestSiteHealed) return Task.CompletedTask;
+        if (MpSaveData.RestSiteEnteredMp == null) return Task.CompletedTask;
+        int cap = MpSaveData.RestSiteEnteredMp.Value + 10;
+        int toRestore = cap - MpSaveData.CurrentMp;
+        if (toRestore > 0)
+            MpSaveData.Restore(toRestore);
+        MpSaveData.SetRestSiteHealed();
+        return Task.CompletedTask;
+    }
+
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
         MpSaveData.Load();
         if (MpSaveData.MaxMp == 0)
             MpSaveData.Initialize(InitialMaxMp);
+
+        if (room is RestSiteRoom && !MpSaveData.RestSiteHealed && MpSaveData.RestSiteEnteredMp == null)
+            MpSaveData.SaveRestSiteEntered();
+        else if (room is not RestSiteRoom)
+            MpSaveData.ClearRestSiteEntered();
     }
 
     public override async Task BeforeCombatStart()
@@ -61,7 +79,7 @@ public class ManaOrb : BloodMazeRelic
             MpSaveData.Delete();
         return Task.CompletedTask;
     }
-    
+
     [HarmonyPatch(typeof(NAbandonRunConfirmPopup), "OnYesButtonPressed")]
     public static class AbandonRunPatch
     {
