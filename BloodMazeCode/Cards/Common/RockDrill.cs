@@ -20,8 +20,7 @@ public class RockDrill() : MpConsumeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        MpSaveData.TryConsume(MpCost);
-        await CommonActions.CardAttack(this, play.Target, DynamicVars.Repeat.IntValue).Execute(choiceContext);
+        await VampirePlayMultiHit(choiceContext, play.Target, DynamicVars.Repeat.IntValue);
     }
 
     protected override void OnUpgrade()

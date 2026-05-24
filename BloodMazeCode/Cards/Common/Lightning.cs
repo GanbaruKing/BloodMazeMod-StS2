@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BaseLib.Utils;
-using BloodMaze.BloodMazeCode.Mp;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,8 +20,7 @@ public class Lightning() : MpConsumeCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        MpSaveData.TryConsume(MpCost);
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await VampirePlay(choiceContext, play.Target);
         await CardPileCmd.Draw(choiceContext, this.DynamicVars.Cards.IntValue, this.Owner);
     }
 

@@ -21,8 +21,7 @@ public class Tornado() : MpConsumeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        MpSaveData.TryConsume(MpCost);
-        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
+        await VampirePlayAllEnemies(choiceContext);
     }
 
     protected override void OnUpgrade()

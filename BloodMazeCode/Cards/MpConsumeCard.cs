@@ -1,8 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using BaseLib.Cards.Variables;
+using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Mp;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BloodMaze.BloodMazeCode.Cards;
 
@@ -10,10 +18,77 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
     : BloodMazeCard(cost, type, rarity, target)
 {
     protected readonly int MpCost = mpCost;
+    public bool IsFreeThisPlay { get; set; } = false;
+    public bool IsVampireThisPlay { get; set; } = false;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DisplayVar<MpConsumeCard>("ConsumeMp", (_) => MpCost.ToString()),
     ];
+
+    protected override bool IsPlayable => MpSaveData.CurrentMp >= (Owner.Creature.HasPower<BloodMaze.BloodMazeCode.Powers.Overflow>() ? MpCost * 2 : MpCost);
+
+    protected void ConsumeMp()
+    {
+        if (IsFreeThisPlay)
+        {
+            IsFreeThisPlay = false;
+            return;
+        }
+        MpSaveData.TryConsume(MpCost);
+    }
+
+    protected async Task VampirePlay(PlayerChoiceContext choiceContext, Creature? target)
+    {
+        if (IsVampireThisPlay)
+        {
+            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
+                ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            await VampireAttack(choiceContext, target);
+            IsVampireThisPlay = false;
+        }
+        else
+        {
+            ConsumeMp();
+            await CommonActions.CardAttack(this, target).Execute(choiceContext);
+        }
+    }
     
-    protected override bool IsPlayable => MpSaveData.CurrentMp >= MpCost;
+    protected async Task VampirePlayAllEnemies(PlayerChoiceContext choiceContext)
+    {
+        if (IsVampireThisPlay)
+        {
+            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
+                ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
+            decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+            await CreatureCmd.Heal(this.Owner.Creature, restore);
+            IsVampireThisPlay = false;
+        }
+        else
+        {
+            ConsumeMp();
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
+        }
+    }
+    protected async Task VampirePlayMultiHit(PlayerChoiceContext choiceContext, Creature? target, int hitCount)
+    {
+        if (IsVampireThisPlay)
+        {
+            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
+                ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            AttackCommand attack = await CommonActions.CardAttack(this, target, hitCount).Execute(choiceContext);
+            decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+            await CreatureCmd.Heal(this.Owner.Creature, restore);
+            IsVampireThisPlay = false;
+        }
+        else
+        {
+            ConsumeMp();
+            await CommonActions.CardAttack(this, target, hitCount).Execute(choiceContext);
+        }
+    }
+    
 }

@@ -1,7 +1,7 @@
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace BloodMaze.BloodMazeCode.Cards;
+namespace BloodMaze.BloodMazeCode.Tips;
 
 public class VampireVar : DynamicVar
 {
@@ -10,6 +10,6 @@ public class VampireVar : DynamicVar
     public VampireVar() : base
         (Key, 1)
     {
-        this.WithTooltip();
+        this.WithTooltip(locTable: "card_keywords");
     }
 }

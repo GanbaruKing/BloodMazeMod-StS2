@@ -28,8 +28,7 @@ public class Blizzard() : MpConsumeCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        MpSaveData.TryConsume(MpCost);
-        await CommonActions.CardAttack(this, play).Execute(choiceContext);
+        await VampirePlayAllEnemies(choiceContext);
         await PowerCmd.Apply<VulnerablePower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Vulnerable.BaseValue, this.Owner.Creature, (CardModel) this); 
         await PowerCmd.Apply<WeakPower>((IEnumerable<Creature>)this.CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, this.Owner.Creature, (CardModel) this);
     }

@@ -1,0 +1,8 @@
+{
+  "BLOODMAZE-OVERFLOW.description": "MPの消費が2倍になる代わりに魔法カードが2回発動する",
+  "BLOODMAZE-OVERFLOW.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}の魔法カードが[blue]{Amount}[/blue]ターンの間2回発動する",
+  "BLOODMAZE-OVERFLOW.title": "オーバーフロー",
+  "BLOODMAZE-FREE_MP_ATTACK_POWER.description": "次にプレイするアタックカードのMPコストが0になる。",
+  "BLOODMAZE-FREE_MP_ATTACK_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のアタックカードのMPコストが0になる",
+  "BLOODMAZE-FREE_MP_ATTACK_POWER.title": "魔法解放"
+}

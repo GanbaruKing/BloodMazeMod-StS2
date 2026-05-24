@@ -13,10 +13,14 @@
   "BLOODMAZE-MANA_DRAIN.title": "マナドレイン",
   "BLOODMAZE-BITE.description": "#HPを{HpLoss:diff()}失う。\n{Damage:diff()}ダメージを与える。\n*吸血*",
   "BLOODMAZE-BITE.title": "噛みつく",
-  "BLOODMAZE-ROCK_DRILL.description": "MPを{ConsumeMp}失う。\n敵に{Damage:diff()}を{Repeat:diff()}回与える。",
+  "BLOODMAZE-ROCK_DRILL.description": "MPを{ConsumeMp}失う。\n敵に{Damage:diff()}ダメージを{Repeat:diff()}回与える。",
   "BLOODMAZE-ROCK_DRILL.title": "岩砲弾",
-  "BLOODMAZE-WAND_STRIKE.description": "敵に{CalculationBase:diff()}ダメージを与える。デッキ内のMPをコストに持つカード1枚につき、追加で{ExtraDamage:diff()}を与える。",
+  "BLOODMAZE-WAND_STRIKE.description": "敵に{CalculatedDamage:diff()}ダメージを与える。デッキ内の魔法カード1枚につき、追加で{ExtraDamage:diff()}を与える。",
   "BLOODMAZE-WAND_STRIKE.title": "ワンドストライク",
   "BLOODMAZE-SPIRIT_BOTTLE.description": "MPを{ConsumeMp}失う。\n{energyPrefix:energyIcons(1)}を得る。",
-  "BLOODMAZE-SPIRIT_BOTTLE.title": "精霊の小瓶"
+  "BLOODMAZE-SPIRIT_BOTTLE.title": "精霊の小瓶",
+  "BLOODMAZE-OVERFLOW.description": "#{Overflow:diff()}*オーバーフロー*を得る。",
+  "BLOODMAZE-OVERFLOW.title": "オーバーフロー",
+  "BLOODMAZE-MAGIC_CIRCLE.description": "#{Block:diff()}*ブロック*を得る。次にプレイするアタックカードはコストとMPを0にする。",
+  "BLOODMAZE-MAGIC_CIRCLE.title": "魔法陣完成"
 }

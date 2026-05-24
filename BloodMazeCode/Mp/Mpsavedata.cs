@@ -49,6 +49,7 @@ public static class MpSaveData
                 CurrentMp = CurrentMp,
                 MaxMp = MaxMp,
                 CombatStartMp = _combatStartMp
+                
             };
             File.WriteAllText(SavePath, JsonSerializer.Serialize(payload));
         }
@@ -60,6 +61,7 @@ public static class MpSaveData
 
     public static void Load()
     {
+        GD.Print($"[BloodMaze] Load() called from:\n{System.Environment.StackTrace}");
         try
         {
             if (!File.Exists(SavePath)) return;
@@ -76,6 +78,7 @@ public static class MpSaveData
             GD.PrintErr($"[BloodMaze] MpSaveData.Load failed: {e}");
         }
     }
+    public static int? CombatStartMp => _combatStartMp;
 
     public static void Delete()
     {

@@ -1,9 +1,15 @@
-﻿using BaseLib.Abstracts;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Character;
 using BloodMaze.BloodMazeCode.Extensions;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace BloodMaze.BloodMazeCode.Cards;
 
@@ -23,4 +29,11 @@ public abstract class BloodMazeCard(int cost, CardType type, CardRarity rarity, 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+    
+    protected async Task VampireAttack(PlayerChoiceContext choiceContext, Creature? target)
+    {
+        AttackCommand attack = await CommonActions.CardAttack(this, target).Execute(choiceContext);
+        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+        await CreatureCmd.Heal(this.Owner.Creature, restore);
+    }
 }

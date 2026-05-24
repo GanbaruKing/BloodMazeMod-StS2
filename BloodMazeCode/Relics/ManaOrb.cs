@@ -2,8 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Cards.Variables;
 using BloodMaze.BloodMazeCode.Mp;
+using HarmonyLib;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Rooms;
 
 namespace BloodMaze.BloodMazeCode.Relics;
@@ -23,6 +27,7 @@ public class ManaOrb : BloodMazeRelic
 
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
+        MpSaveData.Load();
         if (MpSaveData.MaxMp == 0)
             MpSaveData.Initialize(InitialMaxMp);
     }
@@ -30,11 +35,14 @@ public class ManaOrb : BloodMazeRelic
     public override async Task BeforeCombatStart()
     {
         if (MpSaveData.MaxMp == 0)
-            MpSaveData.Initialize(InitialMaxMp);
-        else
+        {
             MpSaveData.Load();
+            if (MpSaveData.MaxMp == 0)
+                MpSaveData.Initialize(InitialMaxMp);
+        }
 
-        MpSaveData.SaveCombatStart();
+        if (MpSaveData.CombatStartMp == null)
+            MpSaveData.SaveCombatStart();
     }
 
     public override async Task AfterCombatVictory(CombatRoom room)
@@ -47,10 +55,19 @@ public class ManaOrb : BloodMazeRelic
             MpSaveData.Restore(CombatEndRestore);
     }
 
-    public override async Task AfterCombatEnd(CombatRoom room)
+    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
-        if (Owner?.Creature?.CurrentHp <= 0)
+        if (creature.IsPlayer)
             MpSaveData.Delete();
+        return Task.CompletedTask;
     }
     
+    [HarmonyPatch(typeof(NAbandonRunConfirmPopup), "OnYesButtonPressed")]
+    public static class AbandonRunPatch
+    {
+        public static void Postfix()
+        {
+            MpSaveData.Delete();
+        }
+    }
 }
