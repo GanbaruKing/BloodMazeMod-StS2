@@ -28,5 +28,7 @@
   "BLOODMAZE-HEALING_SPIRIT.description": "#MPを{ConsumeMp}失う。\n*再生*{RegenPower}を得る。\nカードを{Cards}枚引く",
   "BLOODMAZE-HEALING_SPIRIT.title": "癒しの精霊",
   "BLOODMAZE-DESPERATION.description": "このターン敵から受けたダメージを反射する。",
-  "BLOODMAZE-DESPERATION.title": "ヤケクソ"
+  "BLOODMAZE-DESPERATION.title": "ヤケクソ",
+  "BLOODMAZE-BLOODWAVE.description": "自身のターンにHPを失う、または回復するとすべての敵に{BloodwavePower:diff()}ダメージを与える。",
+  "BLOODMAZE-BLOODWAVE.title": "血潮の共鳴"
 }

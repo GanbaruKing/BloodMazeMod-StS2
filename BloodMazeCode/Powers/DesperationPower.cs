@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Powers;
 
 
-public class DesperationPower : BloodMazePower
+public sealed class DesperationPower : BloodMazePower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

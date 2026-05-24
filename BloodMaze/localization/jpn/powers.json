@@ -10,5 +10,8 @@
   "BLOODMAZE-VAMPIRE_FORM_POWER.title": "吸血鬼化",
   "BLOODMAZE-DESPERATION_POWER.description": "このターン敵から受けたダメージだけ敵にダメージを与える",
   "BLOODMAZE-DESPERATION_POWER.smartDescription": "敵から受けたダメージだけ敵にダメージを与える",
-  "BLOODMAZE-DESPERATION_POWER.title": "ヤケクソ"
+  "BLOODMAZE-DESPERATION_POWER.title": "ヤケクソ",
+  "BLOODMAZE-BLOODWAVE_POWER.description": "",
+  "BLOODMAZE-BLOODWAVE_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のHPが変動するたび、すべての敵に",
+  "BLOODMAZE-BLOODWAVE_POWER.title": "血潮の共鳴"
 }
