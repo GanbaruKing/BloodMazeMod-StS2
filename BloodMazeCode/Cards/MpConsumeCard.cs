@@ -29,7 +29,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
 
     protected override bool IsPlayable => 
         Owner.Creature.HasPower<FreeMpAttackPower>() ||
-        MpSaveData.CurrentMp >= (Owner.Creature.HasPower<OverflowPower>() ? MpCost * 2 : MpCost);
+        MpSaveData.CurrentMp >= MpCost;
 
     protected void ConsumeMp()
     {

@@ -30,5 +30,15 @@
   "BLOODMAZE-DESPERATION.description": "このターン敵から受けたダメージを反射する。",
   "BLOODMAZE-DESPERATION.title": "ヤケクソ",
   "BLOODMAZE-BLOODWAVE.description": "自身のターンにHPを失う、または回復するとすべての敵に{BloodwavePower:diff()}ダメージを与える。",
-  "BLOODMAZE-BLOODWAVE.title": "血潮の共鳴"
+  "BLOODMAZE-BLOODWAVE.title": "血潮の共鳴",
+  "BLOODMAZE-IMMORTALITY.description": "#*霊体*{IntangiblePower:diff()}を得る。",
+  "BLOODMAZE-IMMORTALITY.title": "不老不死",
+  "BLOODMAZE-FLASH_INVINCIBILITY.description": "MPを{ConsumeMp}失う。\n次にHPを失うとき、それを{BufferPower:diff()}回無効化する。",
+  "BLOODMAZE-FLASH_INVINCIBILITY.title": "刹那の無敵",
+  "BLOODMAZE-BLOOD_SHIELD.description": "#HPを{HpLoss:diff()}失う。\n{Block:diff()}*ブロック*を得る。",
+  "BLOODMAZE-BLOOD_SHIELD.title": "血染めの障壁",
+  "BLOODMAZE-ABRACADABRA.description": "MPを{ConsumeMp}失う。\nカードを{Cards:diff()}枚引く。",
+  "BLOODMAZE-ABRACADABRA.title": "アブラカタブラ",
+  "BLOODMAZE-HOCUSPOCUS.description": "MPを{ConsumeMp}失う。\n{Repeat:diff()}ターンの間、敵のアタックによるダメージが30%減少する",
+  "BLOODMAZE-HOCUSPOCUS.title": "ちちんぷいぷい"
 }
