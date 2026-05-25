@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BloodMaze.BloodMazeCode.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,7 +13,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 public class Hocuspocus() : MpConsumeCard(0,
     CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, 5)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("DamageDecrease", 30M),(DynamicVar) new RepeatVar(2)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DynamicVar("DamageDecrease", 30M),(DynamicVar) new RepeatVar(2)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

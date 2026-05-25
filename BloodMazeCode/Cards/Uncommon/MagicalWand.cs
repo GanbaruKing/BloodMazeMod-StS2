@@ -19,10 +19,12 @@ public class MagicalWand() : MpConsumeCard(2,
 {
     
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars,
+        new CalculationBaseVar(0m),
+        new ExtraDamageVar(0m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(
-        ((Func<CardModel, Creature, Decimal>)((card, _) =>
-            (Decimal)MpSaveData.CurrentMp * 3))!)
-        ];
+            ((Func<CardModel, Creature, Decimal>)((card, _) =>
+                (Decimal)MpSaveData.CurrentMp * 3))!)
+    ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust]; 
     
@@ -32,7 +34,7 @@ public class MagicalWand() : MpConsumeCard(2,
     {
         int damage = MpSaveData.CurrentMp * 3;
         MpSaveData.TryConsume(MpSaveData.CurrentMp);
-        await CommonActions.CardAttack(this, play.Target, damage).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
     }
 
     protected override void OnUpgrade()

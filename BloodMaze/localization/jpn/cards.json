@@ -23,7 +23,7 @@
   "BLOODMAZE-OVERFLOW.title": "オーバーフロー",
   "BLOODMAZE-MAGIC_CIRCLE.description": "#{Block:diff()}*ブロック*を得る。\n次にプレイする魔法攻撃のコストとMPを0にする。",
   "BLOODMAZE-MAGIC_CIRCLE.title": "魔法陣完成",
-  "BLOODMAZE-VAMPIRE_FORM.description": "#ターン開始時HPを8失う。\n魔法アタックカードのMP消費がHP消費に変わり、*吸血*を付与する。",
+  "BLOODMAZE-VAMPIRE_FORM.description": "#ターン開始時HPを6失う。\n魔法アタックカードのMP消費がHP消費に変わり、*吸血*を付与する。",
   "BLOODMAZE-VAMPIRE_FORM.title": "吸血鬼化",
   "BLOODMAZE-HEALING_SPIRIT.description": "#MPを{ConsumeMp}失う。\n*再生*{RegenPower}を得る。\nカードを{Cards}枚引く",
   "BLOODMAZE-HEALING_SPIRIT.title": "癒しの精霊",
@@ -31,7 +31,7 @@
   "BLOODMAZE-DESPERATION.title": "ヤケクソ",
   "BLOODMAZE-BLOODWAVE.description": "自身のターンにHPを失う、または回復するとすべての敵に{BloodwavePower:diff()}ダメージを与える。",
   "BLOODMAZE-BLOODWAVE.title": "血潮の共鳴",
-  "BLOODMAZE-IMMORTALITY.description": "#*霊体*{IntangiblePower:diff()}を得る。",
+  "BLOODMAZE-IMMORTALITY.description": "#HPを{HpLoss:diff()}失う。*霊体*{IntangiblePower:diff()}を得る。",
   "BLOODMAZE-IMMORTALITY.title": "不老不死",
   "BLOODMAZE-FLASH_INVINCIBILITY.description": "MPを{ConsumeMp}失う。\n次にHPを失うとき、それを{BufferPower:diff()}回無効化する。",
   "BLOODMAZE-FLASH_INVINCIBILITY.title": "刹那の無敵",
@@ -43,8 +43,8 @@
   "BLOODMAZE-HOCUSPOCUS.title": "ちちんぷいぷい",
   "BLOODMAZE-BLOOD_PRICE.description": "HPを{HpLoss:diff()}失う。\nMPを{MpRestore:diff()}回復する。",
   "BLOODMAZE-BLOOD_PRICE.title": "血の代償",
-  "BLOODMAZE-ANEMIA.description": "#敵に{Damage:diff()}を与える。この敵をスタンさせる。\n*吸血*",
+  "BLOODMAZE-ANEMIA.description": "#敵に{Damage:diff()}ダメージを与える。この敵をスタンさせる。\n*吸血*",
   "BLOODMAZE-ANEMIA.title": "貧血",
-  "BLOODMAZE-MAGICAL_WAND.description": "MPをすべて失う。\n失ったMPの3倍の{CalculatedDamage:diff()}ダメージを与える。",
+  "BLOODMAZE-MAGICAL_WAND.description": "MPをすべて失う。\n失ったMPの3倍のダメージを与える。",
   "BLOODMAZE-MAGICAL_WAND.title": "マジカルステッキ"
 }
