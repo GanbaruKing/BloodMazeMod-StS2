@@ -20,7 +20,7 @@ public sealed class VampireFormPower : BloodMazePower
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player.Creature != this.Owner) return;
-        await CreatureCmd.Damage(choiceContext, this.Owner, 8m,
+        await CreatureCmd.Damage(choiceContext, this.Owner, 6m,
             ValueProp.Unblockable | ValueProp.Unpowered,
             (Creature)null!, (CardModel)null!);
     }

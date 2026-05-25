@@ -40,5 +40,9 @@
   "BLOODMAZE-ABRACADABRA.description": "MPを{ConsumeMp}失う。\nカードを{Cards:diff()}枚引く。",
   "BLOODMAZE-ABRACADABRA.title": "アブラカタブラ",
   "BLOODMAZE-HOCUSPOCUS.description": "MPを{ConsumeMp}失う。\n{Repeat:diff()}ターンの間、敵のアタックによるダメージが30%減少する",
-  "BLOODMAZE-HOCUSPOCUS.title": "ちちんぷいぷい"
+  "BLOODMAZE-HOCUSPOCUS.title": "ちちんぷいぷい",
+  "BLOODMAZE-BLOOD_PRICE.description": "HPを{HpLoss:diff()}失う。\nMPを{MpRestore:diff()}回復する。",
+  "BLOODMAZE-BLOOD_PRICE.title": "血の代償",
+  "BLOODMAZE-ANEMIA.description": "",
+  "BLOODMAZE-ANEMIA.title": "貧血"
 }

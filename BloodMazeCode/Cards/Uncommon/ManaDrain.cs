@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
-public class ManaDrain() : MpConsumeCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, 1)
+public class ManaDrain() : MpConsumeCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, 1)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(4m, ValueProp.Move)];
 
