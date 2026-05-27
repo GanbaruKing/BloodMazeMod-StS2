@@ -21,6 +21,7 @@ public class Anemia() : MpConsumeCard(3,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        ConsumeMp();
         await VampireAttack(choiceContext, play.Target);
         await CreatureCmd.Stun(play.Target!);
     }
