@@ -29,7 +29,7 @@ public class Crimson() : BloodMazeCard(2,
         CardPlay play)
     {
         var hitCount = MpSaveData.CombatMpConsumeCount;
-        await CommonActions.CardAttack(this, play.Target, hitCount)
+        await CommonActions.CardAttack(this, play.Target, hitCount+1)
             .Execute(choiceContext);
     }
 

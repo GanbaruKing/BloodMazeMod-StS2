@@ -11,7 +11,16 @@
   "BLOODMAZE-DESPERATION_POWER.description": "このターン敵から受けたダメージだけ敵にダメージを与える",
   "BLOODMAZE-DESPERATION_POWER.smartDescription": "敵から受けたダメージだけ敵にダメージを与える",
   "BLOODMAZE-DESPERATION_POWER.title": "ヤケクソ",
-  "BLOODMAZE-BLOODWAVE_POWER.description": "",
-  "BLOODMAZE-BLOODWAVE_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のHPが変動するたび、すべての敵に",
-  "BLOODMAZE-BLOODWAVE_POWER.title": "血潮の共鳴"
+  "BLOODMAZE-BLOODWAVE_POWER.description": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のHPが変動するたび、すべての敵にダメージを与える",
+  "BLOODMAZE-BLOODWAVE_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のHPが変動するたび、すべての敵にダメージを与える",
+  "BLOODMAZE-BLOODWAVE_POWER.title": "血潮の共鳴",
+  "BLOODMAZE-FLOWING_RED_SCALE_POWER.description": "ターン開始時HPを失う。筋力とプレートアーマーを得る。カードを一枚ドローする。",
+  "BLOODMAZE-FLOWING_RED_SCALE_POWER.smartDescription": "ターン開始時HPを失う。筋力とプレートアーマーを得る。カードを一枚ドローする。",
+  "BLOODMAZE-FLOWING_RED_SCALE_POWER.title": "赤燐躍動",
+  "BLOODMAZE-MAGICAL_SPRING_POWER.description": "ターン開始時エナジー1増加",
+  "BLOODMAZE-MAGICAL_SPRING_POWER.smartDescription": "ターン開始時エナジー1増加",
+  "BLOODMAZE-MAGICAL_SPRING_POWER.title": "魔力の泉",
+  "BLOODMAZE-MORE_CHEERFUL_POWER.description": "#HPを回復する度*筋力*が増加する",
+  "BLOODMAZE-MORE_CHEERFUL_POWER.smartDescription": "#HPを回復する度*筋力*が増加する",
+  "BLOODMAZE-MORE_CHEERFUL_POWER.title": "もっと力を！"
 }
