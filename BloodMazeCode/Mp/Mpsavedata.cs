@@ -17,6 +17,10 @@ public static class MpSaveData
     private static int? _combatStartMp = null;
     private static int? _restSiteEnteredMp = null;
     private static bool _restSiteHealed = false;
+    private static int _combatMpConsumeCount = 0;
+    private static int? _combatStartMpConsumeCount = null;
+
+    public static int CombatMpConsumeCount => _combatMpConsumeCount;
 
     public static int CurrentMp
     {
@@ -57,7 +61,9 @@ public static class MpSaveData
                 MaxMp = MaxMp,
                 CombatStartMp = _combatStartMp,
                 RestSiteEnteredMp = _restSiteEnteredMp,
-                RestSiteHealed = _restSiteHealed
+                RestSiteHealed = _restSiteHealed,
+                CombatMpConsumeCount = _combatMpConsumeCount,
+                CombatStartMpConsumeCount = _combatStartMpConsumeCount
             };
             File.WriteAllText(SavePath, JsonSerializer.Serialize(payload));
         }
@@ -69,7 +75,6 @@ public static class MpSaveData
 
     public static void Load()
     {
-        GD.Print($"[BloodMaze] Load() called from:\n{System.Environment.StackTrace}");
         try
         {
             if (!File.Exists(SavePath)) return;
@@ -80,8 +85,10 @@ public static class MpSaveData
             _combatStartMp = payload.CombatStartMp;
             _restSiteEnteredMp = payload.RestSiteEnteredMp;
             _restSiteHealed = payload.RestSiteHealed;
+            _combatStartMpConsumeCount = payload.CombatStartMpConsumeCount;
             MaxMp = payload.MaxMp;
             CurrentMp = _combatStartMp ?? payload.CurrentMp;
+            _combatMpConsumeCount = _combatStartMpConsumeCount ?? payload.CombatMpConsumeCount;
         }
         catch (Exception e)
         {
@@ -101,6 +108,8 @@ public static class MpSaveData
             _restSiteHealed = false;
             _currentMp = 0;
             _maxMp = 0;
+            _combatMpConsumeCount = 0;
+            _combatStartMpConsumeCount = null;
             MpChanged?.Invoke();
         }
         catch (Exception e)
@@ -113,6 +122,7 @@ public static class MpSaveData
     {
         if (CurrentMp < amount) return false;
         CurrentMp -= amount;
+        _combatMpConsumeCount++;
         Save();
         return true;
     }
@@ -128,6 +138,8 @@ public static class MpSaveData
         _combatStartMp = null;
         _restSiteEnteredMp = null;
         _restSiteHealed = false;
+        _combatMpConsumeCount = 0;
+        _combatStartMpConsumeCount = null;
         MaxMp = maxMp;
         CurrentMp = maxMp;
         Save();
@@ -136,12 +148,16 @@ public static class MpSaveData
     public static void SaveCombatStart()
     {
         _combatStartMp = CurrentMp;
+        _combatStartMpConsumeCount = 0;
         Save();
+        
     }
 
     public static void ClearCombatStart()
     {
         _combatStartMp = null;
+        _combatStartMpConsumeCount = null;
+        _combatMpConsumeCount = 0;
         Save();
     }
 
@@ -172,5 +188,7 @@ public static class MpSaveData
         public int? CombatStartMp { get; set; }
         public int? RestSiteEnteredMp { get; set; }
         public bool RestSiteHealed { get; set; }
+        public int CombatMpConsumeCount { get; set; }
+        public int? CombatStartMpConsumeCount { get; set; }
     }
 }

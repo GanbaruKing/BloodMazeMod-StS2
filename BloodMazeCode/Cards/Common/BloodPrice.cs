@@ -16,7 +16,7 @@ public class BloodPrice() : BloodMazeCard(0,
 {
     private int _mprestore = 5;
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new HpLossVar(2m),new DisplayVar<BloodPrice>("MpRestore", (card) => card._mprestore.ToString())];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new HpLossVar(2m),new DisplayVar<BloodPrice>("MpRestore", (_) => _mprestore.ToString()), new CardsVar(1)];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     
@@ -26,13 +26,12 @@ public class BloodPrice() : BloodMazeCard(0,
     {
         await CreatureCmd.Damage(choiceContext, this.Owner.Creature, this.DynamicVars.HpLoss.IntValue,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+        await CardPileCmd.Draw(choiceContext, this.DynamicVars.Cards.IntValue, this.Owner);
         MpSaveData.Restore(_mprestore);
     }
 
     protected override void OnUpgrade()
     {
-        _mprestore += 3;
-        DynamicVars["MpRestore"].UpgradeValueBy(3m);
         RemoveKeyword(CardKeyword.Exhaust);
     }
 }

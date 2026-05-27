@@ -29,6 +29,7 @@ public class BloodwavePower : BloodMazePower
         
         if (_currentSide != CombatSide.Player) return;
         if (creature != Owner.Player!.Creature) return;
+        if (delta == 0) return;
         
         await CreatureCmd.Damage((PlayerChoiceContext) new ThrowingPlayerChoiceContext(), (IEnumerable<Creature>)creature.CombatState!.HittableEnemies, bloodwavePower.Amount ,ValueProp.Unpowered, this.Owner, null);
     }

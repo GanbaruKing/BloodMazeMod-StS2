@@ -52,15 +52,11 @@ public class ManaOrb : BloodMazeRelic
 
     public override async Task BeforeCombatStart()
     {
+        MpSaveData.Load();
         if (MpSaveData.MaxMp == 0)
-        {
-            MpSaveData.Load();
-            if (MpSaveData.MaxMp == 0)
-                MpSaveData.Initialize(InitialMaxMp);
-        }
+            MpSaveData.Initialize(InitialMaxMp);
 
-        if (MpSaveData.CombatStartMp == null)
-            MpSaveData.SaveCombatStart();
+        MpSaveData.SaveCombatStart();
     }
 
     public override async Task AfterCombatVictory(CombatRoom room)
