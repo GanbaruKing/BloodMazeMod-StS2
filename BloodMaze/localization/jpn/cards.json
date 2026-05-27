@@ -56,5 +56,11 @@
   "BLOODMAZE-REJUVENATE.description": "MPを{ConsumeMp}失う。この戦闘で失ったHPとMPの回数分、1回復を({HealAmount:diff()})回行う。",
   "BLOODMAZE-REJUVENATE.title": "若返り",
   "BLOODMAZE-MORE_CHEERFUL.description": "#自身のターンにHPを回復する度に、*筋力*が{MoreCheerfulPower:diff()}増加する。",
-  "BLOODMAZE-MORE_CHEERFUL.title": "もっと力を！"
+  "BLOODMAZE-MORE_CHEERFUL.title": "もっと力を！",
+  "BLOODMAZE-BLOOD_TOXICITY.description": "MPを{ConsumeMp}失う。\n次の{DebilitatePower:diff()}ターンの間、すべての敵に対する弱体と脱力の効果が2倍になる。",
+  "BLOODMAZE-BLOOD_TOXICITY.title": "血毒汚染",
+  "BLOODMAZE-BLUT.description": "#HPを6失う。MPを{ConsumeMp}失う。\n*プレートアーマー*を5得る。*アーティファクト*を{ArtifactPower:diff()}得る",
+  "BLOODMAZE-BLUT.title": "血装",
+  "BLOODMAZE-WISDOM.description": "捨て札のカード1枚を手札に戻す。そのカードは保留を得る。",
+  "BLOODMAZE-WISDOM.title": "知恵"
 }
