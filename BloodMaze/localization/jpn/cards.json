@@ -43,7 +43,7 @@
   "BLOODMAZE-HOCUSPOCUS.title": "ちちんぷいぷい",
   "BLOODMAZE-BLOOD_PRICE.description": "HPを{HpLoss:diff()}失う。\nMPを{MpRestore}回復する。\nカードを1枚引く。",
   "BLOODMAZE-BLOOD_PRICE.title": "血の代償",
-  "BLOODMAZE-ANEMIA.description": "#MPを{{ConsumeMp}失う。敵に{Damage:diff()}ダメージを与える。この敵をスタンさせる。\n*吸血*",
+  "BLOODMAZE-ANEMIA.description": "#MPを{ConsumeMp}失う。敵に{Damage:diff()}ダメージを与える。この敵をスタンさせる。\n*吸血*",
   "BLOODMAZE-ANEMIA.title": "貧血",
   "BLOODMAZE-MAGICAL_WAND.description": "MPをすべて失う。\n失ったMPの3倍のダメージを与える。",
   "BLOODMAZE-MAGICAL_WAND.title": "マジカルステッキ",
@@ -53,7 +53,7 @@
   "BLOODMAZE-FLOWING_RED_SCALE.title": "赤燐躍動",
   "BLOODMAZE-MAGICAL_SPRING.description": "各ターンの開始時、{energyPrefix:energyIcons(1)}を得る。",
   "BLOODMAZE-MAGICAL_SPRING.title": "魔力の泉",
-  "BLOODMAZE-REJUVENATE.description": "MPを{ConsumeMp}失う。この戦闘で失ったHPとMPの回数分、1回復を({HealAmount}){IfUpgraded:show:+3}回行う。",
+  "BLOODMAZE-REJUVENATE.description": "MPを{ConsumeMp}失う。\nこの戦闘で失ったHPとMPの回数分、1回復を({HealAmount}){IfUpgraded:show:+3}回行う。",
   "BLOODMAZE-REJUVENATE.title": "若返り",
   "BLOODMAZE-MORE_CHEERFUL.description": "#自身のターンにHPを回復する度に、*筋力*が{MoreCheerfulPower:diff()}増加する。",
   "BLOODMAZE-MORE_CHEERFUL.title": "もっと力を！",
@@ -68,5 +68,7 @@
   "BLOODMAZE-MIXED_BLOOD.title": "混血",
   "BLOODMAZE-MIXED_BLOOD.selectionScreenPrompt": "カードを一枚選択",
   "BLOODMAZE-BLOOD_SWORD.description": "すべての敵に{Damage:diff()}を与える。この戦闘中に失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。このカードをプレイするとコストが{energyPrefix:energyIcons(2)}上昇する。",
-  "BLOODMAZE-BLOOD_SWORD.title": "ブラッドソード"
+  "BLOODMAZE-BLOOD_SWORD.title": "ブラッドソード",
+  "BLOODMAZE-BLOOD_HUNT.description": "#すべての敵に*大出血*{HemorrhagePower:diff()}と*脱力*{WeakPower:diff()}を付与する。",
+  "BLOODMAZE-BLOOD_HUNT.title": "ブラッドハント"
 }

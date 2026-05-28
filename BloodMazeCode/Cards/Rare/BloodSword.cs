@@ -19,13 +19,13 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class BloodSword() : BloodMazeCard(9,
+public class BloodSword() : BloodMazeCard(11,
     CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
     
     private int _hpLossTriggers;
 
-    private int _baseCost = 9;
+    private int _baseCost = 11;
     
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(40m, ValueProp.Move), new VampireVar()];
     
@@ -38,7 +38,7 @@ public class BloodSword() : BloodMazeCard(9,
             .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
         decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
         await CreatureCmd.Heal(this.Owner.Creature, restore);
-        _hpLossTriggers -= 2;
+        _hpLossTriggers -= 3;
     }
     
     private void RefreshCost()
