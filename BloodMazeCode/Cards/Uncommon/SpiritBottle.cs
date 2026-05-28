@@ -16,7 +16,7 @@ public class SpiritBottle() : MpConsumeCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new EnergyVar(1)];
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, CardKeyword.Retain];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -29,6 +29,5 @@ public class SpiritBottle() : MpConsumeCard(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1m);
-        RemoveKeyword(CardKeyword.Exhaust);
     }
 }
