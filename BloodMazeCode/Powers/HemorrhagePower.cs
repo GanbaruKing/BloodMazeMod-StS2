@@ -48,6 +48,6 @@ public class HemorrhagePower : BloodMazePower
         await PowerCmd.Remove<HemorrhagePower>(this.Owner);
         
         if (remainder > 0)
-            await PowerCmd.Apply<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
+            await PowerCmd.SetAmount<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
     }
 }

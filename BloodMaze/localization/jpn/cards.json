@@ -67,8 +67,16 @@
   "BLOODMAZE-MIXED_BLOOD.description": "#*手札*からカードを一枚選び、他のキャラクターのランダムな{IfUpgraded:show:アップグレード済み}カードに*変化*させる。このターンそれはコストを支払わずにプレイできる。",
   "BLOODMAZE-MIXED_BLOOD.title": "混血",
   "BLOODMAZE-MIXED_BLOOD.selectionScreenPrompt": "カードを一枚選択",
-  "BLOODMAZE-BLOOD_SWORD.description": "すべての敵に{Damage:diff()}を与える。この戦闘中に失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。このカードをプレイするとコストが{energyPrefix:energyIcons(2)}上昇する。",
+  "BLOODMAZE-BLOOD_SWORD.description": "すべての敵に{Damage:diff()}を与える。この戦闘中に失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。このカードをプレイするとコストが{energyPrefix:energyIcons(3)}上昇する。",
   "BLOODMAZE-BLOOD_SWORD.title": "ブラッドソード",
   "BLOODMAZE-BLOOD_HUNT.description": "#すべての敵に*大出血*{HemorrhagePower:diff()}と*脱力*{WeakPower:diff()}を付与する。",
-  "BLOODMAZE-BLOOD_HUNT.title": "ブラッドハント"
+  "BLOODMAZE-BLOOD_HUNT.title": "ブラッドハント",
+  "BLOODMAZE-FATAL_INJURY.description": "#敵の*大出血*を{Multiplier:diff()}倍にする",
+  "BLOODMAZE-FATAL_INJURY.title": "致命傷",
+  "BLOODMAZE-WEAKNESS_EXPLOIT.description": "#{Damage:diff()}ダメージを与える。敵が*大出血*を受けている場合、さらに{Damage:diff()}ダメージを与える。",
+  "BLOODMAZE-WEAKNESS_EXPLOIT.title": "弱点特攻",
+  "BLOODMAZE-BLOOD_STEALING.description": "MPを{ConsumeMp}失う。対象の敵に付与している*大出血*1につき、筋力を1得る。",
+  "BLOODMAZE-BLOOD_STEALING.title": "奪血",
+  "BLOODMAZE-MONEY_EXCHANGE.description": "#{Gold:diff()}*ゴールド*を失う。\nMPを{MpRestore:diff()}回復する。\nカードを1枚引く。\nエナジーを{Energy:energyIcons()}回復する。",
+  "BLOODMAZE-MONEY_EXCHANGE.title": "両替"
 }

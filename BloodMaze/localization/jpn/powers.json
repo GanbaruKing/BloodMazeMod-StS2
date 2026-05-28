@@ -25,5 +25,7 @@
   "BLOODMAZE-MORE_CHEERFUL_POWER.title": "もっと力を！",
   "BLOODMAZE-HEMORRHAGE_POWER.description": "#*大出血*が10になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPを{HemorrhagePower}失う。10になるとスタックを失う。",
   "BLOODMAZE-HEMORRHAGE_POWER.smartDescription": "#*大出血*が10になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPを{HemorrhagePower}失う。10になるとスタックを失う。",
-  "BLOODMAZE-HEMORRHAGE_POWER.title": "大出血"
+  "BLOODMAZE-HEMORRHAGE_POWER.title": "大出血",
+  "BLOODMAZE-WEAKNESS_EXPLOIT.description": "",
+  "BLOODMAZE-WEAKNESS_EXPLOIT.title": "弱点特攻"
 }
