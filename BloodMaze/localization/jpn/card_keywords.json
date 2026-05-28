@@ -1,6 +1,6 @@
 {
   "BLOODMAZE-VAMPIRE.title": "吸血",
   "BLOODMAZE-VAMPIRE.description": "与えたダメージ分HPを回復する。",
-  "BLOODMAZE-HEMORRHAGE_POWER_TIP_VAR.title" : "大出血",
-  "BLOODMAZE-HEMORRHAGE_POWER_TIP_VAR.description" : "#*大出血*が10になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPを{HemorrhagePower}失う。10になるとスタックを失う。"
+  "BLOODMAZE-HEMORRHAGE_POWER_TIP.title" : "大出血",
+  "BLOODMAZE-HEMORRHAGE_POWER_TIP.description" : "#*大出血*が10になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPをスタック分失う。10になるとスタックを失う。"
 }

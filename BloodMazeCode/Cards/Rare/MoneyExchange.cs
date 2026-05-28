@@ -35,6 +35,7 @@ public class MoneyExchange() : BloodMazeCard(0,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Gold.UpgradeValueBy(-2m);
         DynamicVars["MpRestore"].UpgradeValueBy(2m);
         DynamicVars.Energy.UpgradeValueBy(1m);
     }
