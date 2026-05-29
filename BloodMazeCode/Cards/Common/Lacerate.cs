@@ -1,0 +1,33 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using BaseLib.Utils;
+using BloodMaze.BloodMazeCode.Powers;
+using BloodMaze.BloodMazeCode.Tips;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace BloodMaze.BloodMazeCode.Cards.Common;
+
+
+public class Lacerate() : BloodMazeCard(1,
+    CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        [new HemorrhagePowerTipVar(), new DamageVar(6m, ValueProp.Move), new PowerVar<HemorrhagePower>(1m)];
+
+    protected override async Task OnPlay(
+        PlayerChoiceContext choiceContext,
+        CardPlay play)
+    {
+        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
+        await PowerCmd.Apply<HemorrhagePower>(play.Target!, DynamicVars["HemorrhagePower"].IntValue, this.Owner.Creature,this);
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(4m);
+    }
+}

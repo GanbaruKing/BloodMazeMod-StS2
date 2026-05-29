@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Common;
 
 
-public class Bite() : BloodMazeCard(1,
+public class Bite() : BloodMazeCard(2,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {

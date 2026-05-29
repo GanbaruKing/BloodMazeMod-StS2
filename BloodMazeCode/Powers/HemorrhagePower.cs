@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using BloodMaze.BloodMazeCode.Mp;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -20,7 +21,7 @@ public class HemorrhagePower : BloodMazePower
         if (side != this.Owner.Side) return;
         if (this.Owner.IsDead) return;
         if (CombatManager.Instance.IsOverOrEnding) return;
-        
+
         await PowerCmd.Apply<HemorrhagePower>(this.Owner, 1m, this.Owner, null);
     }
 
@@ -43,7 +44,8 @@ public class HemorrhagePower : BloodMazePower
             ValueProp.Unblockable | ValueProp.Unpowered, null, null);
     }
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier,
+        CardModel? cardSource)
     {
         if (power != this) return;
         if (this.Owner.IsDead) return;
@@ -66,5 +68,19 @@ public class HemorrhagePower : BloodMazePower
 
         if (remainder > 0)
             await PowerCmd.SetAmount<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
+        
+        var harvestOwners = players?
+            .Where(c => c.HasPower<HarvestPower>());
+        if (harvestOwners != null)
+        {
+            foreach (var creature in harvestOwners)
+            {
+                var harvest = creature.GetPower<HarvestPower>();
+                if (harvest == null) continue;
+                int healAmount = harvest.IsUpgraded ? 7 : 5;
+                await CreatureCmd.Heal(creature, healAmount);
+                MpSaveData.Restore(healAmount);
+            }
+        }
     }
 }

@@ -28,6 +28,12 @@
   "BLOODMAZE-HEMORRHAGE_POWER.title": "大出血",
   "BLOODMAZE-BLOOD_SPRAY_POWER.description": "#敵に付与されている*大出血*が追加でダメージを与える。",
   "BLOODMAZE-BLOOD_SPRAY_POWER.smartDescription": "#敵に付与されている*大出血*が追加でダメージを与える。",
-  "BLOODMAZE-BLOOD_SPRAY_POWER.title": "血飛沫"
+  "BLOODMAZE-BLOOD_SPRAY_POWER.title": "血飛沫",
+  "BLOODMAZE-LINK_POWER.description": "#自身のターンにHPを失うたび、すべての敵に*大出血*を付与する。",
+  "BLOODMAZE-LINK_POWER.smartDescription": "#自身のターンにHPを失うたび、すべての敵に*大出血*を付与する。",
+  "BLOODMAZE-LINK_POWER.title": "一蓮托生",
+  "BLOODMAZE-HARVEST_POWER.description": "#敵の*大出血*が10になるとHPとMPを回復する。",
+  "BLOODMAZE-HARVEST_POWER.smartDescription": "#敵の*大出血*が10になるとHPとMPを回復する。",
+  "BLOODMAZE-HARVEST_POWER.title": "収穫"
 
 }

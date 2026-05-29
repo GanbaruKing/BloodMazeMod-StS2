@@ -24,6 +24,6 @@ public class BloodSpray() : BloodMazeCard(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["BloodSprayPower"].UpgradeValueBy(0.25m); // 1.75 → 2.0
+        DynamicVars["BloodSprayPower"].UpgradeValueBy(0.25m); 
     }
 }
