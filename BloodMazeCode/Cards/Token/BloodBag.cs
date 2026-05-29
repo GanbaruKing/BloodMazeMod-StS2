@@ -23,7 +23,7 @@ public class BloodBag() : BloodMazeCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars => [new HealVar(1m),new PowerVar<RegenPower>(1m), new BlockVar(3m, ValueProp.Move)];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-
+    
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

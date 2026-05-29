@@ -29,7 +29,7 @@ public class Syringe() : BloodMazeCard(1,
         await CommonActions.CardAttack(this,play.Target).Execute(choiceContext);
         for (int i = 0; i < this.DynamicVars.Cards.IntValue; i++)
         {
-            await BloodBag.CreateInHand(this.Owner, (int)DynamicVars.Cards.IntValue , this.CombatState!);
+            await BloodBag.CreateInHand(this.Owner, this.CombatState!);
             await Cmd.Wait(0.25f);
         }
     }

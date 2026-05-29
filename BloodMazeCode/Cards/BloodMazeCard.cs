@@ -36,4 +36,6 @@ public abstract class BloodMazeCard(int cost, CardType type, CardRarity rarity, 
         decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
         await CreatureCmd.Heal(this.Owner.Creature, restore);
     }
+    
+    
 }
