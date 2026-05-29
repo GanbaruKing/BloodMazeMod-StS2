@@ -92,5 +92,9 @@
   "BLOODMAZE-BLOOD_ALCHEMY.description": "#MPを{ConsumeMp}失う。\n{Block:diff()}*ブロック*を得る。{IfUpgraded:show:[gold]血液パック+[/gold]|[gold]血液パック[/gold]}を{Cards:diff()}枚*手札*に加える。",
   "BLOODMAZE-BLOOD_ALCHEMY.title": "血の錬成",
   "BLOODMAZE-LIFE_REVENGE.description": "{Damage:diff()}ダメージを与える。この戦闘でHPを回復した回数分、追加で攻撃する。\n{InCombat:(攻撃回数は{CalculatedHits}回) }",
-  "BLOODMAZE-LIFE_REVENGE.title": "ライフリベンジ"
+  "BLOODMAZE-LIFE_REVENGE.title": "ライフリベンジ",
+  "BLOODMAZE-HYPER_GROWTH.description": "最大HPが1増加する。",
+  "BLOODMAZE-HYPER_GROWTH.title": "超成長",
+  "BLOODMAZE-BLOOD_SPRAY.description": "#敵に付与されている*大出血*が追加で{IfUpgraded:show:100|75}%のダメージを与える。",
+  "BLOODMAZE-BLOOD_SPRAY.title": "血飛沫"
 }

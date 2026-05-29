@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -28,9 +29,18 @@ public class HemorrhagePower : BloodMazePower
         if (side != this.Owner.Side) return;
         if (this.Owner.IsDead) return;
         if (CombatManager.Instance.IsOverOrEnding) return;
-        
-        await CreatureCmd.Damage(choiceContext, this.Owner, this.Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
-        
+
+        decimal damage = this.Amount;
+        var players = this.Owner.CombatState?.PlayerCreatures;
+        decimal multiplier = 1m + (players?
+            .Where(c => c.HasPower<BloodSprayPower>())
+            .Select(c => c.GetPower<BloodSprayPower>()!.Multiplier - 1m)
+            .DefaultIfEmpty(0m)
+            .Sum() ?? 0m);
+        damage *= multiplier;
+
+        await CreatureCmd.Damage(choiceContext, this.Owner, damage,
+            ValueProp.Unblockable | ValueProp.Unpowered, null, null);
     }
 
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
@@ -39,14 +49,21 @@ public class HemorrhagePower : BloodMazePower
         if (this.Owner.IsDead) return;
         if (CombatManager.Instance.IsOverOrEnding) return;
         if (this.Amount < 10) return;
-        
+
         decimal remainder = this.Amount - 10;
-        
-        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), this.Owner, 50m,
+
+        var players = this.Owner.CombatState?.PlayerCreatures;
+        decimal multiplier = 1m + (players?
+            .Where(c => c.HasPower<BloodSprayPower>())
+            .Select(c => c.GetPower<BloodSprayPower>()!.Multiplier - 1m)
+            .DefaultIfEmpty(0m)
+            .Sum() ?? 0m);
+
+        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), this.Owner, 50m * multiplier,
             ValueProp.Unblockable | ValueProp.Unpowered, null, null);
         await CreatureCmd.Stun(this.Owner);
         await PowerCmd.Remove<HemorrhagePower>(this.Owner);
-        
+
         if (remainder > 0)
             await PowerCmd.SetAmount<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
     }
