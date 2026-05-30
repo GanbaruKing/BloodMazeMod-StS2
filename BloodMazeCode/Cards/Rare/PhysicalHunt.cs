@@ -13,7 +13,7 @@ public class PhysicalHunt() : MpConsumeCard(3,
     CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy, 5)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars];
-
+    public override int CanonicalStarCost => MpCost;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(

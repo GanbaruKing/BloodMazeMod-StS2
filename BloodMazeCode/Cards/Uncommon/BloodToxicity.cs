@@ -13,7 +13,7 @@ public class BloodToxicity() : MpConsumeCard(1,
     CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new PowerVar<DebilitatePower>(3m)];
-
+    public override int CanonicalStarCost => MpCost;
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

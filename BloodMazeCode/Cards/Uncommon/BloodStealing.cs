@@ -12,10 +12,10 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
 public class BloodStealing() : MpConsumeCard(1,
-    CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, 5)
+    CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new HemorrhagePowerTipVar(), ..base.CanonicalVars];
-
+    public override int CanonicalStarCost => MpCost;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(

@@ -13,7 +13,7 @@ public class Abracadabra() : MpConsumeCard(0,
     CardType.Skill, CardRarity.Common, TargetType.Self, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new CardsVar(1), new EnergyVar(1)];
-
+    public override int CanonicalStarCost => MpCost;
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

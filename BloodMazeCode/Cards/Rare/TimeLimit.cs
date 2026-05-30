@@ -11,26 +11,26 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class TimeLimit() : BloodMazeCard(0,
-    CardType.Skill, CardRarity.Rare,TargetType.Self)
+public class TimeLimit() : BloodMazeCard(1,
+    CardType.Power, CardRarity.Rare,TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(1m), new PowerVar<RegenPower>(8m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(1m), new PowerVar<RegenPower>(12m), new PowerVar<TimeLimitPower>(2m)];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<HemorrhagePower>(this.Owner.Creature, DynamicVars["HemorrhagePower"].IntValue,
-            this.Owner.Creature, this);
         await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars["RegenPower"].IntValue,
+            this.Owner.Creature, this);
+        await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars["TimeLimitPower"].IntValue,
             this.Owner.Creature, this);
     }
     
 
     protected override void OnUpgrade()
     {
-        DynamicVars["RegenPower"].UpgradeValueBy(2m);
+        DynamicVars["TimeLimitPower"].UpgradeValueBy(1m);
     }
 }

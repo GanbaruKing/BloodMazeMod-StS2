@@ -23,8 +23,8 @@
   "BLOODMAZE-MORE_CHEERFUL_POWER.description": "#HPを回復する度*筋力*が増加する",
   "BLOODMAZE-MORE_CHEERFUL_POWER.smartDescription": "#HPを回復する度*筋力*が増加する",
   "BLOODMAZE-MORE_CHEERFUL_POWER.title": "もっと力を！",
-  "BLOODMAZE-HEMORRHAGE_POWER.description": "#*大出血*が10になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPを失う。10になるとスタックを失う。",
-  "BLOODMAZE-HEMORRHAGE_POWER.smartDescription": "#*大出血*が10になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPを{Amount}失う。10になるとスタックを失う。",
+  "BLOODMAZE-HEMORRHAGE_POWER.description": "#*大出血*が20になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPを失う。20になるとスタックを失う。",
+  "BLOODMAZE-HEMORRHAGE_POWER.smartDescription": "#*大出血*が20になると*スタン*しHPを50失う。敵のターン開始時*大出血*が1増える。敵のターン終了時HPを{Amount}失う。20になるとスタックを失う。",
   "BLOODMAZE-HEMORRHAGE_POWER.title": "大出血",
   "BLOODMAZE-BLOOD_SPRAY_POWER.description": "#敵に付与されている*大出血*が追加でダメージを与える。",
   "BLOODMAZE-BLOOD_SPRAY_POWER.smartDescription": "#敵に付与されている*大出血*が追加でダメージを与える。",
@@ -32,8 +32,11 @@
   "BLOODMAZE-LINK_POWER.description": "#自身のターンにHPを失うたび、すべての敵に*大出血*を付与する。",
   "BLOODMAZE-LINK_POWER.smartDescription": "#自身のターンにHPを失うたび、すべての敵に*大出血*を付与する。",
   "BLOODMAZE-LINK_POWER.title": "一蓮托生",
-  "BLOODMAZE-HARVEST_POWER.description": "#敵の*大出血*が10になるとHPとMPを回復する。",
-  "BLOODMAZE-HARVEST_POWER.smartDescription": "#敵の*大出血*が10になるとHPとMPを回復する。",
-  "BLOODMAZE-HARVEST_POWER.title": "収穫"
+  "BLOODMAZE-HARVEST_POWER.description": "#敵の*大出血*が20になるとHPとMPを回復する。",
+  "BLOODMAZE-HARVEST_POWER.smartDescription": "#敵の*大出血*が20になるとHPとMPを回復する。",
+  "BLOODMAZE-HARVEST_POWER.title": "収穫",
+  "BLOODMAZE-TIME_LIMIT_POWER.description": "#毎ターン開始時*大出血*を付与し、*筋力*を得る。",
+  "BLOODMAZE-TIME_LIMIT_POWER.smartDescription": "#毎ターン開始時*大出血*を付与し、*筋力*を得る。",
+  "BLOODMAZE-TIME_LIMIT_POWER.title": "タイムリミット"
 
 }

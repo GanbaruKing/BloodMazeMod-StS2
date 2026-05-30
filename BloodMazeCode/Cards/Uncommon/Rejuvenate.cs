@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 public class Rejuvenate() : MpConsumeCard(1,
-    CardType.Skill, CardRarity.Uncommon, TargetType.Self, 3)
+    CardType.Skill, CardRarity.Uncommon, TargetType.Self, 5)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -29,7 +29,7 @@ public class Rejuvenate() : MpConsumeCard(1,
                               .OfType<DamageReceivedEntry>()
                               .Count(e => e.Receiver == card.Owner.Creature && e.Result.UnblockedDamage > 0))))!)
     ];
-
+    public override int CanonicalStarCost => MpCost;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

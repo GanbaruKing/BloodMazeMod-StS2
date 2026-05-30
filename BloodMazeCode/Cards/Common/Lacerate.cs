@@ -16,7 +16,7 @@ public class Lacerate() : BloodMazeCard(1,
     CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new HemorrhagePowerTipVar(), new DamageVar(6m, ValueProp.Move), new PowerVar<HemorrhagePower>(1m)];
+        [new HemorrhagePowerTipVar(), new DamageVar(6m, ValueProp.Move), new PowerVar<HemorrhagePower>(2m)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

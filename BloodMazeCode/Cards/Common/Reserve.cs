@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Mp;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -15,15 +16,24 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 public class Reserve() : BloodMazeCard(1,
     CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
+    private int _turnStartConsumeCount;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DamageVar(8m, ValueProp.Move), new EnergyVar(2)];
+
+    public override Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    {
+        if (side == CombatSide.Player)
+            _turnStartConsumeCount = MpSaveData.CombatMpConsumeCount;
+        return Task.CompletedTask;
+    }
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
-        if (MpSaveData.CombatMpConsumeCount == 0)
+        if (MpSaveData.CombatMpConsumeCount == _turnStartConsumeCount)
             await PlayerCmd.GainEnergy((Decimal)DynamicVars.Energy.IntValue, this.Owner);
     }
 

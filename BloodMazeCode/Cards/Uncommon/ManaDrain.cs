@@ -15,7 +15,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 public class ManaDrain() : MpConsumeCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, 1)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(4m, ValueProp.Move)];
-
+    public override int CanonicalStarCost => MpCost;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

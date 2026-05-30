@@ -15,7 +15,7 @@ public class Blut() : MpConsumeCard(1, CardType.Skill,
     CardRarity.Rare, TargetType.Self, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new PowerVar<PlatingPower>(5), new HpLossVar(6m), new PowerVar<ArtifactPower>(1m)];
-
+    public override int CanonicalStarCost => MpCost;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(

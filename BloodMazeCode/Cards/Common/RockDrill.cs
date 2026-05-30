@@ -13,7 +13,7 @@ public class RockDrill() : MpConsumeCard(1,
     TargetType.AnyEnemy, 1)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(3m, ValueProp.Move), new RepeatVar(4)];
-
+    public override int CanonicalStarCost => MpCost;
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

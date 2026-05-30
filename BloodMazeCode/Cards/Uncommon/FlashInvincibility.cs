@@ -10,10 +10,10 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
 public class FlashInvincibility() : MpConsumeCard(1,
-    CardType.Skill, CardRarity.Uncommon, TargetType.Self, 8)
+    CardType.Skill, CardRarity.Uncommon, TargetType.Self, 6)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new PowerVar<BufferPower>(1m)];
-
+    public override int CanonicalStarCost => MpCost;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     
     

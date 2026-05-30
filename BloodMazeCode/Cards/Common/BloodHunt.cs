@@ -14,7 +14,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 public class BloodHunt() : BloodMazeCard(2,
     CardType.Skill, CardRarity.Common,TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(2m), new PowerVar<WeakPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(3m), new PowerVar<WeakPower>(1m)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

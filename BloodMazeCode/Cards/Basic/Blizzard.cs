@@ -19,8 +19,8 @@ public class Blizzard() : MpConsumeCard(0,
     TargetType.AllEnemies, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(2m, ValueProp.Move), new PowerVar<VulnerablePower>(1m), new PowerVar<WeakPower>(1m)];
-    
 
+    public override int CanonicalStarCost => MpCost;
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

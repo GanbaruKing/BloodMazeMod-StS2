@@ -15,7 +15,7 @@ public class SpiritBottle() : MpConsumeCard(0,
     TargetType.Self, 5)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new EnergyVar(1), new CardsVar(1)];
-    
+    public override int CanonicalStarCost => MpCost;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override async Task OnPlay(

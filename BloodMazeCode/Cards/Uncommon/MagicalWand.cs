@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
-public class MagicalWand() : BloodMazeCard(2,
+public class MagicalWand() : BloodMazeCard(3,
     CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

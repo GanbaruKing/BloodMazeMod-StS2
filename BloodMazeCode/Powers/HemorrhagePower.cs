@@ -50,9 +50,9 @@ public class HemorrhagePower : BloodMazePower
         if (power != this) return;
         if (this.Owner.IsDead) return;
         if (CombatManager.Instance.IsOverOrEnding) return;
-        if (this.Amount < 10) return;
+        if (this.Amount < 20) return;
 
-        decimal remainder = this.Amount - 10;
+        decimal remainder = this.Amount - 20;
 
         var players = this.Owner.CombatState?.PlayerCreatures;
         decimal multiplier = 1m + (players?
@@ -68,7 +68,7 @@ public class HemorrhagePower : BloodMazePower
 
         if (remainder > 0)
             await PowerCmd.SetAmount<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
-        
+
         var harvestOwners = players?
             .Where(c => c.HasPower<HarvestPower>());
         if (harvestOwners != null)

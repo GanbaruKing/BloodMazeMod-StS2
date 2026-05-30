@@ -15,7 +15,7 @@ public class Lightning() : MpConsumeCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [..base.CanonicalVars, new DamageVar(8m, ValueProp.Move), new CardsVar(1)];
-
+    public override int CanonicalStarCost => MpCost;
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

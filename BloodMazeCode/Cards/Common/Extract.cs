@@ -19,7 +19,7 @@ public class Extract() : BloodMazeCard(1,
     CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new HemorrhagePowerTipVar()];
+        [new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(1m)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromCard<BloodBag>(this.IsUpgraded)];
