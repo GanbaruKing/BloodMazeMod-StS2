@@ -19,7 +19,7 @@ public class BloodAlchemy() : MpConsumeCard(2,
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new BlockVar(8m, ValueProp.Move), new CardsVar(2) ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodBag>(this.IsUpgraded)];
-    public override int CanonicalStarCost => MpCost;
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

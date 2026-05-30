@@ -9,7 +9,7 @@
   "BLOODMAZE-TORNADO.title": "トルネード",
   "BLOODMAZE-LIGHTNING.description": "{Damage:diff()}ダメージを与える。\nカードを{Cards:diff()}枚引く。",
   "BLOODMAZE-LIGHTNING.title": "電光石火",
-  "BLOODMAZE-MANA_DRAIN.description": "敵に{Damage:diff()}ダメージを与える。\n与えたダメージに等しいMPを回復する。",
+  "BLOODMAZE-MANA_DRAIN.description": "敵に{Damage:diff()}ダメージを与える。\n与えたダメージ分、MPを回復する。",
   "BLOODMAZE-MANA_DRAIN.title": "マナドレイン",
   "BLOODMAZE-BITE.description": "#HPを{HpLoss:diff()}失う。\n{Damage:diff()}ダメージを与える。\n*吸血*",
   "BLOODMAZE-BITE.title": "噛みつく",
@@ -109,6 +109,9 @@
   "BLOODMAZE-HARVEST.description": "#敵の*大出血*が10になるとHPとMPを{IfUpgraded:show:7|5}回復する。",
   "BLOODMAZE-HARVEST.title": "収穫",
   "BLOODMAZE-MANA_FORT.description": "#HPを{HpLoss}失う。\n現在MPに等しい({CalculatedBlock:diff()})*ブロック*を得る。",
-  "BLOODMAZE-MANA_FORT.title": "マナフォート"
-  
+  "BLOODMAZE-MANA_FORT.title": "マナフォート",
+  "BLOODMAZE-SELECTION.description": "山札または捨て札からカードを一枚選びそれを手札に加える。",
+  "BLOODMAZE-SELECTION.title": "選定",
+  "BLOODMAZE-CHRONO_BREAK.description": "このターン、手札をすべて保留し、追加のターンを得る。",
+  "BLOODMAZE-CHRONO_BREAK.title": "クロノブレイク"
 }

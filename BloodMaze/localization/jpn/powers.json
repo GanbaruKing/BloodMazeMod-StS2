@@ -37,6 +37,9 @@
   "BLOODMAZE-HARVEST_POWER.title": "収穫",
   "BLOODMAZE-TIME_LIMIT_POWER.description": "#毎ターン開始時*大出血*を付与し、*筋力*を得る。",
   "BLOODMAZE-TIME_LIMIT_POWER.smartDescription": "#毎ターン開始時*大出血*を付与し、*筋力*を得る。",
-  "BLOODMAZE-TIME_LIMIT_POWER.title": "タイムリミット"
+  "BLOODMAZE-TIME_LIMIT_POWER.title": "タイムリミット",
+  "BLOODMAZE-CHRONO_BREAK_POWER.description": "追加のターンを得る。",
+  "BLOODMAZE-CHRONO_BREAK_POWER.smartDescription": "追加のターンを得る。",
+  "BLOODMAZE-CHRONO_BREAK_POWER.title": "クロノブレイク"
 
 }

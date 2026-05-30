@@ -19,6 +19,9 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
     : BloodMazeCard(cost, type, rarity, target)
 {
     protected readonly int MpCost = mpCost;
+    
+    public override int CanonicalStarCost => MpCost;
+    
     public bool IsFreeThisPlay { get; set; } = false;
     public bool IsVampireForm { get; set; } = false;
 
@@ -30,17 +33,25 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
     protected override bool IsPlayable => 
         Owner.Creature.HasPower<FreeMpAttackPower>() ||
         MpSaveData.CurrentMp >= MpCost;
+        private int _consumeCallsThisCycle = 0;
 
-    protected void ConsumeMp()
-    {
-        if (IsFreeThisPlay)
+        protected void ConsumeMp()
         {
-            IsFreeThisPlay = false;
-            return;
-        }
-        MpSaveData.TryConsume(MpCost);
-    }
+            if (IsFreeThisPlay) { IsFreeThisPlay = false; return; }
 
+            int totalPlays = GetEnchantedReplayCount() + 1; 
+
+            _consumeCallsThisCycle++;
+            if (_consumeCallsThisCycle == 1)
+            {
+                MpSaveData.TryConsume(MpCost);
+            }
+            
+            if (_consumeCallsThisCycle >= totalPlays)
+            {
+                _consumeCallsThisCycle = 0;
+            }
+        }
     protected async Task VampirePlay(PlayerChoiceContext choiceContext, Creature? target)
     {
         if (IsVampireForm)

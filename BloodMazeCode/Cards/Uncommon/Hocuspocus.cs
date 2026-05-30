@@ -14,7 +14,7 @@ public class Hocuspocus() : MpConsumeCard(0,
     CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DynamicVar("DamageDecrease", 30M),(DynamicVar) new RepeatVar(2)];
-    public override int CanonicalStarCost => MpCost;
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
