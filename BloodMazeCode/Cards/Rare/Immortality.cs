@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
+using BloodMaze.BloodMazeCode.Powers;
+using BloodMaze.BloodMazeCode.Tips;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,7 +16,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Rare;
 public class Immortality() : BloodMazeCard(2,
     CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<IntangiblePower>(2m), new HpLossVar(12m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<IntangiblePower>(2m), new PowerVar<HemorrhagePower>(1m), new HemorrhagePowerTipVar()];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

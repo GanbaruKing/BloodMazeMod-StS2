@@ -17,8 +17,9 @@ public class Bite() : BloodMazeCard(2,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move), new HpLossVar(7M), new VampireVar()];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move), new HpLossVar(4M), new VampireVar()];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

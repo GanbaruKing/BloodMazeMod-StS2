@@ -14,7 +14,7 @@ public class SpiritBottle() : MpConsumeCard(0,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self, 5)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new EnergyVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new EnergyVar(1), new CardsVar(1)];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
@@ -29,5 +29,6 @@ public class SpiritBottle() : MpConsumeCard(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

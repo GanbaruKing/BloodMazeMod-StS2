@@ -45,7 +45,7 @@
   "BLOODMAZE-BLOOD_PRICE.title": "血の代償",
   "BLOODMAZE-ANEMIA.description": "#MPを{ConsumeMp}失う。\n敵に{Damage:diff()}ダメージを与える。この敵をスタンさせる。\n*吸血*",
   "BLOODMAZE-ANEMIA.title": "貧血",
-  "BLOODMAZE-MAGICAL_WAND.description": "MPをすべて失う。\n失ったMPの3倍のダメージを与える。",
+  "BLOODMAZE-MAGICAL_WAND.description": "現在のMP分、敵に{InCombat:CalculatedDamage:diff()|}ダメージを与える。",
   "BLOODMAZE-MAGICAL_WAND.title": "マジカルステッキ",
   "BLOODMAZE-CRIMSON.description": "10ダメージを与える。この戦闘でMPを消費した回数分、追加で攻撃する。\n{InCombat:（攻撃回数は{HitCount}回|}",
   "BLOODMAZE-CRIMSON.title": "クリムゾン",
@@ -67,9 +67,9 @@
   "BLOODMAZE-MIXED_BLOOD.description": "#*手札*からカードを一枚選び、他のキャラクターのランダムな{IfUpgraded:show:アップグレード済み}カードに*変化*させる。このターンそれはコストを支払わずにプレイできる。",
   "BLOODMAZE-MIXED_BLOOD.title": "混血",
   "BLOODMAZE-MIXED_BLOOD.selectionScreenPrompt": "カードを一枚選択",
-  "BLOODMAZE-BLOOD_SWORD.description": "すべての敵に{Damage:diff()}を与える。この戦闘中に失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。このカードをプレイするとコストが{energyPrefix:energyIcons(3)}上昇する。",
+  "BLOODMAZE-BLOOD_SWORD.description": "すべての敵に{Damage:diff()}を与える。この戦闘中に失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。このカードをプレイするとコストが{energyPrefix:energyIcons(3)}上昇する。\n*吸血*.",
   "BLOODMAZE-BLOOD_SWORD.title": "ブラッドソード",
-  "BLOODMAZE-BLOOD_HUNT.description": "#すべての敵に*大出血*{HemorrhagePower:diff()}と*脱力*{WeakPower:diff()}を付与する。\n*吸血*.",
+  "BLOODMAZE-BLOOD_HUNT.description": "#すべての敵に*大出血*{HemorrhagePower:diff()}と*脱力*{WeakPower:diff()}を付与する。",
   "BLOODMAZE-BLOOD_HUNT.title": "ブラッドハント",
   "BLOODMAZE-FATAL_INJURY.description": "#敵の*大出血*を{Multiplier:diff()}倍にする",
   "BLOODMAZE-FATAL_INJURY.title": "致命傷",
@@ -107,6 +107,8 @@
   "BLOODMAZE-RESERVE.description": "{Damage:diff()}ダメージを与える。\nこのターンMPを消費していなければ{Energy:energyIcons()}を得る。",
   "BLOODMAZE-RESERVE.title": "リザーブ",
   "BLOODMAZE-HARVEST.description": "#敵の*大出血*が10になるとHPとMPを{IfUpgraded:show:7|5}回復する。",
-  "BLOODMAZE-HARVEST.title": "収穫"
+  "BLOODMAZE-HARVEST.title": "収穫",
+  "BLOODMAZE-MANA_FORT.description": "#HPを{HpLoss}失う。\n現在MPに等しい({CalculatedBlock:diff()})*ブロック*を得る。",
+  "BLOODMAZE-MANA_FORT.title": "マナフォート"
   
 }

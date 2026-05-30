@@ -30,8 +30,8 @@ public class BloodAlchemy() : MpConsumeCard(2,
         {
             CardModel? inHand = await BloodBag.CreateInHand(this.Owner, this.CombatState!);
             await Cmd.Wait(0.25f);
-            if (!this.IsUpgraded) return;
-            CardCmd.Upgrade(inHand!);
+            if (this.IsUpgraded)
+                CardCmd.Upgrade(inHand!);
         }
     }
     

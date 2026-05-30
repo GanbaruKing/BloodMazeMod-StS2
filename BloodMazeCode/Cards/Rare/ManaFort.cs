@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Mp;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,28 +12,32 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
+namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
-public class MagicalWand() : BloodMazeCard(2,
-    CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+
+
+public class ManaFort() : BloodMazeCard(3, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new HpLossVar(3m),
         new CalculationBaseVar(0m),
-        new ExtraDamageVar(0m),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier(
+        new CalculationExtraVar(0m),
+        new CalculatedBlockVar(ValueProp.Move).WithMultiplier(
             ((Func<CardModel, Creature, Decimal>)((card, _) =>
                 (Decimal)MpSaveData.CurrentMp)!)!)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        int damage = MpSaveData.CurrentMp;
-        await CommonActions.CardAttack(this, play.Target, damage, 1).Execute(choiceContext);
+        await CreatureCmd.Damage(choiceContext, this.Owner.Creature, DynamicVars.HpLoss.IntValue,
+            ValueProp.Unblockable | ValueProp.Unpowered, null, this);
+        int block = MpSaveData.CurrentMp;
+        await CreatureCmd.GainBlock(this.Owner.Creature, block, ValueProp.Move, play);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        this.EnergyCost.SetCustomBaseCost(2);
     }
 }
