@@ -11,10 +11,10 @@ using MegaCrit.Sts2.Core.Models;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class Overflow() : BloodMazeCard(2,
+public class Overflow() : BloodMazeCard(1,
     CardType.Power, CardRarity.Rare,TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BloodMaze.BloodMazeCode.Powers.OverflowPower>(2m), new OverflowVar(), new MagicCardVar()];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BloodMaze.BloodMazeCode.Powers.OverflowPower>(3m), new OverflowVar(), new MagicCardVar()];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

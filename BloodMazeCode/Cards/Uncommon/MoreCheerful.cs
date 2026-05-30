@@ -10,7 +10,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
 public class MoreCheerful() : BloodMazeCard(1,
-    CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<MoreCheerfulPower>(1)];
 

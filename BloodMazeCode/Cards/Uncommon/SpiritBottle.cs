@@ -12,7 +12,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 public class SpiritBottle() : MpConsumeCard(0,
     CardType.Skill, CardRarity.Uncommon,
-    TargetType.Self, 5)
+    TargetType.Self, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new EnergyVar(1), new CardsVar(1)];
    

@@ -54,6 +54,6 @@ public class LifeRevenge() : BloodMazeCard(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(1m);
     }
 }

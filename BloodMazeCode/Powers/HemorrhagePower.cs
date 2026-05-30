@@ -77,7 +77,7 @@ public class HemorrhagePower : BloodMazePower
             {
                 var harvest = creature.GetPower<HarvestPower>();
                 if (harvest == null) continue;
-                int healAmount = harvest.IsUpgraded ? 7 : 5;
+                int healAmount = harvest.IsUpgraded ? 10 : 7;
                 await CreatureCmd.Heal(creature, healAmount);
                 MpSaveData.Restore(healAmount);
             }

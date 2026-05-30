@@ -14,7 +14,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Rare;
 public class TimeLimit() : BloodMazeCard(1,
     CardType.Power, CardRarity.Rare,TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(1m), new PowerVar<RegenPower>(12m), new PowerVar<TimeLimitPower>(2m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(1m), new PowerVar<RegenPower>(10m), new PowerVar<TimeLimitPower>(2m)];
 
 
 
@@ -24,7 +24,9 @@ public class TimeLimit() : BloodMazeCard(1,
     {
         await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars["RegenPower"].IntValue,
             this.Owner.Creature, this);
-        await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars["TimeLimitPower"].IntValue,
+        await PowerCmd.Apply<TimeLimitPower>(this.Owner.Creature, DynamicVars["TimeLimitPower"].IntValue,
+            this.Owner.Creature, this);
+        await PowerCmd.Apply<HemorrhagePower>(this.Owner.Creature, DynamicVars["HemorrhagePower"].IntValue,
             this.Owner.Creature, this);
     }
     
@@ -32,5 +34,6 @@ public class TimeLimit() : BloodMazeCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars["TimeLimitPower"].UpgradeValueBy(1m);
+        DynamicVars["RegenPower"].UpgradeValueBy(1m);
     }
 }

@@ -14,7 +14,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 public class BloodPrice() : BloodMazeCard(0,
     CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    private int _mprestore = 5;
+    private int _mprestore = 4;
     
     protected override IEnumerable<DynamicVar> CanonicalVars => [new HpLossVar(2m),new DisplayVar<BloodPrice>("MpRestore", (_) => _mprestore.ToString()), new CardsVar(1)];
 
@@ -32,6 +32,6 @@ public class BloodPrice() : BloodMazeCard(0,
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
