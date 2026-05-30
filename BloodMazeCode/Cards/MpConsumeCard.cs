@@ -78,7 +78,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         if (IsVampireForm)
         {
             await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
-                ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+                ValueProp.Unblockable | ValueProp.Unpowered , this);
             AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
             decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
@@ -99,7 +99,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         if (IsVampireForm)
         {
             await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
-                ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+                ValueProp.Unblockable | ValueProp.Unpowered, this);
             AttackCommand attack = await CommonActions.CardAttack(this, target, hitCount).Execute(choiceContext);
             decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
             await CreatureCmd.Heal(this.Owner.Creature, restore);
