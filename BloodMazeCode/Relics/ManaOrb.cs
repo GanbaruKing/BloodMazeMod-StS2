@@ -15,8 +15,8 @@ namespace BloodMaze.BloodMazeCode.Relics;
 
 public class ManaOrb : BloodMazeRelic
 {
-    public const int InitialMaxMp = 40;
-    public const int CombatEndRestore = 5;
+    public const int InitialMaxMp = 45;
+    public const int CombatEndRestore = 7;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
@@ -30,7 +30,7 @@ public class ManaOrb : BloodMazeRelic
     {
         if (MpSaveData.RestSiteHealed) return Task.CompletedTask;
         if (MpSaveData.RestSiteEnteredMp == null) return Task.CompletedTask;
-        int cap = MpSaveData.RestSiteEnteredMp.Value + 10;
+        int cap = MpSaveData.RestSiteEnteredMp.Value + 15;
         int toRestore = cap - MpSaveData.CurrentMp;
         if (toRestore > 0)
             MpSaveData.Restore(toRestore);
