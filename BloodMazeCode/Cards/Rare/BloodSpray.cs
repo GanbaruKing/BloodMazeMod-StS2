@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
-public class BloodSpray() : BloodMazeCard(2,
+public class BloodSpray() : BloodMazeCard(1,
     CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>

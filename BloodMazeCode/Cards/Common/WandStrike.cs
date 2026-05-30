@@ -20,7 +20,7 @@ public class WandStrike() : BloodMazeCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new MagicCardVar(), new CalculationBaseVar(12m), new ExtraDamageVar(2m),
+        new MagicCardVar(), new CalculationBaseVar(12m), new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(
             ((Func<CardModel, Creature, Decimal>)((card, _) =>
                 (Decimal)card.Owner.PlayerCombatState!.AllCards.Count<CardModel>(c => c is MpConsumeCard)))!)

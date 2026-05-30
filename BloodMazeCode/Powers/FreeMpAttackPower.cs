@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace BloodMaze.BloodMazeCode.Powers;
 
-public sealed class FreeMpAttackPower : BloodMazePower
+public class FreeMpAttackPower : BloodMazePower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
