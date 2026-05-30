@@ -22,8 +22,7 @@ public class Agony() : MpConsumeCard(1, CardType.Attack,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ConsumeMp();
-        await CommonActions.CardAttack(this, play.Target, DynamicVars.CalculatedDamage).Execute(choiceContext);
+        await VampirePlay(choiceContext, play.Target);
     }
 
     protected override void OnUpgrade()

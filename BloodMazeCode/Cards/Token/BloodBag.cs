@@ -16,7 +16,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Token;
 
 
 public class BloodBag() : BloodMazeCard(0,
-    CardType.Skill, CardRarity.Token, TargetType.Self)
+    CardType.Skill, CardRarity.Token, TargetType.Self, showInCardLibrary: false)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new HealVar(1m),new PowerVar<RegenPower>(1m), new BlockVar(3m, ValueProp.Move)];
     
@@ -28,7 +28,7 @@ public class BloodBag() : BloodMazeCard(0,
     {
         await CreatureCmd.Heal(this.Owner.Creature, DynamicVars.Heal.IntValue);
         await CommonActions.CardBlock(this, play);
-        await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars.Heal.IntValue, this.Owner.Creature, this);
+        await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars["RegenPower"].IntValue, this.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

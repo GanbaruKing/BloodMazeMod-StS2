@@ -21,14 +21,21 @@ public class Anemia() : MpConsumeCard(3,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ConsumeMp();
-        await VampireAttack(choiceContext, play.Target);
+        if (!IsVampireForm)
+        {
+            ConsumeMp();
+            await VampireAttack(choiceContext, play.Target);
+        }
+        else
+        {
+            await VampirePlay(choiceContext, play.Target);
+        }
+        
         await CreatureCmd.Stun(play.Target!);
     }
 
     protected override void OnUpgrade()
     {
         this.EnergyCost.UpgradeBy(-1);
-        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 }

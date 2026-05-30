@@ -22,19 +22,14 @@ public class Reflux() : MpConsumeCard(2,
     
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(32m, ValueProp.Move)];
 
-    protected override async Task OnPlay(
-        PlayerChoiceContext choiceContext,
-        CardPlay play)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        ConsumeMp();
-        AttackCommand attackCommand = await CommonActions.CardAttack(this, play.Target, DynamicVars.Damage.IntValue, ValueProp.Move,1).Execute(choiceContext);
-        bool shouldTriggerFatal = play.Target!.Powers.All<PowerModel>((Func<PowerModel, bool>) (p => p.ShouldOwnerDeathTriggerFatal()));
-        if (!shouldTriggerFatal || !attackCommand.Results.Any<DamageResult>((Func<DamageResult, bool>) (r => r.WasTargetKilled)))
-            return;
-        
-        
-        
-        MpSaveData.Restore(IsUpgraded? MpCost + 2 : MpCost);
+        bool vampire = IsVampireForm;
+        AttackCommand attack = await VampirePlay(choiceContext, play.Target);
+        bool shouldTriggerFatal = play.Target!.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
+        if (!shouldTriggerFatal || !attack.Results.Any(r => r.WasTargetKilled)) return;
+
+        MpSaveData.Restore(IsUpgraded ? MpCost + 2 : MpCost);
     }
 
     protected override void OnUpgrade()

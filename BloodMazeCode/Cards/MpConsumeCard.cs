@@ -30,9 +30,13 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         new DisplayVar<MpConsumeCard>("ConsumeMp", (_) => MpCost.ToString()),
     ];
 
-    protected override bool IsPlayable => 
-        Owner.Creature.HasPower<FreeMpAttackPower>() ||
+    protected override bool IsPlayable =>
+        (Type == CardType.Attack &&
+         (Owner.Creature.HasPower<FreeMpAttackPower>() ||
+          Owner.Creature.HasPower<VampireFormPower>())) ||
         MpSaveData.CurrentMp >= MpCost;
+    
+    
         private int _consumeCallsThisCycle = 0;
 
         protected void ConsumeMp()
@@ -52,21 +56,20 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
                 _consumeCallsThisCycle = 0;
             }
         }
-    protected async Task VampirePlay(PlayerChoiceContext choiceContext, Creature? target)
-    {
-        if (IsVampireForm)
+        protected async Task<AttackCommand> VampirePlay(PlayerChoiceContext choiceContext, Creature? target)
         {
-            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
-                ValueProp.Unblockable | ValueProp.Unpowered, this);
-            await VampireAttack(choiceContext, target);
-            IsVampireForm = false;
-        }
-        else
-        {
+            if (IsVampireForm)
+            {
+                await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
+                    ValueProp.Unblockable | ValueProp.Unpowered, this);
+                AttackCommand attack = await VampireAttack(choiceContext, target);
+                IsVampireForm = false;
+                return attack;
+            }
+
             ConsumeMp();
-            await CommonActions.CardAttack(this, target).Execute(choiceContext);
+            return await CommonActions.CardAttack(this, target).Execute(choiceContext);
         }
-    }
     
     
     

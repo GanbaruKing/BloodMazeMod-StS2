@@ -14,8 +14,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace BloodMaze.BloodMazeCode.Cards;
 
 [Pool(typeof(BloodMazeCardPool))]
-public abstract class BloodMazeCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    CustomCardModel(cost, type, rarity, target)
+public abstract class BloodMazeCard(int cost, CardType type, CardRarity rarity, TargetType target,
+    bool showInCardLibrary = true, bool autoAdd = true) :
+    CustomCardModel(cost, type, rarity, target, showInCardLibrary, autoAdd)
 {
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
@@ -30,11 +31,12 @@ public abstract class BloodMazeCard(int cost, CardType type, CardRarity rarity, 
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     
-    protected async Task VampireAttack(PlayerChoiceContext choiceContext, Creature? target)
+    protected async Task<AttackCommand> VampireAttack(PlayerChoiceContext choiceContext, Creature? target)
     {
         AttackCommand attack = await CommonActions.CardAttack(this, target).Execute(choiceContext);
         decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
         await CreatureCmd.Heal(this.Owner.Creature, restore);
+        return attack;
     }
     
     
