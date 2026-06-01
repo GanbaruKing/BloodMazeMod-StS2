@@ -126,6 +126,8 @@
   "BLOODMAZE-QUICK_BLEED.description": "#{IfUpgraded:show:すべての敵に*大出血*を2付与する。\n}すべての敵に{Damage:diff()}ダメージを与える。\n*大出血*が10以上の敵は*大出血*が20になる。",
   "BLOODMAZE-QUICK_BLEED.title": "即血",
   "BLOODMAZE-EXPLOIT.description": "#{IfUpgraded:show:大出血を1付与する。\n}対象の敵に付与されている*大出血*分、\n*ブロック*を得る。",
-  "BLOODMAZE-EXPLOIT.title": "便乗"
+  "BLOODMAZE-EXPLOIT.title": "便乗",
+  "BLOODMAZE-REUSE_RUSH.description": "#{Damage:diff()}ダメージを与える。*廃棄札*にある*血液パック*1枚につき、追加で{ExtraDamage:diff()}ダメージを与える",
+  "BLOODMAZE-REUSE_RUSH.title": "リユーズラッシュ"
   
 }

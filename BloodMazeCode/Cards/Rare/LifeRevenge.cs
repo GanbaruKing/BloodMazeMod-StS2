@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
+namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 public class LifeRevenge() : BloodMazeCard(2,
-    CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     private static int _healCount;
 

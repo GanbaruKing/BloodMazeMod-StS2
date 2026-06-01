@@ -10,9 +10,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
-public class HealingSpirit() : MpConsumeCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 4)
+public class HealingSpirit() : MpConsumeCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 8)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new PowerVar<RegenPower>(3m), new CardsVar(1), new EnergyVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new HealVar(15), new CardsVar(1), new EnergyVar(1)];
  
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     
@@ -29,5 +29,6 @@ public class HealingSpirit() : MpConsumeCard(1, CardType.Skill, CardRarity.Uncom
     {
         DynamicVars.Energy.UpgradeValueBy(1m);
         DynamicVars.Cards.UpgradeValueBy(1);
+        AddKeyword(CardKeyword.Retain);
     }
 }
