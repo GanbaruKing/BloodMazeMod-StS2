@@ -61,13 +61,15 @@ public class HemorrhagePower : BloodMazePower
             .DefaultIfEmpty(0m)
             .Sum() ?? 0m);
 
-        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), this.Owner, 50m * multiplier,
+        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), this.Owner, 100m * multiplier,
             ValueProp.Unblockable | ValueProp.Unpowered, null, null);
         await CreatureCmd.Stun(this.Owner);
         await PowerCmd.Remove<HemorrhagePower>(this.Owner);
 
         if (remainder > 0)
-            await PowerCmd.SetAmount<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
+            await PowerCmd.Apply<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
+        else if (remainder == 0)
+            await PowerCmd.Apply<HemorrhagePower>(this.Owner, 1m, applier, cardSource);
 
         var harvestOwners = players?
             .Where(c => c.HasPower<HarvestPower>());

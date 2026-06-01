@@ -122,6 +122,8 @@
   "BLOODMAZE-AGONY.description": "#敵に{CalculatedDamage:diff()}を与える。\n敵の*大出血*分、追加で{ExtraDamage:diff()}与える。",
   "BLOODMAZE-AGONY.title": "アゴニー",
   "BLOODMAZE-ACTION_AND_REACTION.description": "#{Damage:diff()}ダメージを与える。\n与えたダメージに等しい*ブロック*を得る。",
-  "BLOODMAZE-ACTION_AND_REACTION.title": "作用反作用"
+  "BLOODMAZE-ACTION_AND_REACTION.title": "作用反作用",
+  "BLOODMAZE-QUICK_BLEED.description": "#{IfUpgraded:show:すべての敵に*大出血*を2付与する。すべての敵に{Damage:diff()}ダメージを与える。*大出血*が10以上の敵は*大出血*が20になる。}",
+  "BLOODMAZE-QUICK_BLEED.title": "即血"
   
 }
