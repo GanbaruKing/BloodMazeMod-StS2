@@ -20,7 +20,6 @@ public class Abracadabra() : MpConsumeCard(0,
     {
         ConsumeMp();
         await CardPileCmd.Draw(choiceContext, this.DynamicVars.Cards.IntValue, this.Owner);
-        await PlayerCmd.GainEnergy((Decimal)DynamicVars.Energy.IntValue, this.Owner);
     }
 
     protected override void OnUpgrade()

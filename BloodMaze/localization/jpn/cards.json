@@ -37,7 +37,7 @@
   "BLOODMAZE-FLASH_INVINCIBILITY.title": "刹那の無敵",
   "BLOODMAZE-BLOOD_SHIELD.description": "#HPを{HpLoss:diff()}失う。\n{Block:diff()}*ブロック*を得る。",
   "BLOODMAZE-BLOOD_SHIELD.title": "血染めの障壁",
-  "BLOODMAZE-ABRACADABRA.description": "カードを{Cards:diff()}枚引く。\nエナジーを{Energy:energyIcons()}得る。",
+  "BLOODMAZE-ABRACADABRA.description": "カードを{Cards:diff()}枚引く。",
   "BLOODMAZE-ABRACADABRA.title": "アブラカタブラ",
   "BLOODMAZE-HOCUSPOCUS.description": "{Repeat:diff()}ターンの間、敵のアタックによるダメージが30%減少する",
   "BLOODMAZE-HOCUSPOCUS.title": "ちちんぷいぷい",
