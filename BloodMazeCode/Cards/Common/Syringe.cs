@@ -12,10 +12,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Common;
 
 
-public class Syringe() : BloodMazeCard(1,
-    CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class Syringe() : MpConsumeCard(1,
+    CardType.Attack, CardRarity.Common, TargetType.AnyEnemy,1)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move), new CardsVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move), new CardsVar(1),..base.CanonicalVars];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodBag>()];
 
@@ -23,7 +23,7 @@ public class Syringe() : BloodMazeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.CardAttack(this,play.Target).Execute(choiceContext);
+        await VampirePlay(choiceContext, play.Target);
         for (int i = 0; i < this.DynamicVars.Cards.IntValue; i++)
         {
             await BloodBag.CreateInHand(this.Owner, this.CombatState!);

@@ -89,7 +89,7 @@
   "BLOODMAZE-BLOOD_BAG.title": "血液パック",
   "BLOODMAZE-SYRINGE.description": "#{Damage:diff()}ダメージを与える。\n*血液パック*を{Cards:diff()}枚*手札*に加える",
   "BLOODMAZE-SYRINGE.title": "注射器",
-  "BLOODMAZE-BLOOD_ALCHEMY.description": "#{Block:diff()}*ブロック*を得る。{IfUpgraded:show:[gold]血液パック+[/gold]|[gold]血液パック[/gold]}を{Cards:diff()}枚*手札*に加える。",
+  "BLOODMAZE-BLOOD_ALCHEMY.description": "#{Block:diff()}*ブロック*を得る。\n{IfUpgraded:show:[gold]血液パック+[/gold]|[gold]血液パック[/gold]}を{Cards:diff()}枚*手札*に加える。",
   "BLOODMAZE-BLOOD_ALCHEMY.title": "血の錬成",
   "BLOODMAZE-LIFE_REVENGE.description": "{Damage:diff()}ダメージを与える。この戦闘でHPを回復した回数分、追加で攻撃する。\n{InCombat:(攻撃回数は{CalculatedHits}回)|}",
   "BLOODMAZE-LIFE_REVENGE.title": "ライフリベンジ",
@@ -117,13 +117,15 @@
   "BLOODMAZE-CHRONO_BREAK.title": "クロノブレイク",
   "BLOODMAZE-SILENT_CAST.description": "毎ターン、最初にプレイする魔法攻撃カードはコストを消費しない。",
   "BLOODMAZE-SILENT_CAST.title": "無詠唱",
-  "BLOODMAZE-REFLUX.description": "{Damage:diff()}を与える。\nリーサル時、MPを{IfUpgraded:show:10|8}回復する",
+  "BLOODMAZE-REFLUX.description": "{Damage:diff()}ダメージを与える。\nリーサル時、MPを{IfUpgraded:show:10|8}回復する",
   "BLOODMAZE-REFLUX.title": "還流",
-  "BLOODMAZE-AGONY.description": "#敵に{CalculatedDamage:diff()}を与える。\n敵の*大出血*分、追加で{ExtraDamage:diff()}与える。",
+  "BLOODMAZE-AGONY.description": "#敵に{CalculatedDamage:diff()}ダメージを与える。\n敵の*大出血*分、追加で{ExtraDamage:diff()}与える。",
   "BLOODMAZE-AGONY.title": "アゴニー",
   "BLOODMAZE-ACTION_AND_REACTION.description": "#{Damage:diff()}ダメージを与える。\n与えたダメージに等しい*ブロック*を得る。",
   "BLOODMAZE-ACTION_AND_REACTION.title": "作用反作用",
-  "BLOODMAZE-QUICK_BLEED.description": "#{IfUpgraded:show:すべての敵に*大出血*を2付与する。すべての敵に{Damage:diff()}ダメージを与える。*大出血*が10以上の敵は*大出血*が20になる。}",
-  "BLOODMAZE-QUICK_BLEED.title": "即血"
+  "BLOODMAZE-QUICK_BLEED.description": "#{IfUpgraded:show:すべての敵に*大出血*を2付与する。\n}すべての敵に{Damage:diff()}ダメージを与える。\n*大出血*が10以上の敵は*大出血*が20になる。",
+  "BLOODMAZE-QUICK_BLEED.title": "即血",
+  "BLOODMAZE-EXPLOIT.description": "#{IfUpgraded:show:大出血を1付与する。\n}対象の敵に付与されている*大出血*分、\n*ブロック*を得る。",
+  "BLOODMAZE-EXPLOIT.title": "便乗"
   
 }

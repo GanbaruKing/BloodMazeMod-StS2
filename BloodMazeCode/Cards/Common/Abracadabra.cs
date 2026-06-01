@@ -10,7 +10,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 
 
 public class Abracadabra() : MpConsumeCard(0,
-    CardType.Skill, CardRarity.Common, TargetType.Self, 5)
+    CardType.Skill, CardRarity.Common, TargetType.Self, 3)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new CardsVar(2)];
   
@@ -24,6 +24,6 @@ public class Abracadabra() : MpConsumeCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Energy.UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
