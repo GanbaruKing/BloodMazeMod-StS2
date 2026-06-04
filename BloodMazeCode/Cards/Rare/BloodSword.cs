@@ -23,18 +23,16 @@ public class BloodSword() : BloodMazeCard(11,
 
     private int _baseCost = 11;
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(40m, ValueProp.Move), new VampireVar()];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar((Decimal)Owner.Creature.MaxHp, ValueProp.Move), new VampireVar()];
     
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
-        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
-        await CreatureCmd.Heal(this.Owner.Creature, restore);
-        _hpLossTriggers -= 3;
+        await VampireAttack(choiceContext,play.Target); 
+        _hpLossTriggers -= 2;
+        RefreshCost();
     }
     
     private void RefreshCost()

@@ -11,6 +11,6 @@ public class EternalNightPower: BloodMazePower
     
     public override bool ShouldPlayerResetEnergy(Player player)
     {
-        return player.Creature.CombatState.RoundNumber == 1 || player != this.Owner.Player;
+        return player.Creature.CombatState!.RoundNumber == 1 || player != this.Owner.Player;
     }
 }

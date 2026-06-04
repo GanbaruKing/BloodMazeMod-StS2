@@ -67,7 +67,7 @@
   "BLOODMAZE-MIXED_BLOOD.description": "#*手札*からカードを一枚選び、他のキャラクターのランダムな{IfUpgraded:show:アップグレード済み}カードに*変化*させる。このターンそれはコストを支払わずにプレイできる。",
   "BLOODMAZE-MIXED_BLOOD.title": "混血",
   "BLOODMAZE-MIXED_BLOOD.selectionScreenPrompt": "カードを一枚選択",
-  "BLOODMAZE-BLOOD_SWORD.description": "#すべての敵に{Damage:diff()}ダメージを与える。この戦闘中に失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。プレイするとコストが{energyPrefix:energyIcons(3)}上昇する。\n*吸血*.",
+  "BLOODMAZE-BLOOD_SWORD.description": "HPに等しい{Damage:diff()}ダメージを与える。失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。プレイするとコストが{energyPrefix:energyIcons(2)}上昇する。\n*吸血*.",
   "BLOODMAZE-BLOOD_SWORD.title": "ブラッドソード",
   "BLOODMAZE-BLOOD_HUNT.description": "#すべての敵に*大出血*{HemorrhagePower:diff()}と*脱力*{WeakPower:diff()}を付与する。",
   "BLOODMAZE-BLOOD_HUNT.title": "ブラッドハント",
@@ -153,5 +153,7 @@
   "BLOODMAZE-TENSION.description": "#このターン、*筋力*を{TemporaryStrengthPower:diff()}得る",
   "BLOODMAZE-TENSION.title": "テンション",
   "BLOODMAZE-ETERNAL_NIGHT.description": "余ったエナジーを次のターンに持ち越せるようになる。",
-  "BLOODMAZE-ETERNAL_NIGHT.title": "永夜"
+  "BLOODMAZE-ETERNAL_NIGHT.title": "永夜",
+  "BLOODMAZE-UNLIMITED.description": "この戦闘中、HPの上限を無くす。",
+  "BLOODMAZE-UNLIMITED.title": "オーバーヒール"
 }

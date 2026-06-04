@@ -55,5 +55,8 @@
   "BLOODMAZE-FREE_MP_POWER.title": "無尽",
   "BLOODMAZE-ETERNAL_NIGHT_POWER.description": "余ったエナジーを持ち越せる",
   "BLOODMAZE-ETERNAL_NIGHT_POWER.smartDescription": "余ったエナジーを持ち越せる",
-  "BLOODMAZE-ETERNAL_NIGHT_POWER.title": "永夜"
+  "BLOODMAZE-ETERNAL_NIGHT_POWER.title": "永夜",
+  "BLOODMAZE-OVER_HEAL_POWER.description": "この戦闘中、HPの上限を無くす。",
+  "BLOODMAZE-OVER_HEAL_POWER.smartDescription": "HPの上限を無くす。",
+  "BLOODMAZE-OVER_HEAL_POWER.title": "オーバーヒール"
 }
