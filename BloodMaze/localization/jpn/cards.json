@@ -123,7 +123,7 @@
   "BLOODMAZE-AGONY.title": "アゴニー",
   "BLOODMAZE-ACTION_AND_REACTION.description": "#{Damage:diff()}ダメージを与える。\n与えたダメージに等しい*ブロック*を得る。",
   "BLOODMAZE-ACTION_AND_REACTION.title": "作用反作用",
-  "BLOODMAZE-QUICK_BLEED.description": "#{IfUpgraded:show:すべての敵に*大出血*を2付与する。\n}すべての敵に{Damage:diff()}ダメージを与える。\n*大出血*が10以上の敵は*大出血*が20になる。",
+  "BLOODMAZE-QUICK_BLEED.description": "#すべての敵に{Damage:diff()}ダメージを与える。{IfUpgraded:show:\n*大出血*を2付与する。}\n*大出血*が10以上の敵は*大出血*が20になる。",
   "BLOODMAZE-QUICK_BLEED.title": "即血",
   "BLOODMAZE-EXPLOIT.description": "#{IfUpgraded:show:大出血を1付与する。\n}対象の敵に付与されている*大出血*分、\n*ブロック*を得る。",
   "BLOODMAZE-EXPLOIT.title": "便乗",
@@ -136,5 +136,7 @@
   "BLOODMAZE-FORESIGHT.description": "#{Damage:diff()}ダメージを与える。\nこのカードを*保留*するたび、コストを1減らす。",
   "BLOODMAZE-FORESIGHT.title": "先見の明",
   "BLOODMAZE-HEX_CHAIN.description": "#{Damage:diff()}ダメージを与える。\n直前にプレイしたカードが魔法攻撃の場合、*弱体*{VulnerablePower:diff()}を付与する。",
-  "BLOODMAZE-HEX_CHAIN.title": "連魔"
+  "BLOODMAZE-HEX_CHAIN.title": "連魔",
+  "BLOODMAZE-MANA_SHIELD.description": "#魔法カードをプレイするたびに{ManaShieldPower:diff()}*ブロック*を得る",
+  "BLOODMAZE-MANA_SHIELD.title": "マナシールド"
 }
