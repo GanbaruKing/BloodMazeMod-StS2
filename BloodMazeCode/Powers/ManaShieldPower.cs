@@ -15,7 +15,7 @@ public class ManaShieldPower : BloodMazePower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     
-
+ 
 
     public override async Task BeforeCardPlayed(CardPlay play)
     {
