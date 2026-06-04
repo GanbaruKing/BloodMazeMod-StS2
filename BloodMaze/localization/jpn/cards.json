@@ -142,5 +142,7 @@
   "BLOODMAZE-BLOOD_BAG_SUPPLY.description": "#ターン開始時、*血液パック+*を1枚*手札*に加える。\nこの効果はX{IfUpgraded:show:+1|}ターン続く。",
   "BLOODMAZE-BLOOD_BAG_SUPPLY.title": "供給",
   "BLOODMAZE-FLOW_STRIKE.description": "{Damage:diff()}ダメージを与える。\nカードを{Cards:diff()}枚引く。",
-  "BLOODMAZE-FLOW_STRIKE.title": "フローストライク"
+  "BLOODMAZE-FLOW_STRIKE.title": "フローストライク",
+  "BLOODMAZE-AWAKENING.description": "#{Damage:diff()}ダメージを与える。\n*リーサル*時、戦闘終了後ランダムなカードを1枚*アップグレード*する。",
+  "BLOODMAZE-AWAKENING.title": "開眼"
 }
