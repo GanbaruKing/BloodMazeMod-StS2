@@ -138,5 +138,7 @@
   "BLOODMAZE-HEX_CHAIN.description": "#{Damage:diff()}ダメージを与える。\n直前にプレイしたカードが魔法攻撃の場合、*弱体*{VulnerablePower:diff()}を付与する。",
   "BLOODMAZE-HEX_CHAIN.title": "連魔",
   "BLOODMAZE-MANA_SHIELD.description": "#魔法カードをプレイするたびに{ManaShieldPower:diff()}*ブロック*を得る",
-  "BLOODMAZE-MANA_SHIELD.title": "マナシールド"
+  "BLOODMAZE-MANA_SHIELD.title": "マナシールド",
+  "BLOODMAZE-BLOOD_BAG_SUPPLY.description": "#ターン開始時、*血液パック+*を1枚*手札*に加える。\nこの効果はX{IfUpgraded:show:+1|}ターン続く。",
+  "BLOODMAZE-BLOOD_BAG_SUPPLY.title": "供給"
 }

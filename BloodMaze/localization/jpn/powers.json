@@ -46,5 +46,8 @@
   "BLOODMAZE-SILENT_CAST_POWER.title": "魔法解放",
   "BLOODMAZE-MANA_SHIELD_POWER.description": "#魔法カードをプレイするたびに#ブロック#を得る。",
   "BLOODMAZE-MANA_SHIELD_POWER.smartDescription": "#魔法カードをプレイするたびに#ブロック#を得る。",
-  "BLOODMAZE-MANA_SHIELD_POWER.title": "マナシールド"
+  "BLOODMAZE-MANA_SHIELD_POWER.title": "マナシールド",
+  "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.description": "#ターン開始時、*血液パック+*が手札に加わる。",
+  "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.smartDescription": "#ターン開始時、*血液パック+*が手札に加わる。",
+  "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.title": "供給"
 }
