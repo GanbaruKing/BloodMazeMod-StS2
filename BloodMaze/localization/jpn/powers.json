@@ -52,5 +52,8 @@
   "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.title": "供給",
   "BLOODMAZE-FREE_MP_POWER.description": "このターンMPを消費しない。",
   "BLOODMAZE-FREE_MP_POWER.smartDescription": "このターンMPを消費しない。",
-  "BLOODMAZE-FREE_MP_POWER.title": "無尽"
+  "BLOODMAZE-FREE_MP_POWER.title": "無尽",
+  "BLOODMAZE-ETERNAL_NIGHT_POWER.description": "余ったエナジーを持ち越せる",
+  "BLOODMAZE-ETERNAL_NIGHT_POWER.smartDescription": "余ったエナジーを持ち越せる",
+  "BLOODMAZE-ETERNAL_NIGHT_POWER.title": "永夜"
 }
