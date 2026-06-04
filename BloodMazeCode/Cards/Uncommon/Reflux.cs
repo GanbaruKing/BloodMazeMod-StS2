@@ -24,7 +24,6 @@ public class Reflux() : MpConsumeCard(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        bool vampire = IsVampireForm;
         AttackCommand attack = await VampirePlay(choiceContext, play.Target);
         bool shouldTriggerFatal = play.Target!.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
         if (!shouldTriggerFatal || !attack.Results.Any(r => r.WasTargetKilled)) return;

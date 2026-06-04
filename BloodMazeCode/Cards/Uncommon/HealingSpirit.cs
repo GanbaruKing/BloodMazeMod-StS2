@@ -10,25 +10,25 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
-public class HealingSpirit() : MpConsumeCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 8)
+public class HealingSpirit() : MpConsumeCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 8)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new HealVar(15), new CardsVar(1), new EnergyVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new HealVar(10m), new CardsVar(1), new EnergyVar(1)];
  
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust,CardKeyword.Retain];
     
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         ConsumeMp();
-        await CommonActions.ApplySelf<RegenPower>(choiceContext, this);
+        await CreatureCmd.Heal(this.Owner.Creature, DynamicVars.Heal.IntValue);
         await CardPileCmd.Draw(choiceContext, this.DynamicVars.Cards.IntValue, this.Owner);
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, this.Owner);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1m);
         DynamicVars.Cards.UpgradeValueBy(1);
-        AddKeyword(CardKeyword.Retain);
     }
 }

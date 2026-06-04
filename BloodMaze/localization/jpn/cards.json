@@ -25,13 +25,13 @@
   "BLOODMAZE-MAGIC_CIRCLE.title": "魔法陣完成",
   "BLOODMAZE-VAMPIRE_FORM.description": "#ターン開始時HPを10失う。\n魔法アタックカードのMP消費がHP消費に変わり、*吸血*を付与する。",
   "BLOODMAZE-VAMPIRE_FORM.title": "吸血鬼化",
-  "BLOODMAZE-HEALING_SPIRIT.description": "#*再生*{RegenPower}を得る。\nカードを{Cards:diff()}枚引く\nエナジーを{Energy:energyIcons()}得る。",
+  "BLOODMAZE-HEALING_SPIRIT.description": "#{Heal:diff()}回復する。\nカードを{Cards:diff()}枚引く\nエナジーを{Energy:energyIcons()}得る。",
   "BLOODMAZE-HEALING_SPIRIT.title": "癒しの精霊",
-  "BLOODMAZE-DESPERATION.description": "このターン敵から受けたダメージを反射する。",
+  "BLOODMAZE-DESPERATION.description": "#自身に*棘*{ThornsPower:diff()}を付与する。",
   "BLOODMAZE-DESPERATION.title": "ヤケクソ",
   "BLOODMAZE-BLOODWAVE.description": "自身のターンにHPを失う、または回復するとすべての敵に{BloodwavePower:diff()}ダメージを与える。",
   "BLOODMAZE-BLOODWAVE.title": "血潮の共鳴",
-  "BLOODMAZE-IMMORTALITY.description": "#HPを{HpLoss:diff()}失う。\n*霊体*{IntangiblePower:diff()}を得る。\n*大出血*を{HemorrhagePower:diff()}得る。",
+  "BLOODMAZE-IMMORTALITY.description": "#*霊体*{IntangiblePower:diff()}を得る。\n*大出血*を{HemorrhagePower:diff()}得る。",
   "BLOODMAZE-IMMORTALITY.title": "不老不死",
   "BLOODMAZE-FLASH_INVINCIBILITY.description": "次にHPを失うとき、それを{BufferPower:diff()}回無効化する。",
   "BLOODMAZE-FLASH_INVINCIBILITY.title": "刹那の無敵",
@@ -128,6 +128,13 @@
   "BLOODMAZE-EXPLOIT.description": "#{IfUpgraded:show:大出血を1付与する。\n}対象の敵に付与されている*大出血*分、\n*ブロック*を得る。",
   "BLOODMAZE-EXPLOIT.title": "便乗",
   "BLOODMAZE-REUSE_RUSH.description": "#{CalculationBase:diff()}ダメージを与える。\n*廃棄札*にある*血液パック*1枚につき、追加で{ExtraDamage:diff()}ダメージを与える",
-  "BLOODMAZE-REUSE_RUSH.title": "リユーズラッシュ"
-  
+  "BLOODMAZE-REUSE_RUSH.title": "リユーズラッシュ",
+  "BLOODMAZE-INNOVATION.description": "#HPを{HpLoss:diff()}失う。\n*手札*に*血液パック*を{Cards:diff()}枚加える。",
+  "BLOODMAZE-INNOVATION.title": "創造",
+  "BLOODMAZE-ROCK_WALL.description": "{Block:diff()}*ブロック*を得る。",
+  "BLOODMAZE-ROCK_WALL.title": "ロックウォール",
+  "BLOODMAZE-FORESIGHT.description": "#{Damage:diff()}ダメージを与える。\nこのカードを*保留*するたび、コストを1減らす。",
+  "BLOODMAZE-FORESIGHT.title": "先見の明",
+  "BLOODMAZE-HEX_CHAIN.description": "#{Damage:diff()}ダメージを与える。\n直前にプレイしたカードが魔法攻撃の場合、*弱体*{VulnerablePower:diff()}を付与する。",
+  "BLOODMAZE-HEX_CHAIN.title": "連魔"
 }
