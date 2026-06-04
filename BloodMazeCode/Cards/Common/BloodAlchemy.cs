@@ -16,7 +16,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 public class BloodAlchemy() : MpConsumeCard(2,
     CardType.Skill, CardRarity.Common, TargetType.Self, 5)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new BlockVar(8m, ValueProp.Move), new CardsVar(2) ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new BlockVar(8m, ValueProp.Move), new CardsVar(1) ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodBag>(this.IsUpgraded)];
 
@@ -34,5 +34,9 @@ public class BloodAlchemy() : MpConsumeCard(2,
                 CardCmd.Upgrade(inHand!);
         }
     }
-    
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Block.UpgradeValueBy(3m);
+    }
 }

@@ -49,5 +49,8 @@
   "BLOODMAZE-MANA_SHIELD_POWER.title": "マナシールド",
   "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.description": "#ターン開始時、*血液パック+*が手札に加わる。",
   "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.smartDescription": "#ターン開始時、*血液パック+*が手札に加わる。",
-  "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.title": "供給"
+  "BLOODMAZE-BLOOD_BAG_SUPPLY_POWER.title": "供給",
+  "BLOODMAZE-FREE_MP_POWER.description": "このターンMPを消費しない。",
+  "BLOODMAZE-FREE_MP_POWER.smartDescription": "このターンMPを消費しない。",
+  "BLOODMAZE-FREE_MP_POWER.title": "無尽"
 }

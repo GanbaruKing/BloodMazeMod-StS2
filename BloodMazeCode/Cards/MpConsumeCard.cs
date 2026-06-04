@@ -42,6 +42,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         protected void ConsumeMp()
         {
             if (IsFreeThisPlay) { IsFreeThisPlay = false; return; }
+            if (Owner.Creature.HasPower<FreeMpPower>()) return;
 
             int totalPlays = GetEnchantedReplayCount() + 1; 
 

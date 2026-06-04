@@ -15,7 +15,7 @@ namespace BloodMaze.BloodMazeCode.Relics;
 
 public class ManaOrb : BloodMazeRelic
 {
-    public const int InitialMaxMp = 45;
+    public const int InitialMaxMp = 64;
     public const int CombatEndRestore = 8;
 
     public override RelicRarity Rarity => RelicRarity.Starter;

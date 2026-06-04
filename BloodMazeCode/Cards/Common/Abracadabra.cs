@@ -9,7 +9,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 
 
 public class Abracadabra() : MpConsumeCard(0,
-    CardType.Skill, CardRarity.Common, TargetType.Self, 3)
+    CardType.Skill, CardRarity.Common, TargetType.Self, 4)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new CardsVar(2)];
   

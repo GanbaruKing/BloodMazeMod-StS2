@@ -34,7 +34,7 @@ public class BloodBag() : BloodMazeCard(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(1m);
-        DynamicVars.Heal.UpgradeValueBy(1m);
+        DynamicVars["RegenPower"].UpgradeValueBy(1m);
     }
     
     
