@@ -16,7 +16,7 @@ public class OverHealPower : BloodMazePower
 
     public override async Task AfterCombatEnd(CombatRoom room)
     {
-        int clampedHp = Math.Min(this.Owner.Player.Creature.CurrentHp, SavedMaxHp);
+        int clampedHp = Math.Min(this.Owner.Player!.Creature.CurrentHp, SavedMaxHp);
         await CreatureCmd.SetMaxHp(this.Owner.Player.Creature, (decimal)SavedMaxHp);
         await CreatureCmd.SetCurrentHp(this.Owner.Player.Creature, (decimal)clampedHp);
     }

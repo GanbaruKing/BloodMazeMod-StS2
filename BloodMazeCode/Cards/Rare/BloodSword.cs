@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Tips;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
@@ -15,22 +16,25 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class BloodSword() : BloodMazeCard(11,
-    CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+public class BloodSword() : BloodMazeCard(9,
+    CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     
     private int _hpLossTriggers;
 
-    private int _baseCost = 11;
+    private int _baseCost = 9;
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar((Decimal)Owner.Creature.MaxHp, ValueProp.Move), new VampireVar()];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new VampireVar()];
     
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await VampireAttack(choiceContext,play.Target); 
+        int damage = Owner.Creature.CurrentHp;
+        AttackCommand attack = await CommonActions.CardAttack(this, play.Target, damage).Execute(choiceContext);
+        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+        await CreatureCmd.Heal(this.Owner.Creature, restore);
         _hpLossTriggers -= 2;
         RefreshCost();
     }
@@ -68,6 +72,6 @@ public class BloodSword() : BloodMazeCard(11,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(10m);
+        EnergyCost.UpgradeBy(-2);
     }
 }
