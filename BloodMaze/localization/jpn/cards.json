@@ -53,7 +53,7 @@
   "BLOODMAZE-FLOWING_RED_SCALE.title": "赤燐躍動",
   "BLOODMAZE-MAGICAL_SPRING.description": "各ターンの開始時、{energyPrefix:energyIcons(1)}を得る。",
   "BLOODMAZE-MAGICAL_SPRING.title": "魔力の泉",
-  "BLOODMAZE-REJUVENATE.description": "この戦闘で失ったHPとMPの回数{IfUpgraded:show:+3}、1回復する。{InCombat:(回復回数は{HealAmount}{IfUpgraded:show:+3}回)|}",
+  "BLOODMAZE-REJUVENATE.description": "#自身に付与されている*再生*につき{IfUpgraded:show:+3}、1回復する。{InCombat:(回復回数は{HealAmount}{IfUpgraded:show:+3}回)|}",
   "BLOODMAZE-REJUVENATE.title": "若返り",
   "BLOODMAZE-MORE_CHEERFUL.description": "#自身のターンにHPを回復する度に、*筋力*が{MoreCheerfulPower:diff()}増加する。",
   "BLOODMAZE-MORE_CHEERFUL.title": "もっと力を！",
