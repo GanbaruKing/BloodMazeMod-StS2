@@ -30,7 +30,7 @@ public class HealingBonfire() : MpConsumeCard(1,
         CardPlay play)
     {
         ConsumeMp();
-        foreach (Creature creature in this.CombatState.GetTeammatesOf(this.Owner.Creature)
+        foreach (Creature creature in this.CombatState!.GetTeammatesOf(this.Owner.Creature)
                      .Where<Creature>((Func<Creature, bool>)(c => c != null && c.IsAlive && c.IsPlayer)))
         {
             await CommonActions.Apply<RegenPower>(choiceContext, creature, this);

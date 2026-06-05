@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BaseLib.Abstracts;
-using BloodMaze.BloodMazeCode.Cards.Ancient;
+using BloodMaze.BloodMazeCode.Powers;
+using BloodMaze.BloodMazeCode.Tips;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -11,20 +11,14 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace BloodMaze.BloodMazeCode.Cards.Basic;
+namespace BloodMaze.BloodMazeCode.Cards.Ancient;
 
 
-
-
-public class Blizzard() : MpConsumeCard(0,
-    CardType.Attack, CardRarity.Basic,
-    TargetType.AllEnemies, 3),ITranscendenceCard{
-    public CardModel GetTranscendenceTransformedCard()
-        => ModelDb.Card<BloodBlizzard>();
-    
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(2m, ValueProp.Move), new PowerVar<VulnerablePower>(1m), new PowerVar<WeakPower>(1m)];
-
-    
+public class BloodBlizzard() : MpConsumeCard(0,
+    CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies, 1)
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(12m, ValueProp.Move), 
+        new PowerVar<VulnerablePower>(2m), new PowerVar<WeakPower>(2m), new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(1m)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -33,11 +27,14 @@ public class Blizzard() : MpConsumeCard(0,
         await VampirePlayAllEnemies(choiceContext);
         await PowerCmd.Apply<WeakPower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Weak.BaseValue, this.Owner.Creature, (CardModel) this);
         await PowerCmd.Apply<VulnerablePower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Vulnerable.BaseValue, this.Owner.Creature, (CardModel) this); 
+        await PowerCmd.Apply<HemorrhagePower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars["HemorrhagePower"].BaseValue, this.Owner.Creature, (CardModel) this); 
     }
 
     protected override void OnUpgrade()
     {
-        this.DynamicVars.Vulnerable.UpgradeValueBy(1m);
-        this.DynamicVars.Weak.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
+        DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
+        DynamicVars["WeakPower"].UpgradeValueBy(1m);
+        DynamicVars["HemorrhagePower"].UpgradeValueBy(1m);
     }
 }

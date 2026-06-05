@@ -67,7 +67,7 @@
   "BLOODMAZE-MIXED_BLOOD.description": "#*手札*からカードを一枚選び、他のキャラクターのランダムな{IfUpgraded:show:アップグレード済み}カードに*変化*させる。このターンそれはコストを支払わずにプレイできる。",
   "BLOODMAZE-MIXED_BLOOD.title": "混血",
   "BLOODMAZE-MIXED_BLOOD.selectionScreenPrompt": "カードを一枚選択",
-  "BLOODMAZE-BLOOD_SWORD.description": "現在HPに等しいダメージを与える。失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。プレイするとコストが{energyPrefix:energyIcons(2)}上昇する。\n*吸血*.",
+  "BLOODMAZE-BLOOD_SWORD.description": "#現在HPに等しいダメージを与える。失ったHPの回数につき、コストが{energyPrefix:energyIcons(1)}減少する。プレイするとコストが{energyPrefix:energyIcons(2)}上昇する。\n*吸血*.",
   "BLOODMAZE-BLOOD_SWORD.title": "ブラッドソード",
   "BLOODMAZE-BLOOD_HUNT.description": "#すべての敵に*大出血*{HemorrhagePower:diff()}と*脱力*{WeakPower:diff()}を付与する。",
   "BLOODMAZE-BLOOD_HUNT.title": "ブラッドハント",
@@ -159,5 +159,7 @@
   "BLOODMAZE-HEALING_BONFIRE.description": "#すべてのプレイヤーは*再生*{RegenPower:diff()}を得る。",
   "BLOODMAZE-HEALING_BONFIRE.title": "癒しの焚き火",
   "BLOODMAZE-BLOOD_PHOENIX.description": "#*死亡*したすべてのプレイヤーを*蘇生*し、{Block:diff()}*ブロック*を付与する。",
-  "BLOODMAZE-BLOOD_PHOENIX.title": "不死鳥の血"
+  "BLOODMAZE-BLOOD_PHOENIX.title": "不死鳥の血",
+  "BLOODMAZE-BLOOD_BLIZZARD.description": "#すべての敵に{Damage:diff()}ダメージを与え、*脱力*{WeakPower:diff()}と*弱体*{VulnerablePower:diff()}と*大出血*{HemorrhagePower:diff()}を付与する。",
+  "BLOODMAZE-BLOOD_BLIZZARD.title": "ブラッドブリザード"
 }
