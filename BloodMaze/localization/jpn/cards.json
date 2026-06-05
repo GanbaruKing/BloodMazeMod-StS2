@@ -163,5 +163,7 @@
   "BLOODMAZE-BLOOD_BLIZZARD.description": "#すべての敵に{Damage:diff()}ダメージを与え、*脱力*{WeakPower:diff()}と*弱体*{VulnerablePower:diff()}と*大出血*{HemorrhagePower:diff()}を付与する。",
   "BLOODMAZE-BLOOD_BLIZZARD.title": "ブラッドブリザード",
   "BLOODMAZE-BLOOD_PACT.description": "ターン開始時、HPを1失い、MPを{IfUpgraded:show:2|1}回復する。",
-  "BLOODMAZE-BLOOD_PACT.title": "血の契約"
+  "BLOODMAZE-BLOOD_PACT.title": "血の契約",
+  "BLOODMAZE-RECALL.description": "#{Damage:diff()}ダメージを与える。*捨て札*にある*保留*を持つカードを全て*手札*に加える。",
+  "BLOODMAZE-RECALL.title": "リコール"
 }
