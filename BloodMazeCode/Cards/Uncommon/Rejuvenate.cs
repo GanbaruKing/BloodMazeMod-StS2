@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
@@ -23,11 +24,8 @@ public class Rejuvenate() : MpConsumeCard(1,
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("HealAmount").WithMultiplier(
-            ((Func<CardModel, Creature, decimal>)((card, _) =>
-                (decimal)(MpSaveData.CombatMpConsumeCount +
-                          CombatManager.Instance.History.Entries
-                              .OfType<DamageReceivedEntry>()
-                              .Count(e => e.Receiver == card.Owner.Creature && e.Result.UnblockedDamage > 0))))!)
+            (((Func<CardModel, Creature, decimal>)((card, creature) =>
+                (decimal)(this.Owner.Creature.GetPowerAmount<RegenPower>())))!))
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
