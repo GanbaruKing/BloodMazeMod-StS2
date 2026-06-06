@@ -1,7 +1,20 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhopt862a4gd3"]
 
-[ext_resource type="Texture2D" uid="uid://bv5edw15jny62" path="res://BloodMaze/images/char/revenant_merchant.png" id="1_4y2mv"]
+[ext_resource type="Texture2D" uid="uid://dyt117f7any70" path="res://BloodMaze/images/char/revenant_merchant.png" id="1_4y2mv"]
 
-[node name="RevenantMerchant" type="Sprite2D"]
-scale = Vector2(0.27, 0.25)
+[node name="RevenantMerchant" type="Node2D"]
+scale = Vector2(0.63, 0.6)
+
+[node name="Dummy" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.6)
+position = Vector2(-216.47217, 121.299164)
+rotation = -6.2831855
+scale = Vector2(1.0906932, 0.28366923)
+skew = -0.93898714
+texture = ExtResource("1_4y2mv")
+
+[node name="Visuals" type="Sprite2D" parent="."]
+position = Vector2(37, -395)
 texture = ExtResource("1_4y2mv")
