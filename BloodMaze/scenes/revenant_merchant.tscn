@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhopt862a4gd3"]
+
+[ext_resource type="Texture2D" uid="uid://bv5edw15jny62" path="res://BloodMaze/images/char/revenant_merchant.png" id="1_4y2mv"]
+
+[node name="RevenantMerchant" type="Sprite2D"]
+scale = Vector2(0.27, 0.25)
+texture = ExtResource("1_4y2mv")
