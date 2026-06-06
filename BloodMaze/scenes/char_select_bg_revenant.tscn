@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://dma5sibbga72x"]
+
+[ext_resource type="Texture2D" uid="uid://ci6v8dc10m4w4" path="res://BloodMaze/images/char/BgRevenant.png" id="1_8gosi"]
+[ext_resource type="Texture2D" uid="uid://c83dtcvd71ghp" path="res://BloodMaze/images/vfx/dot.png" id="2_dot"]
+[ext_resource type="Texture2D" uid="uid://cjcfpkvsu8r53" path="res://BloodMaze/images/vfx/short_grain_rice_particle.png" id="3_grain"]
+[ext_resource type="Texture2D" uid="uid://bcd43y3v8dg7a" path="res://BloodMaze/images/vfx/short_rice_no_glow_particle.png" id="4_rice"]
+
+[sub_resource type="Gradient" id="Gradient_blood1"]
+offsets = PackedFloat32Array(0, 0.3, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.3, 0.02, 0.02, 1, 0.7, 0.05, 0.05, 1)
+
+[sub_resource type="Gradient" id="Gradient_blood2"]
+offsets = PackedFloat32Array(0, 0.2, 0.6, 1)
+colors = PackedColorArray(0.7, 0.05, 0.05, 0, 0.7, 0.05, 0.05, 1, 0.5, 0.03, 0.03, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_blood3"]
+offsets = PackedFloat32Array(0, 0.2, 1)
+colors = PackedColorArray(0.7, 0.05, 0.05, 0, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[node name="CharSelectBgRevenant" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -523.0
+offset_right = 1600.0
+offset_bottom = 677.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1280, 600)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 17.0
+offset_right = 1993.0
+offset_bottom = 1097.0
+scale = Vector2(0.99, 0.99)
+texture = ExtResource("1_8gosi")
+
+[node name="mist" type="CPUParticles2D" parent="."]
+position = Vector2(500, 300)
+amount = 40
+texture = ExtResource("2_dot")
+lifetime = 15.0
+preprocess = 15.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(2500, 1)
+gravity = Vector2(20, 15)
+orbit_velocity_max = 0.03
+scale_amount_min = 0.03
+scale_amount_max = 0.08
+color_ramp = SubResource("Gradient_blood1")
+
+[node name="splatter" type="CPUParticles2D" parent="."]
+position = Vector2(500, 1163)
+amount = 20
+texture = ExtResource("3_grain")
+lifetime = 15.0
+preprocess = 15.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(800, 500)
+gravity = Vector2(30, -27)
+orbit_velocity_max = 0.03
+radial_accel_max = 1.0
+angle_max = 353.6
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_blood2")
+
+[node name="splatter2" type="CPUParticles2D" parent="."]
+position = Vector2(500, 1163)
+amount = 20
+texture = ExtResource("4_rice")
+lifetime = 15.0
+preprocess = 15.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(800, 500)
+gravity = Vector2(30, -27)
+orbit_velocity_max = 0.03
+radial_accel_max = 1.0
+angle_max = 353.6
+scale_amount_max = 2.0
+color = Color(0.7, 0.05, 0.05, 0.6)
+color_ramp = SubResource("Gradient_blood3")
