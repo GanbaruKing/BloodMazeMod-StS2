@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dma5sibbga72x"]
 
-[ext_resource type="Texture2D" uid="uid://ci6v8dc10m4w4" path="res://BloodMaze/images/char/BgRevenant.png" id="1_8gosi"]
+[ext_resource type="Texture2D" uid="uid://dhkhxkk3b8ckb" path="res://BloodMaze/images/char/bgrevenant2.png" id="1_c4220"]
 [ext_resource type="Texture2D" uid="uid://c83dtcvd71ghp" path="res://BloodMaze/images/vfx/dot.png" id="2_dot"]
 [ext_resource type="Texture2D" uid="uid://cjcfpkvsu8r53" path="res://BloodMaze/images/vfx/short_grain_rice_particle.png" id="3_grain"]
 [ext_resource type="Texture2D" uid="uid://bcd43y3v8dg7a" path="res://BloodMaze/images/vfx/short_rice_no_glow_particle.png" id="4_rice"]
@@ -39,7 +39,7 @@ offset_top = 17.0
 offset_right = 1993.0
 offset_bottom = 1097.0
 scale = Vector2(0.99, 0.99)
-texture = ExtResource("1_8gosi")
+texture = ExtResource("1_c4220")
 
 [node name="mist" type="CPUParticles2D" parent="."]
 position = Vector2(500, 300)

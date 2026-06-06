@@ -150,7 +150,7 @@
   "BLOODMAZE-SETUP.description": "カードを{Cards:diff()}枚引き、1枚に保留をつける。",
   "BLOODMAZE-SETUP.title": "布石",
   "BLOODMAZE-SETUP.selectionScreenPrompt": "カードを1枚選択",
-  "BLOODMAZE-TENSION.description": "#このターン、*筋力*を{TemporaryStrengthPower:diff()}得る",
+  "BLOODMAZE-TENSION.description": "#このターン、*筋力*を{SetupStrikePower:diff()}得る",
   "BLOODMAZE-TENSION.title": "テンション",
   "BLOODMAZE-ETERNAL_NIGHT.description": "余ったエナジーを次のターンに持ち越せるようになる。",
   "BLOODMAZE-ETERNAL_NIGHT.title": "永夜",
