@@ -58,8 +58,8 @@ public class BloodMaze : PlaceholderCharacterModel
     }
 
     
-    public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
-    public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    public override string CustomIconTexturePath => "character_icon_revenant.png".CharacterUiPath();
+    public override string CustomMapMarkerPath => "map_maker_revenant.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "char_select_revenant.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_revenant_locked.png".CharacterUiPath();
     
