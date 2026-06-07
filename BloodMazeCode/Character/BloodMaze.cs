@@ -73,6 +73,8 @@ public class BloodMaze : PlaceholderCharacterModel
     public override string CustomMerchantAnimPath
         => "res://BloodMaze/scenes/revenant_merchant.tscn";
     
+    public override string CustomRestSiteAnimPath
+        => "res://BloodMaze/scenes/revenant_rest_site.tscn";
 }
 
 
