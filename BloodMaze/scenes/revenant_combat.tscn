@@ -29,6 +29,34 @@ tracks/1/keys = {
 "values": [Vector2(0.29, 0.27)]
 }
 
+[sub_resource type="Animation" id="Animation_2jlpw"]
+resource_name = "hurt"
+length = 0.43
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.18, 0.43),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-23, 0), Vector2(-19, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.18, 0.43),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.29, 0.27), Vector2(0.29, 0.265), Vector2(0.292, 0.268), Vector2(0.29, 0.27)]
+}
+
 [sub_resource type="Animation" id="Animation_80skj"]
 resource_name = "idle"
 length = 4.12
@@ -58,34 +86,6 @@ tracks/1/keys = {
 "values": [Vector2(0.29, 0.27), Vector2(0.292, 0.28), Vector2(0.29, 0.27), Vector2(0.29039517, 0.2703952)]
 }
 
-[sub_resource type="Animation" id="Animation_2jlpw"]
-resource_name = "hurt"
-length = 0.43
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.18, 0.43),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-11, 0), Vector2(-6, -3), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.18, 0.43),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.29, 0.27), Vector2(0.29, 0.265), Vector2(0.292, 0.268), Vector2(0.29, 0.27)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2jlpw"]
 _data = {
 &"RESET": SubResource("Animation_4gkog"),
@@ -110,7 +110,6 @@ advance_mode = 2
 states/End/position = Vector2(629, 72)
 states/Start/position = Vector2(177, 106)
 states/hurt/node = SubResource("AnimationNodeAnimation_80skj")
-
 states/hurt/position = Vector2(447, 106)
 states/idle/node = SubResource("AnimationNodeAnimation_4gkog")
 states/idle/position = Vector2(298, 106)
