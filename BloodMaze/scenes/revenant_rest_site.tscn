@@ -1,55 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://REPLACE_ME"]
+[gd_scene load_steps=2 format=3 uid="uid://c5ck6nf50lbid"]
 
-[ext_resource type="Texture2D" uid="uid://REPLACE_ME_TEX" path="res://BloodMaze/images/char/revenant_rest_site.png" id="1_xxxxx"]
+[ext_resource type="Texture2D" uid="uid://bch82o3rcmstj" path="res://BloodMaze/images/char/revenant_rest_site.png" id="1_xxxxx"]
 
 [node name="RevenantRestSite" type="Node2D"]
-scale = Vector2(0.63, 0.6)
+scale = Vector2(0.45, 0.415)
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.6)
-position = Vector2(-200, 100)
-scale = Vector2(1.05, 0.27)
-skew = -0.94
+modulate = Color(0, 0, 0, 0.55)
+position = Vector2(58.866367, 36.14458)
+scale = Vector2(0.918511, 0.69849145)
+skew = -0.16929694
 texture = ExtResource("1_xxxxx")
 
 [node name="Visuals" type="Sprite2D" parent="."]
-position = Vector2(30, -380)
+position = Vector2(133, -83)
 texture = ExtResource("1_xxxxx")
+metadata/_edit_lock_ = true
 
 [node name="ControlRoot" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+metadata/_edit_lock_ = true
 
 [node name="SelectionReticle" type="Control" parent="ControlRoot"]
 unique_name_in_owner = true
-offset_left = -155.0
-offset_top = -351.0
-offset_right = 266.0
-offset_bottom = 332.0
-
-[node name="Hitbox" type="Control" parent="ControlRoot"]
-unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = -155.0
 offset_top = -351.0
 offset_right = 266.0
 offset_bottom = 332.0
+metadata/_edit_lock_ = true
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -155.0
+offset_top = -351.0
+offset_right = 266.0
+offset_bottom = 332.0
+metadata/_edit_lock_ = true
 
 [node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = 209.0
 offset_top = -317.0
 offset_right = 209.0
 offset_bottom = -317.0
+metadata/_edit_lock_ = true
 
 [node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = -73.0
 offset_top = -324.0
 offset_right = -73.0
 offset_bottom = -324.0
+metadata/_edit_lock_ = true
