@@ -1,16 +1,132 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcw83nyyp5pby"]
+[gd_scene load_steps=11 format=3 uid="uid://dcw83nyyp5pby"]
 
 [ext_resource type="Texture2D" uid="uid://5bkbsmhyieka" path="res://BloodMaze/images/char/revenant_combat.png" id="1_0a0f5"]
+
+[sub_resource type="Animation" id="Animation_4gkog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.29, 0.27)]
+}
+
+[sub_resource type="Animation" id="Animation_80skj"]
+resource_name = "idle"
+length = 4.12
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1.0000005, 1, 1.0352647, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, -4), Vector2(-4, -6), Vector2(-2, -2), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.29, 0.27), Vector2(0.292, 0.28), Vector2(0.29, 0.27), Vector2(0.29039517, 0.2703952)]
+}
+
+[sub_resource type="Animation" id="Animation_2jlpw"]
+resource_name = "hurt"
+length = 0.43
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.18, 0.43),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-11, 0), Vector2(-6, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.18, 0.43),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.29, 0.27), Vector2(0.29, 0.265), Vector2(0.292, 0.268), Vector2(0.29, 0.27)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2jlpw"]
+_data = {
+&"RESET": SubResource("Animation_4gkog"),
+&"hurt": SubResource("Animation_2jlpw"),
+&"idle": SubResource("Animation_80skj")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_80skj"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4gkog"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2jlpw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jl7se"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_11sme"]
+states/End/position = Vector2(629, 72)
+states/Start/position = Vector2(177, 106)
+states/hurt/node = SubResource("AnimationNodeAnimation_80skj")
+
+states/hurt/position = Vector2(447, 106)
+states/idle/node = SubResource("AnimationNodeAnimation_4gkog")
+states/idle/position = Vector2(298, 106)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2jlpw"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_jl7se")]
 
 [node name="CombatRevenant" type="Node2D"]
 
 [node name="Visuals" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-34, -140)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 scale = Vector2(0.29, 0.27)
 texture = ExtResource("1_0a0f5")
+metadata/_edit_lock_ = true
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true
@@ -21,11 +137,26 @@ offset_top = -300.0
 offset_right = 129.0
 offset_bottom = 10.0
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="CenterPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -160)
+metadata/_edit_lock_ = true
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -310)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Visuals")
+libraries = {
+&"": SubResource("AnimationLibrary_2jlpw")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("%Visuals")
+tree_root = SubResource("AnimationNodeStateMachine_11sme")
+anim_player = NodePath("../AnimationPlayer")
