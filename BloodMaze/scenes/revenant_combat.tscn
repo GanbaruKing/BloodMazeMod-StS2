@@ -13,38 +13,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.29, 0.27)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [null]
+"values": [ExtResource("1_0a0f5")]
 }
 
 [sub_resource type="Animation" id="Animation_2jlpw"]
@@ -106,7 +82,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_cxj2i"]
 resource_name = "attack"
-length = 1.2
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -114,7 +90,7 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.015, 0.075, 0.16545686, 0.20545685, 0.25112027, 0.26606178, 0.29939508, 0.33, 0.46606177, 0.68, 0.73333335, 0.81773525, 0.9, 0.95, 1.053, 1.1666666),
+"times": PackedFloat32Array(0, 0.011607262, 0.045317665, 0.094526194, 0.116286196, 0.14112708, 0.14925526, 0.16738857, 0.18403766, 0.36666667, 0.38, 0.42, 0.44936565, 0.49411762, 0.5213177, 0.6, 0.6391843),
 "transitions": PackedFloat32Array(1, 1.0000001, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.0000001, 1.0000001, 1.0000001, 1, 1),
 "update": 0,
 "values": [ExtResource("1_0a0f5"), ExtResource("2_ukxg8"), ExtResource("3_5vhyr"), ExtResource("3_5vhyr"), ExtResource("4_dd14b"), ExtResource("4_dd14b"), ExtResource("5_1kcq5"), ExtResource("6_6kygi"), ExtResource("7_jtbvq"), ExtResource("7_jtbvq"), ExtResource("4_dd14b"), ExtResource("4_dd14b"), ExtResource("2_ukxg8"), ExtResource("2_ukxg8"), ExtResource("2_ukxg8"), ExtResource("1_0a0f5"), ExtResource("1_0a0f5")]
@@ -126,7 +102,7 @@ tracks/1/path = NodePath("Sprite2D:scale")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.015, 0.075, 0.16545686, 0.20545685, 0.2517252, 0.26606178, 0.29939508, 0.33, 0.46606177, 0.6666667, 0.73333335, 0.81841284, 0.852718, 0.9, 1.1666666),
+"times": PackedFloat32Array(0, 0.011607262, 0.045317665, 0.094526194, 0.116286196, 0.14145616, 0.14925526, 0.16738857, 0.18403766, 0.25805527, 0.36718437, 0.40345103, 0.44973424, 0.46839622, 0.49411762, 0.6391843),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1.0000008, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.29, 0.27), Vector2(0.29, 0.27), Vector2(0.29, 0.27), Vector2(0.29, 0.27), Vector2(0.29, 0.27), Vector2(0.29, 0.27), Vector2(0.3, 0.298), Vector2(0.29, 0.27), Vector2(0.292, 0.272), Vector2(0.292, 0.275), Vector2(0.298, 0.28), Vector2(0.296, 0.277), Vector2(0.296, 0.276), Vector2(0.29, 0.274), Vector2(0.29, 0.27), Vector2(0.29, 0.27)]
@@ -138,10 +114,10 @@ tracks/2/path = NodePath("Sprite2D:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.46681193, 0.6666667, 0.7474675, 0.7817926, 0.8185398, 0.86752105, 0.90000004, 0.93333334, 1, 1.0333333, 1.0481403, 1.0971761, 1.1666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666667, 0.2, 0.46666667, 0.6333333, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(6, 0), Vector2(6, 0), Vector2(4, 0), Vector2(2, 0), Vector2(0, 0), Vector2(-3.5, 0), Vector2(-3, 0), Vector2(-2.5, 0), Vector2(-2.5, 0), Vector2(-3, 0), Vector2(-4, 0), Vector2(-2, 0), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(65, 0), Vector2(125, 0), Vector2(125, 0), Vector2(24, 0), Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -150,10 +126,10 @@ tracks/3/path = NodePath("%Visuals/../AnimationPlayer:speed_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.23169418, 0.24272723, 0.26666668, 0.29298893, 0.33712116, 0.3518319, 0.5896556, 0.5994627, 0.7, 0.71347094, 1, 1.022, 1.0689806, 1.0812395, 1.1670521, 1.2),
-"transitions": PackedFloat32Array(1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1),
+"times": PackedFloat32Array(0, 0.010501659, 0.1305593, 0.13656129, 0.14958434, 0.16390364, 0.18791157, 0.19591422, 0.32529032, 0.3306254, 0.38531768, 0.39264587, 0.5485177, 0.5604856, 0.5860431, 0.5927119, 0.63939404, 0.65592986),
+"transitions": PackedFloat32Array(1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1.0000001, 1),
 "update": 0,
-"values": [1.12, 1.12, 0.7000000000000002, 0.5999999999999996, 0.3799999999999999, 0.20000000000000018, 1.0, 0.7000000000000002, 1.12, 1.12, 1.0499999999999998, 1.0499999999999998, 0.8700000000000001, 0.8700000000000001, 1.1639999999999997, 1.12, 1.0999999999999996]
+"values": [1.0, 1.12, 1.12, 0.7000000000000002, 0.5999999999999996, 0.3799999999999999, 0.20000000000000018, 1.0, 0.7000000000000002, 1.12, 1.12, 1.0499999999999998, 1.0499999999999998, 0.8700000000000001, 0.8700000000000001, 1.1639999999999997, 1.12, 1.0999999999999996]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2jlpw"]
@@ -204,6 +180,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 scale = Vector2(0.29, 0.27)
+texture = ExtResource("1_0a0f5")
 metadata/_edit_lock_ = true
 
 [node name="Bounds" type="Control" parent="."]
@@ -233,7 +210,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_2jlpw")
 }
 autoplay = "idle"
-speed_scale = 0.0
+speed_scale = 1.1
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("%Visuals")
