@@ -24,8 +24,9 @@ public class Rejuvenate() : MpConsumeCard(1,
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("HealAmount").WithMultiplier(
-            (((Func<CardModel, Creature, decimal>)((card, creature) =>
-                (decimal)(this.Owner.Creature.GetPowerAmount<RegenPower>())))!))
+        static (card, creature) =>
+        (decimal)(card.Owner.Creature.GetPowerAmount<RegenPower>()))
+
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
