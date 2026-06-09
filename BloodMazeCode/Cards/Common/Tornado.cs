@@ -10,9 +10,9 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 
 public class Tornado() : MpConsumeCard(1,
     CardType.Attack, CardRarity.Common,
-    TargetType.AllEnemies, 2)
+    TargetType.AllEnemies, 3)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(15m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(14m, ValueProp.Move)];
 
 
     protected override async Task OnPlay(
@@ -24,6 +24,6 @@ public class Tornado() : MpConsumeCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }
