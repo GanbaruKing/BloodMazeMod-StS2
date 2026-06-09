@@ -16,10 +16,19 @@ public class Unlimited() : BloodMazeCard(1, CardType.Power, CardRarity.Uncommon,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        bool isFirstApply = !Owner.Creature.HasPower<OverHealPower>();
+        int savedMaxHp = Owner.Creature.MaxHp;
+        
+        
         await CommonActions.ApplySelf<OverHealPower>(choiceContext, this);
-        OverHealPower power = Owner.Creature.GetPower<OverHealPower>()!;
-        if (power != null)
-            power.SavedMaxHp = Owner.Creature.MaxHp;
+
+        if (isFirstApply)
+        {
+            OverHealPower power = Owner.Creature.GetPower<OverHealPower>(); 
+            power.SavedMaxHp = savedMaxHp;
+        }
+
+        
         await CreatureCmd.SetMaxHp(Owner.Creature, 999m);
     }
 }
