@@ -27,6 +27,6 @@ public class BloodFlaskSupply() : BloodMazeCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["BloodBagSupplyPower"].UpgradeValueBy(1m);
+        DynamicVars["BloodFlaskSupplyPower"].UpgradeValueBy(1m);
     }
 }
