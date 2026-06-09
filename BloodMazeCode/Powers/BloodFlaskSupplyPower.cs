@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace BloodMaze.BloodMazeCode.Powers;
 
 
-public class BloodBagSupplyPower : BloodMazePower
+public class BloodFlaskSupplyPower : BloodMazePower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -23,12 +23,12 @@ public class BloodBagSupplyPower : BloodMazePower
 
 
 
-        var bag = await BloodBag.CreateInHand(this.Owner.Player!, this.CombatState);
+        var bag = await BloodFlask.CreateInHand(this.Owner.Player!, this.CombatState);
         await Cmd.Wait(0.25f);
         CardCmd.Upgrade(bag!);
 
         await PowerCmd.ModifyAmount(this, -1, this.Owner, null);
         if (((PowerModel)this).Amount <= 0)
-            await PowerCmd.Remove<BloodBagSupplyPower>(this.Owner);
+            await PowerCmd.Remove<BloodFlaskSupplyPower>(this.Owner);
     }
 }

@@ -16,7 +16,7 @@ public class ReuseRush() : BloodMazeCard(2,
     CardType.Attack, CardRarity.Uncommon,TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CalculationBaseVar(3m), new ExtraDamageVar(2m),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, creature) => (Decimal)PileType.Exhaust.GetPile(card.Owner).Cards.Count(c => c is BloodBag))];
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, creature) => (Decimal)PileType.Exhaust.GetPile(card.Owner).Cards.Count(c => c is BloodFlask))];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

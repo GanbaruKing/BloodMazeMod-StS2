@@ -25,7 +25,7 @@ public class Innovation() : MpConsumeCard(1,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
-            CardModel? inHand = await BloodBag.CreateInHand(this.Owner, this.CombatState!);
+            CardModel? inHand = await BloodFlask.CreateInHand(this.Owner, this.CombatState!);
             await Cmd.Wait(0.25f);
         }
     }

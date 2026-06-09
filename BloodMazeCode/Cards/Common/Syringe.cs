@@ -16,7 +16,7 @@ public class Syringe() : MpConsumeCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move), new CardsVar(1),..base.CanonicalVars];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodBag>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlask>()];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -25,7 +25,7 @@ public class Syringe() : MpConsumeCard(1,
         await VampirePlay(choiceContext, play.Target);
         for (int i = 0; i < this.DynamicVars.Cards.IntValue; i++)
         {
-            await BloodBag.CreateInHand(this.Owner, this.CombatState!);
+            await BloodFlask.CreateInHand(this.Owner, this.CombatState!);
             await Cmd.Wait(0.25f);
         }
     }

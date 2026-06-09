@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Token;
 
 
-public class BloodBag() : BloodMazeCard(0,
+public class BloodFlask() : BloodMazeCard(0,
     CardType.Skill, CardRarity.Token, TargetType.Self, showInCardLibrary: false)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new HealVar(1m),new PowerVar<RegenPower>(1m), new BlockVar(3m, ValueProp.Move)];
@@ -42,7 +42,7 @@ public class BloodBag() : BloodMazeCard(0,
     
     public static async Task<CardModel?> CreateInHand(Player owner, CombatState combatState)
     {
-        return (await BloodBag.CreateInHand(owner, 1, combatState)).FirstOrDefault();
+        return (await BloodFlask.CreateInHand(owner, 1, combatState)).FirstOrDefault();
     }
 
     public static async Task<IEnumerable<CardModel>> CreateInHand(Player owner, int count, CombatState combatState)
@@ -52,7 +52,7 @@ public class BloodBag() : BloodMazeCard(0,
     
         var cards = new List<CardModel>();
         for (int i = 0; i < count; i++)
-            cards.Add(combatState.CreateCard<BloodBag>(owner));
+            cards.Add(combatState.CreateCard<BloodFlask>(owner));
     
         await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, true);
         return cards;

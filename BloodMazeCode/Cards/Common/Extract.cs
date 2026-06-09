@@ -32,7 +32,7 @@ public class Extract() : BloodMazeCard(1,
             choiceContext, handCards, this.Owner, prefs)).FirstOrDefault()!;
         if (original == null) return;
 
-        CardModel card = this.CombatState!.CreateCard<BloodBag>(this.Owner);
+        CardModel card = this.CombatState!.CreateCard<BloodFlask>(this.Owner);
         if (this.IsUpgraded)
             CardCmd.Upgrade(card);
         await CardCmd.Transform(original, card);

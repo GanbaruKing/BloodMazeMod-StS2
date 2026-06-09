@@ -9,10 +9,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
-public class BloodBagSupply() : BloodMazeCard(0,
+public class BloodFlaskSupply() : BloodMazeCard(0,
     CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BloodBagSupplyPower>(0m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BloodFlaskSupplyPower>(0m)];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
@@ -22,7 +22,7 @@ public class BloodBagSupply() : BloodMazeCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.ApplySelf<BloodBagSupplyPower>(choiceContext, this, this.ResolveEnergyXValue() + DynamicVars["BloodBagSupplyPower"].IntValue);
+        await CommonActions.ApplySelf<BloodFlaskSupplyPower>(choiceContext, this, this.ResolveEnergyXValue() + DynamicVars["BloodBagSupplyPower"].IntValue);
     }
 
     protected override void OnUpgrade()

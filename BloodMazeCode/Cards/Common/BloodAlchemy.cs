@@ -18,7 +18,7 @@ public class BloodAlchemy() : MpConsumeCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new BlockVar(8m, ValueProp.Move), new CardsVar(1) ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodBag>(this.IsUpgraded)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlask>(this.IsUpgraded)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -28,7 +28,7 @@ public class BloodAlchemy() : MpConsumeCard(2,
         await CommonActions.CardBlock(this, play);
         for (int i = 0; i < DynamicVars.Cards.BaseValue; i++)
         {
-            CardModel? inHand = await BloodBag.CreateInHand(this.Owner, this.CombatState!);
+            CardModel? inHand = await BloodFlask.CreateInHand(this.Owner, this.CombatState!);
             await Cmd.Wait(0.25f);
             if (this.IsUpgraded)
                 CardCmd.Upgrade(inHand!);
