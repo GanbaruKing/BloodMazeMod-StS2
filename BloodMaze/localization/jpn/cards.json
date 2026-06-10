@@ -120,7 +120,7 @@
   "BLOODMAZE-REFLUX.description": "{Damage:diff()}ダメージを与える。\nリーサル時、MPを{IfUpgraded:show:10|8}回復する",
   "BLOODMAZE-REFLUX.title": "還流",
   "BLOODMAZE-AGONY.description": "#敵に{CalculatedDamage:diff()}ダメージを与える。\n敵の*大出血*分、追加で{ExtraDamage:diff()}与える。",
-  "BLOODMAZE-AGONY.title": "アゴニー",
+  "BLOODMAZE-AGONY.title": "苦悶",
   "BLOODMAZE-ACTION_AND_REACTION.description": "#{Damage:diff()}ダメージを与える。\n与えたダメージに等しい*ブロック*を得る。",
   "BLOODMAZE-ACTION_AND_REACTION.title": "作用反作用",
   "BLOODMAZE-QUICK_BLEED.description": "#すべての敵に{Damage:diff()}ダメージを与える。{IfUpgraded:show:\n*大出血*を2付与する。}\n*大出血*が10以上の敵は*大出血*が20になる。",
