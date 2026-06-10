@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Cards.Token;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -22,7 +23,11 @@ public class ReuseRush() : BloodMazeCard(2,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
+        ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage)
+            .FromCard(this)
+            .Targeting(play.Target)
+            .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()

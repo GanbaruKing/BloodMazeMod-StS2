@@ -24,8 +24,8 @@ public class Unlimited() : BloodMazeCard(1, CardType.Power, CardRarity.Uncommon,
 
         if (isFirstApply)
         {
-            OverHealPower power = Owner.Creature.GetPower<OverHealPower>(); 
-            power.SavedMaxHp = savedMaxHp;
+            OverHealPower power = Owner.Creature.GetPower<OverHealPower>()!; 
+            power!.SavedMaxHp = savedMaxHp;
         }
 
         
