@@ -22,11 +22,11 @@ public class BloodFlaskSupply() : BloodMazeCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.ApplySelf<BloodFlaskSupplyPower>(choiceContext, this, this.ResolveEnergyXValue() + DynamicVars["BloodBagSupplyPower"].IntValue);
+        await CommonActions.ApplySelf<BloodFlaskSupplyPower>(choiceContext, this, this.ResolveEnergyXValue() + DynamicVars["BloodFlaskSupplyPower"].IntValue);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["BloodFlaskSupplyPower"].UpgradeValueBy(1m);
+        DynamicVars["BloodFlaskSupplyPower"].UpgradeValueBy(2m);
     }
 }
