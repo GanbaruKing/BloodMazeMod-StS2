@@ -20,10 +20,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
 {
     protected readonly int MpCost = mpCost;
     
-    public override int CanonicalStarCost =>
-        (Owner?.Creature?.HasPower<FreeMpPower>() == true ||
-         Owner?.Creature?.HasPower<FreeMpAttackPower>() == true)
-            ? 0 : MpCost;
+    public override int CanonicalStarCost => MpCost;
     
     public bool IsFreeThisPlay { get; set; } = false;
     public bool IsVampireForm { get; set; } = false;
