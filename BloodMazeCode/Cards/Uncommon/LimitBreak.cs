@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using BloodMaze.BloodMazeCode.Cards;
 using BloodMaze.BloodMazeCode.Powers;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -24,6 +26,12 @@ public class LimitBreak() : BloodMazeCard(0,
         await CommonActions.ApplySelf<FreeMpPower>(choiceContext, this);
     }
 
+    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    {
+        if (this.Owner.Creature.IsDead) return;
+        if (side == CombatSide.Player)
+            await PowerCmd.Remove<FreeMpPower>(this.Owner.Creature);
+    }
     protected override void OnUpgrade()
     {
         RemoveKeyword(CardKeyword.Ethereal);

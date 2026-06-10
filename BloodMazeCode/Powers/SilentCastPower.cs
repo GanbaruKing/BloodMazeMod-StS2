@@ -7,9 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace BloodMaze.BloodMazeCode.Powers;
 
-
-
-public class SilentCastPower : FreeMpAttackPower 
+public class SilentCastPower : BloodMazePower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -17,13 +15,17 @@ public class SilentCastPower : FreeMpAttackPower
     public override Task AfterPlayerTurnStartEarly(PlayerChoiceContext choiceContext, Player player)
     {
         if (player.Creature != this.Owner) return Task.CompletedTask;
-        return PowerCmd.ModifyAmount(this, 1m, null, null);
+        return PowerCmd.Apply<FreeMpAttackPower>(this.Owner, this.Amount, this.Owner, null);
     }
 
-    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != CombatSide.Player) return Task.CompletedTask;
-        if (this.Amount <= 0) return Task.CompletedTask;
-        return PowerCmd.ModifyAmount(this, -1m, null, null);
+        if (side != CombatSide.Player) return;
+        if (this.Owner.IsDead) return;
+        if (CombatManager.Instance.IsOverOrEnding) return;
+
+        var freeMpPower = this.Owner.GetPower<FreeMpAttackPower>();
+        if (freeMpPower == null) return;
+        await PowerCmd.Remove(freeMpPower);
     }
 }

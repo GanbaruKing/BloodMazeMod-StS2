@@ -19,7 +19,7 @@ public class Agony() : MpConsumeCard(1, CardType.Attack,
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         ..base.CanonicalVars,
         new CalculationBaseVar(8m),
-        new CalculationExtraVar(1m), 
+        new ExtraDamageVar(0m), 
         
         
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(
@@ -51,6 +51,6 @@ public class Agony() : MpConsumeCard(1, CardType.Attack,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationExtra.UpgradeValueBy(1m);
+        DynamicVars.ExtraDamage.UpgradeValueBy(1m);
     }
 }
