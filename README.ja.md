@@ -1,5 +1,7 @@
 # BloodMaze — Slay the Spire 2 追加キャラクター MOD
 
+ [English](README.md) | 日本語
+
 **Slay the Spire 2 に新キャラクター「Revenant（レヴナント）」を追加する MOD。**
 戦闘をまたいで持ち越す独自リソース「MP」を中核にした、ブラッドメイジのキャラクターです。
 
