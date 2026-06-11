@@ -1,31 +1,71 @@
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands;
+using BloodMaze.BloodMazeCode.Cards;
+using BloodMaze.BloodMazeCode.Tips;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 
 namespace BloodMaze.BloodMazeCode.Powers;
 
 public class SilentCastPower : BloodMazePower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
 
-    public override Task AfterPlayerTurnStartEarly(PlayerChoiceContext choiceContext, Player player)
+    public bool CanAffect(CardModel card)
     {
-        if (player.Creature != this.Owner) return Task.CompletedTask;
-        return PowerCmd.Apply<FreeMpAttackPower>(this.Owner, this.Amount, this.Owner, null);
+        return !_usedThisTurn && IsTarget(card);
+    }
+    private bool _usedThisTurn;
+
+    private static bool IsTarget(CardModel card)
+    {
+        return card is MpConsumeCard
+               && card.Type == CardType.Attack;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterPlayerTurnStartEarly(
+        PlayerChoiceContext choiceContext,
+        Player player)
     {
-        if (side != CombatSide.Player) return;
-        if (this.Owner.IsDead) return;
-        if (CombatManager.Instance.IsOverOrEnding) return;
+        if (player.Creature == this.Owner)
+            _usedThisTurn = false;
 
-        var freeMpPower = this.Owner.GetPower<FreeMpAttackPower>();
-        if (freeMpPower == null) return;
-        await PowerCmd.Remove(freeMpPower);
+        return Task.CompletedTask;
+    }
+
+    public override bool TryModifyEnergyCostInCombat(
+        CardModel card,
+        decimal currentCost,
+        out decimal modifiedCost)
+    {
+        modifiedCost = currentCost;
+
+        if (_usedThisTurn)
+            return false;
+
+        if (!IsTarget(card))
+            return false;
+
+        modifiedCost = 0m;
+        return true;
+    }
+
+    public override Task BeforeCardPlayed(CardPlay play)
+    {
+        if (_usedThisTurn)
+            return Task.CompletedTask;
+
+        if (!IsTarget(play.Card))
+            return Task.CompletedTask;
+
+        if (play.Card is MpConsumeCard mpCard)
+            mpCard.IsFreeThisPlay = true;
+
+        _usedThisTurn = true;
+
+        return Task.CompletedTask;
     }
 }

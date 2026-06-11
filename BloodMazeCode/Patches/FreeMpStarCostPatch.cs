@@ -12,12 +12,18 @@ public static class FreeMpStarCostPatch
     static void Postfix(CardModel __instance, ref int __result)
     {
         if (__instance is not MpConsumeCard) return;
+
         try
         {
             var creature = __instance.Owner?.Creature;
+            var silentCast = creature?.GetPower<SilentCastPower>();
+
             if (creature?.HasPower<FreeMpPower>() == true ||
-                creature?.HasPower<FreeMpAttackPower>() == true)
+                creature?.HasPower<FreeMpAttackPower>() == true ||
+                silentCast?.CanAffect(__instance) == true)
+            {
                 __result = 0;
+            }
         }
         catch (CanonicalModelException) { }
     }
