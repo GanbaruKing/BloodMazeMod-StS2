@@ -10,9 +10,11 @@ namespace BloodMaze.BloodMazeCode.Powers;
 
 public class FreeMpAttackPower : BloodMazePower
 {
+    
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    
     public override bool TryModifyEnergyCostInCombat(CardModel card, Decimal originalCost, out Decimal modifiedCost)
     {
         modifiedCost = originalCost;
@@ -28,12 +30,19 @@ public class FreeMpAttackPower : BloodMazePower
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner.Creature != this.Owner || cardPlay.Card.Type != CardType.Attack) return;
+
         var pileType = cardPlay.Card.Pile?.Type;
         if (pileType != PileType.Hand && pileType != PileType.Play) return;
-        if (cardPlay.Card is not MpConsumeCard) return;
 
-        if (cardPlay.Card is MpConsumeCard mpCard)
-            mpCard.IsFreeThisPlay = true;
+        if (cardPlay.Card is not MpConsumeCard mpCard) return;
+
+        var silentCast = this.Owner.GetPower<SilentCastPower>();
+        if (silentCast?.CanAffect(cardPlay.Card) == true)
+            return;
+
+        if (mpCard.IsFreeThisPlay) return;
+
+        mpCard.IsFreeThisPlay = true;
 
         await PowerCmd.Decrement(this);
     }

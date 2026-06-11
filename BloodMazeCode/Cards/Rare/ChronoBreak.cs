@@ -20,6 +20,7 @@ public class ChronoBreak() : MpConsumeCard(3,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        ConsumeMp();
         await PowerCmd.Apply<ChronoBreakPower>(this.Owner.Creature , DynamicVars["ChronoBreakPower"].IntValue, this.Owner.Creature, this);
         await PowerCmd.Apply<RetainHandPower>(this.Owner.Creature, 1M, this.Owner.Creature, (CardModel) this);
     }
