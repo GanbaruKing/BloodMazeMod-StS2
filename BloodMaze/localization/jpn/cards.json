@@ -14,7 +14,7 @@
   "BLOODMAZE-BITE.description": "#HPを{HpLoss:diff()}失う。\n{Damage:diff()}ダメージを与える。\n*吸血*",
   "BLOODMAZE-BITE.title": "噛みつく",
   "BLOODMAZE-ROCK_DRILL.description": "敵に{Damage:diff()}ダメージを{Repeat:diff()}回与える。",
-  "BLOODMAZE-ROCK_DRILL.title": "岩砲弾",
+  "BLOODMAZE-ROCK_DRILL.title": "岩ドリル",
   "BLOODMAZE-WAND_STRIKE.description": "敵に{CalculatedDamage:diff()}ダメージを与える。\nデッキ内の魔法カード1枚につき、追加で{ExtraDamage:diff()}を与える。",
   "BLOODMAZE-WAND_STRIKE.title": "ワンドストライク",
   "BLOODMAZE-SPIRIT_BOTTLE.description": "{Energy:energyIcons()}を得る。",
