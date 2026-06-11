@@ -76,7 +76,7 @@
   "BLOODMAZE-WEAKNESS_EXPLOIT.description": "#{Damage:diff()}ダメージを与える。敵が*大出血*を受けている場合、さらに{Damage:diff()}ダメージを与える。",
   "BLOODMAZE-WEAKNESS_EXPLOIT.title": "弱点特攻",
   "BLOODMAZE-BLOOD_STEALING.description": "#対象の敵に付与している*大出血*1につき、筋力を1得る。",
-  "BLOODMAZE-BLOOD_STEALING.title": "奪血",
+  "BLOODMAZE-BLOOD_STEALING.title": "奪い取る",
   "BLOODMAZE-MONEY_EXCHANGE.description": "#{Gold:diff()}*ゴールド*を失う。\nMPを{MpRestore:diff()}回復する。\nカードを1枚引く。\nエナジーを{Energy:energyIcons()}回復する。",
   "BLOODMAZE-MONEY_EXCHANGE.title": "両替",
   "BLOODMAZE-GORE_ARMOR.description": "#{BaseBlock:diff()}*ブロック*を得る。\nこのターンに*大出血*を付与していた場合、追加で{ExtraBlock:diff()}*ブロック*を得る。",
