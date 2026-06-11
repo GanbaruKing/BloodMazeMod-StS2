@@ -1,5 +1,7 @@
 # BloodMaze — A Custom Character Mod for Slay the Spire 2
 
+English | [日本語](README.ja.md)
+
 **A mod that adds a new character, "Revenant," to Slay the Spire 2.**
 A blood-mage built around **MP**, a custom resource that carries over between combats.
 
