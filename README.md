@@ -1,144 +1,175 @@
 # BloodMaze — A Custom Character Mod for Slay the Spire 2
 
-**Adds a new character, "Revenant," to Slay the Spire 2.**
-A blood mage built around **MP**, a custom resource that carries over between battles.
+**A mod that adds a new character, "Revenant," to Slay the Spire 2.**
+A blood-mage built around **MP**, a custom resource that carries over between combats.
 
-*[日本語版 / Japanese version](README.ja.md)*
 
 <p align="center">
-<table>
-<tr>
-<td align="center"><img src="docs/revenant_combat.png" width="200" alt="Revenant combat sprite"></td>
-<td align="center"><img src="docs/attack.gif" width="280" alt="Attack animation"></td>
-</tr>
-</table>
+  <table>
+    <tr>
+      <td align="center"><img src="docs/revenant_combat.png" width="200" alt="Combat sprite"></td>
+      <td align="center"><img src="docs/attack.gif" width="280" alt="Attack animation"></td>
+    </tr>
+  </table>
 </p>
 
+
 ---
+
 
 ## Overview
 
-BloodMaze adds an original character, cards, and relics to Slay the Spire 2.
-Every fight forces a decision the base game never asks: **spend resources for a powerful hit now, or save them for the battles ahead.**
+A mod that adds an original character, cards, and relics to Slay the Spire 2.
+Every fight forces a kind of decision the base game doesn't have: **spend big now, or save your resources for the combats ahead?**
 
 - New character: **Revenant**
-- **88 custom cards** (Attack / Skill / Power, all rarities, plus co-op cards)
+- **88 custom cards** (Attacks / Skills / Powers, across rarities, including co-op cards)
 - New buffs and debuffs
 - Co-op mode support
 
+
 ---
+
 
 ## Highlights
 
-- **MP system** — a custom resource that persists across battles, with full persistence, a custom UI display, and save-scum protection.
-- **Card design** — a new strategic axis combining MP attacks, heavy bleed, and HP manipulation.
-- **88 cards** — instead of paying mana, many cards spend MP in exchange for broadly useful, high-impact effects.
-- **Animated sprites** — PNGs converted into `NCreatureVisuals`, with idle / hurt / attack / die states driven by an AnimationTree.
+- **MP system** — A custom resource carried across combats. Persistence, UI display, and save-scum protection all implemented.
+- **Card design** — A new strategic layer combining "MP attacks," "heavy bleed," and "HP manipulation."
+- **88 cards** — Many offer broadly useful, powerful effects in exchange for the cost of spending MP.
+- **Animated sprites** — PNGs are turned into `NCreatureVisuals`, with idle / hurt / attack / die driven by an AnimationTree.
 
 ---
+
+## About This Project
+
+This mod was built solo as a way to learn C# and game development.
+The goal was to go through the whole pipeline — design, implementation, and art — while digging up primary information firsthand in an area with little documentation.
+
+---
+
 
 ## Design Concept
 
-**Managing resources across battles** is the core of this mod.
+**"Resource management that spans combats"** is the core of this mod.
 
-HP persists through a run, but it's rarely something you spend strategically. So BloodMaze introduces **MP — a resource you deliberately spend, and that carries between fights.**
+HP persists across a run, but it's rarely a resource you spend strategically.
+So I added **MP — a resource you consciously spend across the gaps between fights.**
 
-> You want to save MP for the boss, but you also want to use it right now.
-> That dilemma is the decision you face every battle.
+> You want to save MP for the boss, but you also want to use it right now —
+> that dilemma becomes a decision in every combat.
 
-Cards are built along two main axes:
+Cards are built mainly along two axes:
 
 | Card type | Cost | Upside | Downside |
 |---|---|---|---|
-| MP-spending | MP carried across battles | Versatile or unconditional high damage | Makes the next battle harder |
-| Bleed | Time and damage taken within the fight | Preserves your MP | Fights drag on and slow down |
+| MP cost | MP spent across combats | Versatile or unconditional high damage | Later fights get harder |
+| Bleed | Time and damage taken within a fight | Preserves MP | Fights drag on and slow down |
+
 
 ---
+
 
 ## Installation
 
 ### Requirements
 
 - Slay the Spire 2
-- [BaseLib](https://github.com/Alchyr/BaseLib-StS2) (required dependency)
+- [BaseLib](https://github.com/Alchyr/BaseLib-StS2) (required)
 
 ### Download
 
-- Nexus Mods (recommended) — *coming soon*
+- [Nexus Mods (recommended)](coming soon)
 - [GitHub Releases](https://github.com/GanbaruKing/BloodMazeMod-StS2/releases)
 
-> ⚠️ Install mods at your own risk. **Always back up your save data before installing (Step 1).**
+> ⚠️ Install mods at your own risk. Always back up your save data before installing (Step 1).
 
 ### Steps
 
-1. **Back up your save data (required).**
+1. **Back up your save data (required)**
    To avoid corrupting your normal save, copy it first.
-   Copy the `save` folder inside `C:\Users\<username>\AppData\Roaming\SlayTheSpire2\Steam\<numeric id>\profile`,
-   then create `modded\profile\` inside the `<numeric id>` folder and paste it there.
+   Copy the `save` folder inside `C:\Users\<username>\AppData\Roaming\SlayTheSpire2\Steam\<numeric ID>\profile`,
+   then create `modded\profile\` inside the `<numeric ID>` folder and paste it there.
 
-2. **Create a `mods` folder.**
-   In Steam, right-click Slay the Spire 2 → **Manage** → **Browse local files** to open the game folder, and create a `mods` folder there if one doesn't exist.
+2. **Create a `mods` folder**
+   In Steam, right-click Slay the Spire 2 → "Manage" → "Browse local files" to open the game folder,
+   and create a `mods` folder if one doesn't already exist.
 
-3. **Install the mod.**
+3. **Install the mod**
    Download the latest version from one of the links above, unzip it, and copy the files into the `mods` folder.
 
-4. **Launch the game.**
-   On startup you'll see a message that a mod was detected. Approve it, and Revenant will be available to play.
+4. **Launch the game**
+   On startup you'll see a message that the mod was detected; approve it, and Revenant becomes playable.
+
 
 ---
+
 
 ## Technical Highlights
 
-- **Custom resource persistence** — MP's current and maximum values are saved to JSON, with rollback protection against mid-battle reloads and save scumming.
-- **UI extension via Harmony patches** — an MP bar is drawn dynamically beneath the HP bar. By riding on the official Star (secondary cost) UI, a card's MP cost is shown without adding badge nodes to the card itself.
-- **Sprite generation from a single PNG** — ordinary Node2D scenes are auto-converted into `NCreatureVisuals` through `CustomVisualPath`, with automatic return to idle handled by an AnimationTree StateMachine.
-- **Animation from few frames** — starting from a limited set of difference images, motions like *attack* are composed by keying the sprite's position, scale, and playback speed.
-- **Image-processing pipeline** — generated images are touched up and color-adjusted into finished sprites and card art.
-- **Merchant & rest-site portraits** — Node2D scenes structured to match the generation specs of `NMerchantCharacter` / `NRestSiteCharacter`.
+- **Custom resource persistence** — MP's current and max values are saved as JSON. Includes rollback protection against save-scumming and against interrupting/resuming combat.
+- **UI extension via Harmony patches** — An MP bar is drawn dynamically below the HP bar. By riding on the official Star (secondary cost) UI, MP cost is shown without adding badge nodes to cards.
+- **Sprite generation from a single PNG** — A regular Node2D scene is auto-converted into `NCreatureVisuals` via `CustomVisualPath`, with an AnimationTree StateMachine handling automatic return to idle.
+- **Animation from few frames** — Starting from a limited set of difference images, motion like attacks is built by keying the sprite's position, scale, and playback speed.
+- **Merchant / campfire sprites** — Node2D scene structures matching the generation requirements of `NMerchantCharacter` / `NRestSiteCharacter`.
 
 ---
 
-## Development Notes
 
-Documentation for BaseLib and STS2 modding is scarce online. To work around that, I developed this mod by **decompiling the game and BaseLib to read the source directly.**
+## Dev Notes / Behind the Scenes
 
-- **Comparing working vs. broken examples** — when the cause of a bug was unclear, I placed a correctly working card next to a misbehaving one and let the shared/differing traits reveal the underlying cause. I used this approach heavily.
+There's little documentation online for BaseLib and STS2 modding, and not enough to go on.
+So I developed by **decompiling the game itself and BaseLib to read the primary information directly.**
 
-Digging out primary sources by hand in an under-documented area was the main way this was built.
+- **Comparing working vs. non-working examples** — When the cause of a bug was unclear, I'd line up a card that behaved correctly against one that didn't, and surface the underlying cause from their similarities and differences. I used this often.
+
+Digging up primary information firsthand in an undocumented area was the main way I built this.
 
 ---
 
-## Credits / Tools Used
 
-- [BaseLib](https://github.com/Alchyr/BaseLib-StS2) — library for STS2 mod development
-- [ModTemplate-StS2](https://github.com/Alchyr/ModTemplate-StS2) — referenced as the basis for project structure and setup
-- [Harmony](https://github.com/pardeike/Harmony) — runtime patching
-- Godot Engine — scenes and animation
-- Midjourney — card art and sprite generation
-- Python + OpenCV — background removal for sprites
+## Credits / Tools
+
+- [BaseLib](https://github.com/Alchyr/BaseLib-StS2) — Library for STS2 mod development
+- [ModTemplate-StS2](https://github.com/Alchyr/ModTemplate-StS2) — Referenced as the basis for project structure and setup
+- [Harmony](https://github.com/pardeike/Harmony) — Runtime patching
+- Godot Engine — Scenes and animation
+- Midjourney — Card art and sprite generation
+- Python + OpenCV — Background removal for sprites
 - Reference mod: [Oddmelt](https://github.com/Alchyr/Oddmelt)
-- DALL·E 3 — assistance with image generation and editing
+- DALL·E 3 — Image generation and editing support
+
+
 
 ---
 
-## About This Project
 
-This mod was made solo as a way to learn C# and game development.
-The goal was to experience the full pipeline — design, implementation, and art — while digging out primary sources in a sparsely documented area.
-The card art and character sprites started from images generated with Midjourney and DALL·E 3, then were edited toward the intended look: touch-ups for a painterly feel, color and contrast correction, and emphasis to bring out the subject.
+## About the Art
+
+The art is made using AI. But I put real work into every single piece.
+
+Every card starts as a composition in my head. I put it into words as a prompt,
+generate it, and — since what I'm after rarely comes out on the first try (hands and
+creatures especially, along with the feel of the colors and brushwork) — I redraw and
+retouch it by hand until I'm satisfied. I spent time on all of it, and I cared about all of it.
+
+The AI is just a tool. The composition, the fixes, and the heart in it are mine.
+I know AI-generated art isn't to everyone's taste, but I hope you won't dislike my work for it.
 
 ---
 
 ## Acknowledgements
 
 This mod would not exist without [BaseLib](https://github.com/Alchyr/BaseLib-StS2) and [ModTemplate-StS2](https://github.com/Alchyr/ModTemplate-StS2), developed and shared by [Alchyr](https://github.com/Alchyr) and the other contributors.
-In the under-documented world of STS2 modding, these libraries and templates were the very foundation I built on, and I learned a great deal from their careful craftsmanship.
-My thanks also go to the STS2 modding community, who shared examples and knowledge so generously.
+In STS2 mod development, where documentation is scarce, these libraries and templates were the very foundation of my work, and I learned a great deal from how carefully they were built.
+I'm also deeply grateful to everyone in the STS2 modding community who generously shared implementation examples and information.
+My sincere thanks to all those who laid the groundwork and shared their knowledge.
 
 *Special thanks to [Alchyr](https://github.com/Alchyr) and all the contributors behind BaseLib and ModTemplate-StS2, as well as the STS2 modding community. This mod would not have been possible without them.*
 
+
 ---
+
 
 ## License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
