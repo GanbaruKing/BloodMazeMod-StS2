@@ -13,7 +13,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
 public class Selection() : MpConsumeCard(1,
-    CardType.Skill, CardRarity.Uncommon, TargetType.Self, 3)
+    CardType.Skill, CardRarity.Uncommon, TargetType.Self, 4)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new CardsVar(1)];
     
