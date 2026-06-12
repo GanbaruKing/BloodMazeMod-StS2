@@ -115,4 +115,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         }
     }
     
+    /* Mp関連のメソッドをここにまとめておけばもっと管理が楽になったね。特にfreeplay系はここに何個か基盤を作るべきだった。
+     コードの概要コメントしておけばあとからどういう挙動するのかすぐわかるからちゃんとメモろう！言語化にもつながるしね
+     このプロジェクトの規模だから許されている。*/
 }
