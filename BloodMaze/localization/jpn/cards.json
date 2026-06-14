@@ -19,7 +19,7 @@
   "BLOODMAZE-WAND_STRIKE.title": "ワンドストライク",
   "BLOODMAZE-SPIRIT_BOTTLE.description": "{Energy:energyIcons()}を得る。",
   "BLOODMAZE-SPIRIT_BOTTLE.title": "精霊の小瓶",
-  "BLOODMAZE-OVERFLOW.description": "# {OverflowPower:diff()}*オーバーフロー*を得る。",
+  "BLOODMAZE-OVERFLOW.description": "#{OverflowPower:diff()}*オーバーフロー*を得る。",
   "BLOODMAZE-OVERFLOW.title": "オーバーフロー",
   "BLOODMAZE-MAGIC_CIRCLE.description": "#{Block:diff()}*ブロック*を得る。\n次にプレイする魔法攻撃のコストとMPを0にする。",
   "BLOODMAZE-MAGIC_CIRCLE.title": "魔法陣完成",
