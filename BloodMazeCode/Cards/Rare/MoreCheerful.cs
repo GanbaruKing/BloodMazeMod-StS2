@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
-namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
+namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
 public class MoreCheerful() : BloodMazeCard(1,

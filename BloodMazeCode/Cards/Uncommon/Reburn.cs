@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
-public class ReuseRush() : BloodMazeCard(2,
+public class Reburn() : BloodMazeCard(2,
     CardType.Attack, CardRarity.Uncommon,TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CalculationBaseVar(3m), new ExtraDamageVar(2m),
