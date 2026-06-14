@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
-public class Unlimited() : BloodMazeCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class OverHeal() : BloodMazeCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<OverHealPower>(1m)];
 

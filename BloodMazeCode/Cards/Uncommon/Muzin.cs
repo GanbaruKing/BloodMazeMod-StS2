@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
-public class LimitBreak() : BloodMazeCard(0,
+public class Muzin() : BloodMazeCard(0,
     CardType.Skill, CardRarity.Uncommon,TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<FreeMpPower>(1m)];
