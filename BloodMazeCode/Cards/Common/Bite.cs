@@ -24,15 +24,11 @@ public class Bite() : BloodMazeCard(2,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.Damage(choiceContext, this.Owner.Creature, this.DynamicVars.HpLoss.IntValue,
-            ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
-        AttackCommand attack = await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
-        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
-        await CreatureCmd.Heal(this.Owner.Creature, restore);
+        await VampireAttack(choiceContext, play.Target);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

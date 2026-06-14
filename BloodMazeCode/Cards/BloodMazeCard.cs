@@ -34,7 +34,7 @@ public abstract class BloodMazeCard(int cost, CardType type, CardRarity rarity, 
     protected async Task<AttackCommand> VampireAttack(PlayerChoiceContext choiceContext, Creature? target)
     {
         AttackCommand attack = await CommonActions.CardAttack(this, target).Execute(choiceContext);
-        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
         await CreatureCmd.Heal(this.Owner.Creature, restore);
         return attack;
     }
