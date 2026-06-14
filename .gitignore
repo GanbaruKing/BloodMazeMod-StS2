@@ -3,3 +3,14 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# --- Godot generated cache (regenerated automatically, do not commit) ---
+.godot/
+
+# --- Rider / ReSharper IDE files ---
+.idea/
+*.DotSettings
+*.DotSettings.user
+
+# Note: Godot *.import and *.cs.uid are intentionally NOT ignored
+# (committed on purpose, following Godot's recommendation).
