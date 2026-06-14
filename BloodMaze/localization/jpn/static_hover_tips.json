@@ -1,6 +1,6 @@
 {
   "BLOODMAZE-MAGICCARD.title" : "魔法カード",
-  "BLOODMAZE-MAGICCARD.description" : "Mpを消費するカード。",
+  "BLOODMAZE-MAGICCARD.description" : "MPを消費するカード。",
   "BLOODMAZE-OVERFLOW.title": "オーバーフロー",
   "BLOODMAZE-OVERFLOW.description": "MPの消費が2倍になる代わりに魔法カードが2回発動する"
 }
