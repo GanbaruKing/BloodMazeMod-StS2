@@ -24,7 +24,7 @@
   "BLOODMAZE-MAGIC_CIRCLE.description": "#{Block:diff()}*ブロック*を得る。\n次にプレイする魔法攻撃のコストとMPを0にする。",
   "BLOODMAZE-MAGIC_CIRCLE.title": "魔法陣完成",
   "BLOODMAZE-VAMPIRE_FORM.description": "#ターン開始時HPを10失う。\n魔法アタックカードのMP消費がHP消費に変わり、*吸血*を付与する。",
-  "BLOODMAZE-VAMPIRE_FORM.title": "吸血鬼化",
+  "BLOODMAZE-VAMPIRE_FORM.title": "血鬼化",
   "BLOODMAZE-HEALING_SPIRIT.description": "#{Heal:diff()}回復する。\nカードを{Cards:diff()}枚引く\nエナジーを{Energy:energyIcons()}得る。",
   "BLOODMAZE-HEALING_SPIRIT.title": "救急",
   "BLOODMAZE-DESPERATION.description": "#自身に*棘*{ThornsPower:diff()}を付与する。",

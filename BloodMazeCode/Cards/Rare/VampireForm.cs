@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
+using BloodMaze.BloodMazeCode.Patches;
 using BloodMaze.BloodMazeCode.Powers;
 using BloodMaze.BloodMazeCode.Tips;
 using MegaCrit.Sts2.Core.Entities.Cards;
