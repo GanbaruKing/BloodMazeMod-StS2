@@ -66,9 +66,9 @@ public class Crimson() : BloodMazeCard(2,
             await CardPileCmd.AddGeneratedCardToCombat(
                 card, PileType.Draw, true, CardPilePosition.Top);
 
-            card.SetToFreeThisTurn();          
+            card.SetToFreeThisTurn();        
             if (card is MpConsumeCard mp)
-                mp.IsFreeThisPlay = true;   
+                mp.IsFreeThisPlay = true;      
         }
 
         await CardPileCmd.AutoPlayFromDrawPile(

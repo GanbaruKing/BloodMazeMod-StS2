@@ -47,7 +47,7 @@
   "BLOODMAZE-ANEMIA.title": "貧血",
   "BLOODMAZE-MAGICAL_WAND.description": "#現在のMP分、敵にダメージを与える。\nこのカードを*保留*するたび、コストを1減らす。",
   "BLOODMAZE-MAGICAL_WAND.title": "マジカルステッキ",
-  "BLOODMAZE-CRIMSON.description": "#10ダメージを与える。この戦闘でMPを消費した回数分、追加で攻撃する。\n{InCombat:（回数は{PlayCard}回)|}",
+  "BLOODMAZE-CRIMSON.description": "#この戦闘でMPを消費した回数、ランダムなカードをプレイし*捨て札*に加える。\n{InCombat:（回数は{PlayCount}回)|}",
   "BLOODMAZE-CRIMSON.title": "クリムゾン",
   "BLOODMAZE-FLOWING_RED_SCALE.description": "#各ターン開始時、HP3失い、カードを追加で1枚引く、*筋力*{FlowingRedScalePower:diff()}と*プレートアーマー*2を得る。",
   "BLOODMAZE-FLOWING_RED_SCALE.title": "赫燐躍動",
