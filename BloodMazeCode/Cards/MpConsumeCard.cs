@@ -38,6 +38,12 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         Owner.Creature.HasPower<FreeMpPower>() ||
         MpSaveData.CurrentMp >= MpCost;
     
+    protected override bool ShouldGlowGoldInternal =>
+        Type == CardType.Attack &&
+        Owner?.Creature != null &&
+        Owner.Creature.HasPower<VampireFormPower>();
+    
+    
     
         private int _consumeCallsThisCycle = 0;
 

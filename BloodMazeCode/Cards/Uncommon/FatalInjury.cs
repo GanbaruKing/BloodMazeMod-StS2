@@ -20,14 +20,16 @@ public class FatalInjury() : BloodMazeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        HemorrhagePower power = play.Target!.GetPower<HemorrhagePower>()!;
+        HemorrhagePower power = play.Target!.GetPower<HemorrhagePower>();
+        if (power == null)
+            return;
         if (((PowerModel)power).Amount > 0)
         {
             int amount = ((PowerModel)power).Amount;
             int num = amount * ((CardModel)this).DynamicVars["Multiplier"].IntValue - amount;
             await PowerCmd.ModifyAmount(power, num, this.Owner.Creature, this);
         }
-        
+
     }
 
     protected override void OnUpgrade()

@@ -11,7 +11,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 
 public class Lightning() : MpConsumeCard(0,
     CardType.Attack, CardRarity.Common,
-    TargetType.AnyEnemy, 3)
+    TargetType.AnyEnemy, 2)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [..base.CanonicalVars, new DamageVar(8m, ValueProp.Move), new CardsVar(1)];

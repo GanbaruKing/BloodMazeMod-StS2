@@ -33,18 +33,22 @@ public class BloodSword() : BloodMazeCard(9,
     {
         int damage = Owner.Creature.CurrentHp;
         AttackCommand attack = await CommonActions.CardAttack(this, play.Target, damage).Execute(choiceContext);
-        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
         await CreatureCmd.Heal(this.Owner.Creature, restore);
         _hpLossTriggers -= 2;
-        RefreshCost();
     }
     
     private void RefreshCost()
     {
         this.EnergyCost.SetCustomBaseCost(Math.Max(0, _baseCost - _hpLossTriggers));
     }
-    
-    
+
+    public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    {
+        RefreshCost();
+        return Task.CompletedTask;
+    }
+
     public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
         if (creature == this.Owner.Creature && delta < 0m)

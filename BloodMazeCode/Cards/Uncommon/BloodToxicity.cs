@@ -24,7 +24,6 @@ public class BloodToxicity() : MpConsumeCard(1,
 
     protected override void OnUpgrade()
     {
-        this.DynamicVars["DebilitatePower"].UpgradeValueBy(1m);
         EnergyCost.UpgradeBy(-1);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BloodMaze.BloodMazeCode.Cards.Token;
+using BloodMaze.BloodMazeCode.Patches;
 using BloodMaze.BloodMazeCode.Powers;
 using BloodMaze.BloodMazeCode.Tips;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -29,15 +30,6 @@ public class Extract() : BloodMazeCard(1,
             play.Target!, DynamicVars["HemorrhagePower"].IntValue, this.Owner.Creature, this);
         
         var hand = NPlayerHand.Instance;
-        if (hand != null)
-        {
-            for (int i = 0; i < 30; i++)
-            {
-                var holder = hand.GetCardHolder(this) as NHandCardHolder;
-                if (holder == null || !hand.IsAwaitingPlay(holder)) break;
-                await Cmd.Wait(0.25f); ;
-            }
-        }
 
         var handCards = PileType.Hand.GetPile(this.Owner).Cards;
         if (!handCards.Any()) return;
@@ -50,7 +42,16 @@ public class Extract() : BloodMazeCard(1,
         CardModel card = this.CombatState!.CreateCard<BloodFlask>(this.Owner);
         if (this.IsUpgraded)
             CardCmd.Upgrade(card);
-        await CardCmd.Transform(original, card);
+        TransformInputLock.Lock();
+        try
+        {
+            await CardCmd.Transform(original, card);
+        }
+        finally
+        {
+            TransformInputLock.Unlock();
+        }
+        MainFile.Logger.Info($"[Extract] pile={this.Pile?.Type}");
     }
 
     protected override void OnUpgrade()
