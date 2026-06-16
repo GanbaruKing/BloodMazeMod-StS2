@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Rooms;
 
@@ -16,8 +17,9 @@ namespace BloodMaze.BloodMazeCode.Relics;
 public class ManaOrb : BloodMazeRelic
 {
     public const int InitialMaxMp = 60;
-    public const int CombatEndRestore = 6;
+    protected virtual int CombatEndRestore => 6;
 
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<AncientManaOrb>();
     public override RelicRarity Rarity => RelicRarity.Starter;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

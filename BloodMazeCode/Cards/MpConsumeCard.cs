@@ -36,7 +36,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
           Owner.Creature.HasPower<SilentCastPower>() ||
           Owner.Creature.HasPower<VampireFormPower>())) ||
         Owner.Creature.HasPower<FreeMpPower>() ||
-        MpSaveData.CurrentMp >= MpCost;
+        MpSaveData.CurrentMp >= GetStarCostWithModifiers();
     
     protected override bool ShouldGlowGoldInternal =>
         Type == CardType.Attack &&
@@ -52,14 +52,16 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
             if (IsFreeThisPlay) { IsFreeThisPlay = false; return; }
             if (Owner.Creature.HasPower<FreeMpPower>()) return;
 
-            int totalPlays = GetEnchantedReplayCount() + 1; 
+            int totalPlays = GetEnchantedReplayCount() + 1;
 
             _consumeCallsThisCycle++;
             if (_consumeCallsThisCycle == 1)
             {
-                MpSaveData.TryConsume(MpCost);
+                int cost = GetStarCostWithModifiers();
+                if (cost > 0)
+                    MpSaveData.TryConsume(cost);
             }
-            
+
             if (_consumeCallsThisCycle >= totalPlays)
             {
                 _consumeCallsThisCycle = 0;
@@ -69,7 +71,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         {
             if (IsVampireForm)
             {
-                await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
+                await CreatureCmd.Damage(choiceContext, this.Owner.Creature, GetStarCostWithModifiers(),
                     ValueProp.Unblockable | ValueProp.Unpowered, this);
                 AttackCommand attack = await VampireAttack(choiceContext, target);
                 IsVampireForm = false;
@@ -86,7 +88,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
     {
         if (IsVampireForm)
         {
-            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
+            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, GetStarCostWithModifiers(),
                 ValueProp.Unblockable | ValueProp.Unpowered , this);
             AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
@@ -107,7 +109,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
     {
         if (IsVampireForm)
         {
-            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, MpCost,
+            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, GetStarCostWithModifiers(),
                 ValueProp.Unblockable | ValueProp.Unpowered, this);
             AttackCommand attack = await CommonActions.CardAttack(this, target, hitCount).Execute(choiceContext);
             decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
@@ -121,7 +123,4 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         }
     }
     
-    /* Mp関連のメソッドをここにまとめておけばもっと管理が楽になったね。特にfreeplay系はここに何個か基盤を作るべきだった。
-     コードの概要コメントしておけばあとからどういう挙動するのかすぐわかるからちゃんとメモろう！言語化にもつながるしね
-     このプロジェクトの規模だから許されている。*/
 }

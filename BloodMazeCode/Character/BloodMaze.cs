@@ -21,7 +21,7 @@ public class BloodMaze : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Feminine;
-    public override int StartingHp => 50;
+    public override int StartingHp => 57;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
