@@ -31,4 +31,9 @@ public class OverHeal() : BloodMazeCard(1, CardType.Power, CardRarity.Uncommon, 
         
         await CreatureCmd.SetMaxHp(Owner.Creature, 999m);
     }
+
+    protected override void OnUpgrade()
+    {
+        AddKeyword(CardKeyword.Innate);
+    }
 }

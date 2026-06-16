@@ -22,11 +22,12 @@ public class Setup() : MpConsumeCard(1, CardType.Skill, CardRarity.Common, Targe
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
 
         CardSelectorPrefs prefs = new CardSelectorPrefs(this.SelectionScreenPrompt, 1);
-        CardModel? card = (await CardSelectCmd.FromSimpleGrid(
-            choiceContext, 
-            PileType.Hand.GetPile(this.Owner).Cards, 
-            this.Owner, 
-            prefs)).FirstOrDefault();
+        CardModel? card = (await CardSelectCmd.FromHand(
+            choiceContext,
+            this.Owner,
+            prefs,
+            c => !c.Keywords.Contains(CardKeyword.Retain),
+            this)).FirstOrDefault();
 
         if (card == null) return;
         card.AddKeyword(CardKeyword.Retain);

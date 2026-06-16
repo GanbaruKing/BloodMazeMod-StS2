@@ -21,7 +21,8 @@ public class BloodPactPower : BloodMazePower
         if (!this.Owner.IsPlayer) return;
         if (this.Owner.IsDead) return;
         if (CombatManager.Instance.IsOverOrEnding) return;
-
+        if (side != this.Owner.Side) return;
+        
         await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), this.Owner, 1m, ValueProp.Unblockable, this.Owner, null);
         MpSaveData.Restore(RestoreAmount);
     }

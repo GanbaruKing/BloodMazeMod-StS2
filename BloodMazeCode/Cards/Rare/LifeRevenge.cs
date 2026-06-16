@@ -15,7 +15,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Rare;
 public class LifeRevenge() : BloodMazeCard(2,
     CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    private static int _healCount;
+    private int _healCount;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

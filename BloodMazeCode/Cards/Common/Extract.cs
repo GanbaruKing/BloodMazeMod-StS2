@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace BloodMaze.BloodMazeCode.Cards.Common;
 
@@ -22,15 +24,28 @@ public class Extract() : BloodMazeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<HemorrhagePower>(play.Target!, DynamicVars["HemorrhagePower"].IntValue, this.Owner.Creature, this);
+
+        await PowerCmd.Apply<HemorrhagePower>(
+            play.Target!, DynamicVars["HemorrhagePower"].IntValue, this.Owner.Creature, this);
+        
+        var hand = NPlayerHand.Instance;
+        if (hand != null)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                var holder = hand.GetCardHolder(this) as NHandCardHolder;
+                if (holder == null || !hand.IsAwaitingPlay(holder)) break;
+                await Cmd.Wait(0.25f); ;
+            }
+        }
 
         var handCards = PileType.Hand.GetPile(this.Owner).Cards;
         if (!handCards.Any()) return;
 
         CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1);
-        CardModel original = (await CardSelectCmd.FromSimpleGrid(
-            choiceContext, handCards, this.Owner, prefs)).FirstOrDefault()!;
-        if (original == null) return;
+        CardModel original = (await CardSelectCmd.FromHand(
+            choiceContext, this.Owner, prefs, null, this)).FirstOrDefault()!;
+        if (original == null) return;;
 
         CardModel card = this.CombatState!.CreateCard<BloodFlask>(this.Owner);
         if (this.IsUpgraded)
