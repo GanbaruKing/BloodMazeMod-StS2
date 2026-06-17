@@ -1,0 +1,6 @@
+{
+  "BLOODMAZE-VAMPIRE.title": "Vampire",
+  "BLOODMAZE-VAMPIRE.description": "Heal HP equal to the unblocked damage dealt.",
+  "BLOODMAZE-HEMORRHAGE_POWER_TIP.title": "Hemorrhage",
+  "BLOODMAZE-HEMORRHAGE_POWER_TIP.description": "#At 20 *Hemorrhage*, become *Stunned* and lose 75 HP.\nAt the start of the turn, gain 1 *Hemorrhage*. At the end of the turn, lose HP.\nAt 20, lose all stacks."
+}

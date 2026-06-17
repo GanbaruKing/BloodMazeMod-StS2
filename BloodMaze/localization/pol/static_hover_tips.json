@@ -1,0 +1,6 @@
+{
+  "BLOODMAZE-MAGICCARD.title": "Magic Card",
+  "BLOODMAZE-MAGICCARD.description": "A card that spends MP.",
+  "BLOODMAZE-OVERFLOW.title": "Overflow",
+  "BLOODMAZE-OVERFLOW.description": "Magic cards trigger twice, but MP costs are doubled."
+}

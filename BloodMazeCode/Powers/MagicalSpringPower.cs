@@ -24,10 +24,5 @@ public sealed class MagicalSpringPower : BloodMazePower
         if (player != this.Owner.Player) return amount;
         return amount + this.Amount;
     }
-
-    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
-    {
-        if (player.Creature != this.Owner) return;
-        MpSaveData.TryConsume(1);
-    }
+    
 }

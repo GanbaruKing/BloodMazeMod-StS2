@@ -59,7 +59,7 @@
   "BLOODMAZE-MORE_CHEERFUL.title": "もっと力を！",
   "BLOODMAZE-BLOOD_TOXICITY.description": "#次の{DebilitatePower:diff()}ターンの間、すべての敵に対する*弱体*と*脱力*の効果が2倍になる。",
   "BLOODMAZE-BLOOD_TOXICITY.title": "血毒汚染",
-  "BLOODMAZE-BLUT.description": "#HPを6失う。\n*プレートアーマー*を5得る。*アーティファクト*を{ArtifactPower:diff()}得る",
+  "BLOODMAZE-BLUT.description": "#HPを2失う。\n*プレートアーマー*を5得る。*アーティファクト*を{ArtifactPower:diff()}得る。",
   "BLOODMAZE-BLUT.title": "籠手",
   "BLOODMAZE-WISDOM.description": "#捨て札のカード1枚を*手札*に戻す。そのカードは*保留*を得る。",
   "BLOODMAZE-WISDOM.selectionScreenPrompt": "カードを1枚選択",

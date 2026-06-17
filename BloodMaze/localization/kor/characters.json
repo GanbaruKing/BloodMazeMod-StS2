@@ -1,0 +1,16 @@
+{
+  "BLOODMAZE-BLOOD_MAZE.aromaPrinciple": "Magic",
+  "BLOODMAZE-BLOOD_MAZE.banter.alive.endTurnPing": "Hey, you're slow.",
+  "BLOODMAZE-BLOOD_MAZE.banter.dead.endTurnPing": "...",
+  "BLOODMAZE-BLOOD_MAZE.cardsModifierDescription": "Revenant cards can now appear in rewards and shops.",
+  "BLOODMAZE-BLOOD_MAZE.cardsModifierTitle": "Revenant Cards",
+  "BLOODMAZE-BLOOD_MAZE.description": "A mage skilled in blood magic.",
+  "BLOODMAZE-BLOOD_MAZE.eventDeathPrevention": "I can't fall here!",
+  "BLOODMAZE-BLOOD_MAZE.goldMonologue": "This should be plenty.",
+  "BLOODMAZE-BLOOD_MAZE.possessiveAdjective": "her",
+  "BLOODMAZE-BLOOD_MAZE.pronounObject": "her",
+  "BLOODMAZE-BLOOD_MAZE.pronounPossessive": "hers",
+  "BLOODMAZE-BLOOD_MAZE.pronounSubject": "she",
+  "BLOODMAZE-BLOOD_MAZE.title": "Revenant",
+  "BLOODMAZE-BLOOD_MAZE.titleObject": "Revenant"
+}
