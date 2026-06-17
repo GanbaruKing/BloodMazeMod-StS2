@@ -139,7 +139,7 @@
   "BLOODMAZE-HEX_CHAIN.title": "Spell Chain",
   "BLOODMAZE-MANA_SHIELD.description": "#Whenever you play a Magic card, gain {ManaShieldPower:diff()} #Block.",
   "BLOODMAZE-MANA_SHIELD.title": "Mana Leak",
-  "BLOODMAZE-BLOOD_FLASK_SUPPLY.description": "#At the start of your turn, add 1 *Blood Flask+* to your *hand*.\nThis effect lasts X{IfUpgraded:show:+1|} turns.",
+  "BLOODMAZE-BLOOD_FLASK_SUPPLY.description": "#At the start of your turn, add 1 *Blood Flask+* to your *hand*.\nThis effect lasts X{IfUpgraded:show:+2|} turns.",
   "BLOODMAZE-BLOOD_FLASK_SUPPLY.title": "Supply",
   "BLOODMAZE-FLOW_STRIKE.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} cards.",
   "BLOODMAZE-FLOW_STRIKE.title": "Flow Strike",
@@ -176,7 +176,7 @@
   "BLOODMAZE-EXECUTION.title": "Execution",
   "BLOODMAZE-ENCHANTED_SHOES.description": "#Gain {DexterityPower} *Dexterity*.",
   "BLOODMAZE-ENCHANTED_SHOES.title": "Enchanted Shoes",
-  "BLOODMAZE-MELT.description": "#Gain {HemorrhagePower} Hemorrhage.\nTransform all cards in your hand into {IfUpgraded:show:*Blood Flask+*|*Blood Flask*}.",
+  "BLOODMAZE-MELT.description": "#Gain {HemorrhagePower} *Hemorrhage*.\nTransform all cards in your hand into {IfUpgraded:show:*Blood Flask+*|*Blood Flask*}.",
   "BLOODMAZE-MELT.title": "Melt",
   "BLOODMAZE-INTIMIDATE.description": "#The target enemy loses {IntimidatePower:diff()} *Strength* until the end of its turn.",
   "BLOODMAZE-INTIMIDATE.title": "Intimidate"

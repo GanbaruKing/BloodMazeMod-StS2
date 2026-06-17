@@ -139,7 +139,7 @@
   "BLOODMAZE-HEX_CHAIN.title": "連魔",
   "BLOODMAZE-MANA_SHIELD.description": "#魔法カードをプレイするたびに{ManaShieldPower:diff()}*ブロック*を得る",
   "BLOODMAZE-MANA_SHIELD.title": "まなもれ",
-  "BLOODMAZE-BLOOD_FLASK_SUPPLY.description": "#ターン開始時、*血瓶+*を1枚*手札*に加える。\nこの効果はX{IfUpgraded:show:+1|}ターン続く。",
+  "BLOODMAZE-BLOOD_FLASK_SUPPLY.description": "#ターン開始時、*血瓶+*を1枚*手札*に加える。\nこの効果はX{IfUpgraded:show:+2|}ターン続く。",
   "BLOODMAZE-BLOOD_FLASK_SUPPLY.title": "供給",
   "BLOODMAZE-FLOW_STRIKE.description": "{Damage:diff()}ダメージを与える。\nカードを{Cards:diff()}枚引く。",
   "BLOODMAZE-FLOW_STRIKE.title": "フローストライク",
@@ -176,7 +176,7 @@
   "BLOODMAZE-EXECUTION.title": "処刑",
   "BLOODMAZE-ENCHANTED_SHOES.description": "#*敏捷*{DexterityPower}を得る。",
   "BLOODMAZE-ENCHANTED_SHOES.title": "魔法の靴",
-  "BLOODMAZE-MELT.description": "#大出血を{HemorrhagePower}得る。\n手札のすべてのカードを{IfUpgraded:show:*血瓶+*|*血瓶*}に変化させる。",
+  "BLOODMAZE-MELT.description": "#*大出血*を{HemorrhagePower}得る。\n手札のすべてのカードを{IfUpgraded:show:*血瓶+*|*血瓶*}に変化させる。",
   "BLOODMAZE-MELT.title": "メルト",
   "BLOODMAZE-INTIMIDATE.description": "#敵のターン終了時まで、対象の敵は*筋力*を{IntimidatePower:diff()}失う。",
   "BLOODMAZE-INTIMIDATE.title": "脅迫"
