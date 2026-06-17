@@ -24,8 +24,8 @@ public class LifeRevenge() : BloodMazeCard(2,
         new CalculationBaseVar(0M),
         new CalculationExtraVar(1M),
         new CalculatedVar("CalculatedHits").WithMultiplier(
-            ((Func<CardModel, Creature, decimal>)((card, _) =>
-                (decimal)(1 + _healCount)))!)
+            (Func<CardModel, Creature, decimal>)(static (card, _) =>
+                (decimal)(1 + ((LifeRevenge)card)._healCount))!)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

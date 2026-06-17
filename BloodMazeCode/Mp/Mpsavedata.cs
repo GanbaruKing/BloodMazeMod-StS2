@@ -41,6 +41,8 @@ public static class MpSaveData
             MpChanged?.Invoke();
         }
     }
+    
+    
 
     public static int? CombatStartMp => _combatStartMp;
     public static int? RestSiteEnteredMp => _restSiteEnteredMp;
@@ -125,6 +127,11 @@ public static class MpSaveData
         _combatMpConsumeCount++;
         Save();
         return true;
+    }
+    public static void ResetCombatMpConsumeCount()
+    {
+        _combatMpConsumeCount = 0;
+        Save();
     }
 
     public static void Restore(int amount)

@@ -17,7 +17,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
 public class Crimson() : BloodMazeCard(2,
-    CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+    CardType.Attack, CardRarity.Rare, TargetType.Self)
 {
     //変更前
     /* protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -50,6 +50,7 @@ public class Crimson() : BloodMazeCard(2,
         int count = MpSaveData.CombatMpConsumeCount;
         if (count <= 0) return;
 
+        MpSaveData.ResetCombatMpConsumeCount();
         Player player = this.Owner;
 
         var pool = player.Character.CardPool
