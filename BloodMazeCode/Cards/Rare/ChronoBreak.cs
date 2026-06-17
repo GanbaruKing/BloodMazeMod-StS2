@@ -12,7 +12,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
  
 public class ChronoBreak() : MpConsumeCard(3,
-    CardType.Power, CardRarity.Rare, TargetType.Self, 8)
+    CardType.Power, CardRarity.Rare, TargetType.Self, 5)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new PowerVar<ChronoBreakPower>(1)];
 

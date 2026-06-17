@@ -13,6 +13,7 @@ public class Armageddon() : MpConsumeCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        ..base.CanonicalVars,
         new DamageVar(5m, ValueProp.Move)
     ];
 

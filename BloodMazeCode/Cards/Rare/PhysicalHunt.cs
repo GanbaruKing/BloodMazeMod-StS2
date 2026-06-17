@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class PhysicalHunt() : MpConsumeCard(3,
+public class PhysicalHunt() : MpConsumeCard(1,
     CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy, 5)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars];

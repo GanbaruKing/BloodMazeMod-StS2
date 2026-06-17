@@ -18,7 +18,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Basic;
 
 public class Blizzard() : MpConsumeCard(0,
     CardType.Attack, CardRarity.Basic,
-    TargetType.AllEnemies, 3),ITranscendenceCard{
+    TargetType.AllEnemies, 2),ITranscendenceCard{
     public CardModel GetTranscendenceTransformedCard()
         => ModelDb.Card<BloodBlizzard>();
     

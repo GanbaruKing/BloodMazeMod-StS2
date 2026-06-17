@@ -30,13 +30,11 @@ public class BloodAlchemy() : MpConsumeCard(2,
         {
             CardModel? inHand = await BloodFlask.CreateInHand(this.Owner, this.CombatState!);
             await Cmd.Wait(0.25f);
-            if (this.IsUpgraded)
-                CardCmd.Upgrade(inHand!);
         }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

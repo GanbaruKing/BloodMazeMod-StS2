@@ -15,7 +15,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Ancient;
 
 
 public class BloodBlizzard() : MpConsumeCard(0,
-    CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies, 1)
+    CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies, 2)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(12m, ValueProp.Move), 
         new PowerVar<VulnerablePower>(2m), new PowerVar<WeakPower>(2m), new HemorrhagePowerTipVar(), new PowerVar<HemorrhagePower>(1m)];

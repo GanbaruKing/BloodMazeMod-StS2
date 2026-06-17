@@ -13,7 +13,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 public class BloodShield() : BloodMazeCard(1,
     CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12m, ValueProp.Move), new HpLossVar(3m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12m, ValueProp.Move), new HpLossVar(2m)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

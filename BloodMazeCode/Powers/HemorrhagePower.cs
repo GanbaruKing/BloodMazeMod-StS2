@@ -61,7 +61,7 @@ public class HemorrhagePower : BloodMazePower
             .DefaultIfEmpty(0m)
             .Sum() ?? 0m);
 
-        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), this.Owner, 100m * multiplier,
+        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), this.Owner, 75m * multiplier,
             ValueProp.Unblockable | ValueProp.Unpowered, null, null);
         await CreatureCmd.Stun(this.Owner);
         await PowerCmd.Remove<HemorrhagePower>(this.Owner);

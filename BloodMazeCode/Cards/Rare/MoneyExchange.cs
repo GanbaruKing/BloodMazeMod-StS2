@@ -13,7 +13,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Rare;
 public class MoneyExchange() : BloodMazeCard(0,
     CardType.Skill, CardRarity.Rare,TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("MpRestore",5m), new CardsVar(1), new EnergyVar(1), new GoldVar(10)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("MpRestore",3m), new CardsVar(1), new EnergyVar(1), new GoldVar(5)];
     
     protected override bool IsPlayable =>
         this.Owner.Creature.Player?.Gold >= DynamicVars.Gold.IntValue;
@@ -32,7 +32,6 @@ public class MoneyExchange() : BloodMazeCard(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Gold.UpgradeValueBy(-2m);
-        DynamicVars["MpRestore"].UpgradeValueBy(2m);
         DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }

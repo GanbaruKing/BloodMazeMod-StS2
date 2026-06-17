@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class Anemia() : MpConsumeCard(3,
-    CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, 8)
+public class Anemia() : MpConsumeCard(2,
+    CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, 5)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars,new DamageVar(10m,ValueProp.Move), new VampireVar()];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars,new DamageVar(3m,ValueProp.Move), new VampireVar()];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
