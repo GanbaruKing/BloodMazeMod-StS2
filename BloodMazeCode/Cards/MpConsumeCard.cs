@@ -123,4 +123,32 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
         }
     }
     
+    protected async Task VampirePlayAllEnemiesMultiHit(PlayerChoiceContext choiceContext, int hitCount)
+    {
+        if (IsVampireForm)
+        {
+            await CreatureCmd.Damage(choiceContext, this.Owner.Creature, GetStarCostWithModifiers(),
+                ValueProp.Unblockable | ValueProp.Unpowered, this);
+
+            decimal restore = 0m;
+            for (int i = 0; i < hitCount; i++)
+            {
+                AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                    .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
+                restore += attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+            }
+            await CreatureCmd.Heal(this.Owner.Creature, restore);
+            IsVampireForm = false;
+        }
+        else
+        {
+            ConsumeMp();
+            for (int i = 0; i < hitCount; i++)
+            {
+                await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                    .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
+            }
+        }
+    }
+    
 }

@@ -24,7 +24,7 @@ public class LifeRevenge() : BloodMazeCard(2,
         new CalculationBaseVar(0M),
         new CalculationExtraVar(1M),
         new CalculatedVar("CalculatedHits").WithMultiplier(
-            (Func<CardModel, Creature, decimal>)(static (card, _) =>
+            (Func<CardModel, Creature?, decimal>)(static (card, _) =>
                 (decimal)(1 + ((LifeRevenge)card)._healCount))!)
     ];
 

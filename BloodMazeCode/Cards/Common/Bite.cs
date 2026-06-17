@@ -24,6 +24,8 @@ public class Bite() : BloodMazeCard(2,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        await CreatureCmd.Damage(choiceContext, this.Owner.Creature, DynamicVars.HpLoss.IntValue,
+            ValueProp.Unblockable | ValueProp.Unpowered, this);
         await VampireAttack(choiceContext, play.Target);
     }
 

@@ -12,7 +12,7 @@ namespace BloodMaze.BloodMazeCode.Powers;
 
 public class BloodwavePower : BloodMazePower
 {
-    private CombatSide _currentSide = CombatSide.Player;
+    /* private CombatSide _currentSide = CombatSide.Player;
     
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -32,5 +32,30 @@ public class BloodwavePower : BloodMazePower
         if (delta == 0) return;
         
         await CreatureCmd.Damage((PlayerChoiceContext) new ThrowingPlayerChoiceContext(), (IEnumerable<Creature>)creature.CombatState!.HittableEnemies, bloodwavePower.Amount ,ValueProp.Unpowered, this.Owner, null);
+    } */
+    
+
+    
+    
+    private CombatSide _currentSide = CombatSide.Player;
+    public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;   
+
+    public override Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    {
+        _currentSide = side;
+        return Task.CompletedTask;
     }
+
+    public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
+    {
+        if (delta >= 0) return;
+        if (_currentSide != CombatSide.Player) return;
+        if (creature != Owner.Player!.Creature) return;
+        if (Owner.IsDead) return;
+        if (CombatManager.Instance.IsOverOrEnding) return;
+
+        await CardPileCmd.Draw(new ThrowingPlayerChoiceContext(), this.Amount, this.Owner.Player);
+    }
+    
 }

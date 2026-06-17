@@ -29,7 +29,7 @@
   "BLOODMAZE-HEALING_SPIRIT.title": "救急",
   "BLOODMAZE-DESPERATION.description": "#自身に*棘*{ThornsPower:diff()}を付与する。",
   "BLOODMAZE-DESPERATION.title": "ヤケクソ",
-  "BLOODMAZE-BLOODWAVE.description": "自身のターンにHPを失う、または回復するとすべての敵に{BloodwavePower:diff()}ダメージを与える。",
+  "BLOODMAZE-BLOODWAVE.description": "自身のターンにHPを失うたび、カードを1枚引く。",
   "BLOODMAZE-BLOODWAVE.title": "血潮の共鳴",
   "BLOODMAZE-IMMORTALITY.description": "#*霊体*{IntangiblePower:diff()}を得る。\n*大出血*を{HemorrhagePower:diff()}得る。",
   "BLOODMAZE-IMMORTALITY.title": "不老不死",
@@ -53,7 +53,7 @@
   "BLOODMAZE-FLOWING_RED_SCALE.title": "赫燐躍動",
   "BLOODMAZE-MAGICAL_SPRING.description": "各ターンの開始時、{energyPrefix:energyIcons(1)}を得る。",
   "BLOODMAZE-MAGICAL_SPRING.title": "魔力の泉",
-  "BLOODMAZE-REJUVENATE.description": "#自身の再生の数だけ、1回復を行う。{IfUpgraded:show:+3回行う。|}\n{InCombat:(回復回数{HealAmount}{IfUpgraded:show:+3|}回)|}",
+  "BLOODMAZE-REJUVENATE.description": "#自身の再生の数だけ、1回復を行う。{IfUpgraded:show:+3回行う。|}{InCombat:(回復回数{HealAmount}{IfUpgraded:show:+3回|})|}",
   "BLOODMAZE-REJUVENATE.title": "若返り",
   "BLOODMAZE-MORE_CHEERFUL.description": "#自身のターンにHPを回復する度に、*筋力*が{MoreCheerfulPower:diff()}増加する。",
   "BLOODMAZE-MORE_CHEERFUL.title": "もっと力を！",
@@ -165,5 +165,7 @@
   "BLOODMAZE-BLOOD_PACT.description": "#*オーバーフロー*99を得るターン開始時、HPを1失い、MPを{IfUpgraded:show:3|2}回復する。",
   "BLOODMAZE-BLOOD_PACT.title": "血の契約",
   "BLOODMAZE-RECALL.description": "#{Damage:diff()}ダメージを与える。*捨て札*にある*保留*を持つカードを全て*手札*に加える。",
-  "BLOODMAZE-RECALL.title": "リコール"
+  "BLOODMAZE-RECALL.title": "リコール",
+  "BLOODMAZE-ARMAGEDDON.description": "すべての敵に{Damage:diff()}ダメージを{IfUpgraded:show:5|4}回与える。",
+  "BLOODMAZE-ARMAGEDDON.title": "アルマゲドン"
 }

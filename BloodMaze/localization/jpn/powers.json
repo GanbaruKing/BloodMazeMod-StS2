@@ -11,8 +11,8 @@
   "BLOODMAZE-DESPERATION_POWER.description": "このターン敵から受けたダメージだけ敵にダメージを与える",
   "BLOODMAZE-DESPERATION_POWER.smartDescription": "敵から受けたダメージだけ敵にダメージを与える",
   "BLOODMAZE-DESPERATION_POWER.title": "ヤケクソ",
-  "BLOODMAZE-BLOODWAVE_POWER.description": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のHPが変動するたび、すべての敵にダメージを与える",
-  "BLOODMAZE-BLOODWAVE_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のHPが変動するたび、すべての敵にダメージを与える",
+  "BLOODMAZE-BLOODWAVE_POWER.description": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}がHPを失うたび、1枚ドローする",
+  "BLOODMAZE-BLOODWAVE_POWER.smartDescription": "{OnPlayer:あなた|[gold]{OwnerName}[/gold]}のHPを失うたび、1枚ドローする",
   "BLOODMAZE-BLOODWAVE_POWER.title": "血潮の共鳴",
   "BLOODMAZE-FLOWING_RED_SCALE_POWER.description": "ターン開始時HPを3失う。筋力とプレートアーマーを得る。カードを1枚追加で引くする。",
   "BLOODMAZE-FLOWING_RED_SCALE_POWER.smartDescription": "ターン開始時HPを3失う。筋力とプレートアーマーを得る。カードを1枚追加で引くする。",
@@ -62,4 +62,5 @@
   "BLOODMAZE-BLOOD_PACT_POWER.description": "ターン開始時、HPを1失い、MPを回復する。",
   "BLOODMAZE-BLOOD_PACT_POWER.smartDescription": "ターン開始時、HPを1失い、MPを回復する。",
   "BLOODMAZE-BLOOD_PACT_POWER.title": "血の契約"
+
 }
