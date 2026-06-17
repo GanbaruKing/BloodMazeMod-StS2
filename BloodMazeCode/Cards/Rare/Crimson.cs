@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BaseLib.Abstracts;
 using BaseLib.Cards.Variables;
 using BaseLib.Utils;
+using BloodMaze.BloodMazeCode.Cards.Token;
 using BloodMaze.BloodMazeCode.Mp;
 using BloodMaze.BloodMazeCode.Tips;
 using MegaCrit.Sts2.Core.Commands;
@@ -55,7 +57,11 @@ public class Crimson() : BloodMazeCard(2,
 
         var pool = player.Character.CardPool
             .GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
-            .Where(c => c is not Crimson);
+            .Where(c => c is not Crimson).Where(c => c is not BloodFlask)                          // ① トークン(血液パック)を除外
+            .Where(c => c is not ITranscendenceCard)             
+            .Where(c => c.Rarity is CardRarity.Common
+                or CardRarity.Uncommon
+                or CardRarity.Rare);
 
         var generated = CardFactory.GetForCombat(
             player, pool, count, player.RunState.Rng.CombatCardGeneration).ToList();

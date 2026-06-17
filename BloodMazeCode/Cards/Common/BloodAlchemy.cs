@@ -14,7 +14,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 
 
 public class BloodAlchemy() : MpConsumeCard(2,
-    CardType.Skill, CardRarity.Common, TargetType.Self, 5)
+    CardType.Skill, CardRarity.Common, TargetType.Self, 4)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new BlockVar(8m, ValueProp.Move), new CardsVar(1) ];
 

@@ -28,7 +28,10 @@ public class MixedBlood() : BloodMazeCard(1,
         List<CardPoolModel> list1 = this.Owner.UnlockState.CharacterCardPools.ToList<CardPoolModel>();
         if (list1.Count > 1)
             list1.Remove(this.Owner.Character.CardPool);
-        IEnumerable<CardModel> cards = list1.SelectMany(pool => pool.GetUnlockedCards(original.Owner.UnlockState, original.RunState!.CardMultiplayerConstraint));
+        IEnumerable<CardModel> cards = list1.SelectMany(pool => 
+            pool.GetUnlockedCards(original.Owner.UnlockState, original.RunState!.CardMultiplayerConstraint)).Where(c => c.Rarity is CardRarity.Common
+            or CardRarity.Uncommon
+            or CardRarity.Rare);;
         CardModel newCard = CardFactory.CreateRandomCardForTransform(original, cards, true, Owner.RunState.Rng.CombatCardGeneration);
         if (this.IsUpgraded)
         {
