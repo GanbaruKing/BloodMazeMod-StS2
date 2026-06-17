@@ -20,7 +20,7 @@ public class FatalInjury() : BloodMazeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        HemorrhagePower power = play.Target!.GetPower<HemorrhagePower>();
+        HemorrhagePower power = play.Target!.GetPower<HemorrhagePower>()!;
         if (power == null)
             return;
         if (((PowerModel)power).Amount > 0)

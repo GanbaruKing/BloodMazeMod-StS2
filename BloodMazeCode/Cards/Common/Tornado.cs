@@ -12,7 +12,7 @@ public class Tornado() : MpConsumeCard(1,
     CardType.Attack, CardRarity.Common,
     TargetType.AllEnemies, 3)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(14m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(13m, ValueProp.Move)];
 
 
     protected override async Task OnPlay(

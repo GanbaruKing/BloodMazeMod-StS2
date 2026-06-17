@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Utils;
-using BloodMaze.BloodMazeCode.Cards;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -15,24 +15,59 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
-
-public class Awakening() : BloodMazeCard(1,
-    CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class Awakening() : BloodMazeCard(
+    1,
+    CardType.Attack,
+    CardRarity.Rare,
+    TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m, ValueProp.Move),new PowerVar<ImprovementPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(10m, ValueProp.Move),
+        new PowerVar<ImprovementPower>(1m)
+    ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        AttackCommand attackCommand = await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
-        bool shouldTriggerFatal = play.Target!.Powers.All<PowerModel>((Func<PowerModel, bool>) (p => p.ShouldOwnerDeathTriggerFatal()));
-        if (!shouldTriggerFatal || !attackCommand.Results.Any<DamageResult>((Func<DamageResult, bool>)(r => r.WasTargetKilled)))
+        AttackCommand attackCommand =
+            await CommonActions.CardAttack(this, play.Target)
+                .Execute(choiceContext);
+
+        bool shouldTriggerFatal = play.Target!.Powers.All(
+            (Func<PowerModel, bool>)(p => p.ShouldOwnerDeathTriggerFatal()));
+
+        bool killedByThisAttack = attackCommand.Results.Any(
+            (Func<DamageResult, bool>)(r => r.WasTargetKilled));
+
+        if (!shouldTriggerFatal || !killedByThisAttack)
             return;
-        await CommonActions.ApplySelf<ImprovementPower>(choiceContext, this, DynamicVars["ImprovementPower"].IntValue);
-        
+
+        UpgradeRandomDeckCards(DynamicVars["ImprovementPower"].IntValue);
+    }
+
+    private void UpgradeRandomDeckCards(int amount)
+    {
+        List<CardModel> upgradableCards = PileType.Deck
+            .GetPile(this.Owner)
+            .Cards
+            .Where(c => c.IsUpgradable)
+            .ToList();
+
+        for (int i = 0; i < amount && upgradableCards.Count != 0; i++)
+        {
+            CardModel card = this.Owner.RunState.Rng.CombatCardSelection
+                .NextItem<CardModel>(upgradableCards)!;
+
+            upgradableCards.Remove(card);
+            CardCmd.Upgrade(card);
+        }
     }
 
     protected override void OnUpgrade()

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BaseLib.Cards.Variables;
 using BloodMaze.BloodMazeCode.Mp;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -28,17 +29,20 @@ public class ManaOrb : BloodMazeRelic
         new DisplayVar<ManaOrb>("MaxMp", (_) => MpSaveData.MaxMp.ToString()),
     ];
 
-    public override Task AfterRestSiteHeal(Player player, bool isMimicked)
+    public override async Task AfterRestSiteHeal(Player player, bool isMimicked)
     {
-        if (MpSaveData.RestSiteHealed) return Task.CompletedTask;
-        if (MpSaveData.RestSiteEnteredMp == null) return Task.CompletedTask;
-        int cap = MpSaveData.RestSiteEnteredMp.Value + 13;
-        MpSaveData.MaxMp += 2;
+        if (MpSaveData.RestSiteHealed) return;
+        if (MpSaveData.RestSiteEnteredMp == null) return;
+        int cap = MpSaveData.RestSiteEnteredMp.Value + 16;
+        MpSaveData.MaxMp += 4;
         int toRestore = cap - MpSaveData.CurrentMp;
         if (toRestore > 0)
-            MpSaveData.Restore(toRestore);
+        {
+            int overflow = RestoreAndGetOverflow(toRestore);
+            if (overflow > 0 && !Owner.Creature.IsDead)
+                await CreatureCmd.Heal(Owner.Creature, overflow);
+        }
         MpSaveData.SetRestSiteHealed();
-        return Task.CompletedTask;
     }
 
     public override async Task AfterRoomEntered(AbstractRoom room)
@@ -67,9 +71,23 @@ public class ManaOrb : BloodMazeRelic
         MpSaveData.ClearCombatStart();
 
         if (room.RoomType == RoomType.Boss)
+        {
             MpSaveData.Initialize(MpSaveData.MaxMp);
+        }
         else
-            MpSaveData.Restore(CombatEndRestore);
+        {
+            int overflow = RestoreAndGetOverflow(CombatEndRestore);
+            if (overflow > 0 && !Owner.Creature.IsDead)
+                await CreatureCmd.Heal(Owner.Creature, overflow);
+        }
+    }
+    
+    private int RestoreAndGetOverflow(int amount)
+    {
+        int before = MpSaveData.CurrentMp;
+        MpSaveData.Restore(amount);
+        int restored = MpSaveData.CurrentMp - before;
+        return amount - restored;
     }
 
     public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)

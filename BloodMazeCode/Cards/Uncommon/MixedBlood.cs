@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BloodMaze.BloodMazeCode.Patches;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -42,7 +43,15 @@ public class MixedBlood() : BloodMazeCard(1,
             CardCmd.Downgrade(newCard);
         }
         newCard.SetToFreeThisTurn();
-        await CardCmd.Transform(original, newCard);
+        TransformInputLock.Lock();
+        try
+        {
+            await CardCmd.Transform(original, newCard);
+        }
+        finally
+        {
+            TransformInputLock.Unlock();
+        }
     }
 
 

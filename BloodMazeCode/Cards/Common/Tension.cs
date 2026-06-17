@@ -27,6 +27,6 @@ public class Tension() : MpConsumeCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["SetupStrikePower"].UpgradeValueBy(3m);
+        DynamicVars["SetupStrikePower"].UpgradeValueBy(2m);
     }
 }
