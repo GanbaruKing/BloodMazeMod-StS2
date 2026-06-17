@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class HyperGrowth() : BloodMazeCard(2,
+public class HyperGrowth() : BloodMazeCard(1,
     CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new MaxHpVar(1)];
@@ -22,6 +22,6 @@ public class HyperGrowth() : BloodMazeCard(2,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.MaxHp.UpgradeValueBy(1m);
     }
 }
