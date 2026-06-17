@@ -64,5 +64,8 @@
   "BLOODMAZE-BLOOD_PACT_POWER.title": "血の契約",
   "BLOODMAZE-INTIMIDATE_POWER.description": "#敵のターン終了時まで、*筋力*を失う。",
   "BLOODMAZE-INTIMIDATE_POWER.smartDescription": "#敵のターン終了時まで、*筋力*を失う。",
-  "BLOODMAZE-INTIMIDATE_POWER.title": "脅迫"
+  "BLOODMAZE-INTIMIDATE_POWER.title": "脅迫",
+  "BLOODMAZE-TENSION_POWER.description": "ターン終了時まで、筋力を得る。",
+  "BLOODMAZE-TENSION_POWER.smartDescription": "ターン終了時まで、筋力を得る。",
+  "BLOODMAZE-TENSION_POWER.title": "テンション"
 }

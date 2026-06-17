@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
@@ -21,6 +22,8 @@ public class Awakening() : BloodMazeCard(
     CardRarity.Rare,
     TargetType.AnyEnemy)
 {
+    private int _pendingUpgradeCount;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10m, ValueProp.Move),
@@ -36,12 +39,12 @@ public class Awakening() : BloodMazeCard(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        bool shouldTriggerFatal = play.Target!.Powers.All(
+            (Func<PowerModel, bool>)(p => p.ShouldOwnerDeathTriggerFatal()));
+
         AttackCommand attackCommand =
             await CommonActions.CardAttack(this, play.Target)
                 .Execute(choiceContext);
-
-        bool shouldTriggerFatal = play.Target!.Powers.All(
-            (Func<PowerModel, bool>)(p => p.ShouldOwnerDeathTriggerFatal()));
 
         bool killedByThisAttack = attackCommand.Results.Any(
             (Func<DamageResult, bool>)(r => r.WasTargetKilled));
@@ -49,7 +52,24 @@ public class Awakening() : BloodMazeCard(
         if (!shouldTriggerFatal || !killedByThisAttack)
             return;
 
-        UpgradeRandomDeckCards(DynamicVars["ImprovementPower"].IntValue);
+        _pendingUpgradeCount += DynamicVars["ImprovementPower"].IntValue;
+    }
+
+    public override Task BeforeCombatStart()
+    {
+        _pendingUpgradeCount = 0;
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterCombatEnd(CombatRoom room)
+    {
+        if (_pendingUpgradeCount > 0)
+        {
+            UpgradeRandomDeckCards(_pendingUpgradeCount);
+            _pendingUpgradeCount = 0;
+        }
+
+        return Task.CompletedTask;
     }
 
     private void UpgradeRandomDeckCards(int amount)
