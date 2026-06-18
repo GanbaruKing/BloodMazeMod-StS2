@@ -123,10 +123,7 @@ The cards are organized along two main axes:
 
 ## About the Art
 
-The artwork in this project is AI-assisted, but every piece went through a real creative process.
-
-Each card starts with a composition I imagine in my head. I turn that idea into a prompt, generate a base image, and then refine it through editing, redrawing, paintovers, cleanup, and repeated adjustments. The first result is rarely exactly what I want — especially with hands, creatures, colors, and brushwork — so I keep working on each piece until it fits the game.
-
+The artwork in this project is AI-assisted.
 I understand that AI-assisted art is not for everyone, but I put genuine effort and care into every visual asset in this project.
 
 
