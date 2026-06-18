@@ -71,15 +71,24 @@ public class ManaOrb : BloodMazeRelic
         MpSaveData.ClearCombatStart();
 
         if (room.RoomType == RoomType.Boss)
+            return;
+
+        int overflow = RestoreAndGetOverflow(CombatEndRestore);
+        if (overflow > 0 && !Owner.Creature.IsDead)
+            await CreatureCmd.Heal(Owner.Creature, overflow);
+    }
+
+    public override Task AfterActEntered()
+    {
+        MpSaveData.Load();
+        if (MpSaveData.MaxMp == 0)
+            MpSaveData.Initialize(InitialMaxMp);
+        else
         {
             MpSaveData.Initialize(MpSaveData.MaxMp);
         }
-        else
-        {
-            int overflow = RestoreAndGetOverflow(CombatEndRestore);
-            if (overflow > 0 && !Owner.Creature.IsDead)
-                await CreatureCmd.Heal(Owner.Creature, overflow);
-        }
+
+        return Task.CompletedTask;
     }
     
     private int RestoreAndGetOverflow(int amount)

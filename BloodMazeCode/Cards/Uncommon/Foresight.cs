@@ -28,7 +28,8 @@ public class Foresight() : MpConsumeCard(5, CardType.Attack,
 
     public override async Task AfterTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (this.Owner.PlayerCombatState!.Hand.Cards.Contains(this))
+        if (side == CombatSide.Player
+            && this.Owner.PlayerCombatState!.Hand.Cards.Contains(this))
         {
             int current = EnergyCost.GetWithModifiers((CostModifiers)2);
             if (current > 0)
