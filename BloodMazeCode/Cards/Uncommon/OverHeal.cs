@@ -29,7 +29,8 @@ public class OverHeal() : BloodMazeCard(1, CardType.Power, CardRarity.Uncommon, 
         }
 
         
-        await CreatureCmd.SetMaxHp(Owner.Creature, 999m);
+        if (Owner.Creature.MaxHp < OverHealPower.TemporaryMaxHp)
+            await CreatureCmd.SetMaxHp(Owner.Creature, OverHealPower.TemporaryMaxHp);
     }
 
     protected override void OnUpgrade()

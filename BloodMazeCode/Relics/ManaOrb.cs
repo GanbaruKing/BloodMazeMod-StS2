@@ -40,11 +40,7 @@ public class ManaOrb : BloodMazeRelic
         int cap = MpSaveData.RestSiteEnteredMp.Value + restoreAmount;
         int toRestore = cap - MpSaveData.CurrentMp;
         if (toRestore > 0)
-        {
-            int overflow = RestoreAndGetOverflow(toRestore);
-            if (overflow > 0 && !Owner.Creature.IsDead)
-                await CreatureCmd.Heal(Owner.Creature, overflow);
-        }
+            MpSaveData.Restore(toRestore);
         MpSaveData.SetRestSiteHealed();
     }
 

@@ -11,7 +11,7 @@
   "BLOODMAZE-LIGHTNING.title": "電光石火",
   "BLOODMAZE-MANA_DRAIN.description": "敵に{Damage:diff()}ダメージを与える。\n与えたダメージ分、MPを回復する。",
   "BLOODMAZE-MANA_DRAIN.title": "マナドレイン",
-  "BLOODMAZE-BITE.description": "#HPを{HpLoss:diff()}失う。\n{Damage:diff()}ダメージを与える。\n*吸血*",
+  "BLOODMAZE-BITE.description": "#HPを{HpLoss:diff()}失う。\n{Damage:diff()}ダメージを与える。\n*吸血*。",
   "BLOODMAZE-BITE.title": "噛みつく",
   "BLOODMAZE-ROCK_DRILL.description": "敵に{Damage:diff()}ダメージを{Repeat:diff()}回与える。",
   "BLOODMAZE-ROCK_DRILL.title": "岩ドリル",

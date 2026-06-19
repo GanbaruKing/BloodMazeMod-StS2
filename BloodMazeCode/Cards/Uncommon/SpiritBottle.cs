@@ -22,7 +22,7 @@ public class SpiritBottle() : MpConsumeCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        MpSaveData.TryConsume(MpCost);
+        ConsumeMp();
         await PlayerCmd.GainEnergy((Decimal)DynamicVars.Energy.IntValue, this.Owner);
     }
 
