@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do5qvqnyoklnq"
-path="res://.godot/imported/insect_attack.png-8cce31d8d039c75a509f9f92b27561e9.ctex"
+path="res://.godot/imported/anemia.png-c21b99d621be142c62203297980cb068.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BloodMaze/images/card_portraits/insect_attack.png"
-dest_files=["res://.godot/imported/insect_attack.png-8cce31d8d039c75a509f9f92b27561e9.ctex"]
+source_file="res://BloodMaze/images/card_portraits/anemia.png"
+dest_files=["res://.godot/imported/anemia.png-c21b99d621be142c62203297980cb068.ctex"]
 
 [params]
 

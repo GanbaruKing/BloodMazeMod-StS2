@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://daup2bha00e4t"
-path="res://.godot/imported/silence.png-abac54540e8576de0405e53455132430.ctex"
+path="res://.godot/imported/silent_cast.png-625338bf51a924239f8f4917b29ac7bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BloodMaze/images/card_portraits/silence.png"
-dest_files=["res://.godot/imported/silence.png-abac54540e8576de0405e53455132430.ctex"]
+source_file="res://BloodMaze/images/card_portraits/silent_cast.png"
+dest_files=["res://.godot/imported/silent_cast.png-625338bf51a924239f8f4917b29ac7bb.ctex"]
 
 [params]
 

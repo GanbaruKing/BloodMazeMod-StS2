@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cys6r0wpe4r4x"
-path="res://.godot/imported/magic_star.png-ab84059ca17ff1d2484fbd155a21869a.ctex"
+path="res://.godot/imported/magical_wand.png-5f93f2fb7a3176586092a4ee5c4547ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BloodMaze/images/card_portraits/magic_star.png"
-dest_files=["res://.godot/imported/magic_star.png-ab84059ca17ff1d2484fbd155a21869a.ctex"]
+source_file="res://BloodMaze/images/card_portraits/magical_wand.png"
+dest_files=["res://.godot/imported/magical_wand.png-5f93f2fb7a3176586092a4ee5c4547ce.ctex"]
 
 [params]
 
