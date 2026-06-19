@@ -101,8 +101,6 @@ public class ManaOrb : BloodMazeRelic
 
     public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
-        if (creature.IsPlayer)
-            MpSaveData.Delete();
         return Task.CompletedTask;
     }
 

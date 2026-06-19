@@ -11,7 +11,6 @@ public static class RunEndPatch
 {
     public static void Postfix(RunState state, Player player, bool isVictory)
     {
-        if (isVictory)
-            MpSaveData.Delete();
+        MpSaveData.Delete();
     }
 }
