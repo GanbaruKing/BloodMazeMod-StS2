@@ -26,7 +26,7 @@ public class BloodAlchemy() : MpConsumeCard(2,
     {
         ConsumeMp();
         await CommonActions.CardBlock(this, play);
-        for (int i = 0; i < DynamicVars.Cards.BaseValue; i++)
+        for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
             CardModel? inHand = await BloodFlask.CreateInHand(this.Owner, this.CombatState!);
             await Cmd.Wait(0.25f);

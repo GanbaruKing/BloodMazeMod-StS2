@@ -54,7 +54,6 @@ public class Extract() : BloodMazeCard(1,
         {
             TransformInputLock.Unlock();
         }
-        MainFile.Logger.Info($"[Extract] pile={this.Pile?.Type}");
     }
 
     protected override void OnUpgrade()

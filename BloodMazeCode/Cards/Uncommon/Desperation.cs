@@ -14,7 +14,7 @@ public class Desperation() : BloodMazeCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ThornsPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ThornsPower>(3m)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

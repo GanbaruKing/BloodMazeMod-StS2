@@ -15,7 +15,6 @@ public static class TopBarMpPatch
 
     public static void Postfix(NTopBarHp __instance, Player player)
     {
-        GD.Print($"[BloodMaze] instance.Size={__instance.Size}, instance.Position={__instance.Position}");
         if (player.Character is not BloodMazeCode.Character.BloodMaze) return;
         if (__instance.FindChild(MpLabelName) != null) return;
 
