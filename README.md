@@ -25,7 +25,7 @@ A MOD that adds an original character, cards, and relics to Slay the Spire 2.
 Every fight forces a kind of decision the base game never asks of you: **land a powerful blow now, or save your resources for the battles ahead?**
 
 - New character: **Revenant**
-- **88 custom cards** (Attacks / Skills / Powers, across every rarity, including co-op cards)
+- **87 custom cards** (Attacks / Skills / Powers, across every rarity, including co-op cards)
 - New buffs and debuffs
 - Co-op mode supported
 
@@ -37,7 +37,7 @@ Every fight forces a kind of decision the base game never asks of you: **land a 
 
 - **MP system** — A custom resource carried across combats. Fully implemented with persistence, UI display, and save-scumming protection.
 - **Card design** — A new kind of strategy that combines "MP attacks," "Hemorrhage," and "HP manipulation."
-- **88 cards** — Many trade the cost of spending MP for broadly useful, powerful effects.
+- **87 cards** — Many trade the cost of spending MP for broadly useful, powerful effects.
 - **Animated portrait** — A PNG converted into `NCreatureVisuals`, with idle / hurt / attack / die states driven by an AnimationTree.
 
 ---
@@ -123,10 +123,7 @@ The cards are organized along two main axes:
 
 ## About the Art
 
-The artwork in this project is AI-assisted, but every piece went through a real creative process.
-
-Each card starts with a composition I imagine in my head. I turn that idea into a prompt, generate a base image, and then refine it through editing, redrawing, paintovers, cleanup, and repeated adjustments. The first result is rarely exactly what I want — especially with hands, creatures, colors, and brushwork — so I keep working on each piece until it fits the game.
-
+The artwork in this project is AI-assisted.
 I understand that AI-assisted art is not for everyone, but I put genuine effort and care into every visual asset in this project.
 
 
