@@ -6,6 +6,7 @@ using BloodMaze.BloodMazeCode.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
@@ -26,7 +27,7 @@ public class Muzin() : BloodMazeCard(0,
         await CommonActions.ApplySelf<FreeMpPower>(choiceContext, this);
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (this.Owner.Creature.IsDead) return;
         if (side == CombatSide.Player)

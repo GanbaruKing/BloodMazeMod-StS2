@@ -32,7 +32,7 @@ public class MagicalWand() : BloodMazeCard(5,
         await CommonActions.CardAttack(this, play.Target, damage, 1).Execute(choiceContext);
     }
 
-    public override async Task AfterTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side == CombatSide.Player
             && this.Owner.PlayerCombatState!.Hand.Cards.Contains(this))

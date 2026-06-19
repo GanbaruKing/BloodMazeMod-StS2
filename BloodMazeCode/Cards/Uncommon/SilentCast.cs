@@ -19,7 +19,7 @@ public class SilentCast() : BloodMazeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<SilentCastPower>(this.Owner.Creature, DynamicVars["SilentCastPower"].IntValue, this.Owner.Creature,this);
+        await PowerCmd.Apply<SilentCastPower>(choiceContext, this.Owner.Creature, DynamicVars["SilentCastPower"].IntValue, this.Owner.Creature,this);
     }
 
     protected override void OnUpgrade()

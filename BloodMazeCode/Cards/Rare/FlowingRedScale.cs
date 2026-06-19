@@ -19,6 +19,7 @@ public class FlowingRedScale() : BloodMazeCard(2,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<FlowingRedScalePower>(
+            choiceContext,
             this.Owner.Creature,
             this.DynamicVars["FlowingRedScalePower"].BaseValue,
             this.Owner.Creature,

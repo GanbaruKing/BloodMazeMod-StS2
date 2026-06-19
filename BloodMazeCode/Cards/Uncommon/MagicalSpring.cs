@@ -26,6 +26,7 @@ public class MagicalSpring() : BloodMazeCard(2,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<MagicalSpringPower>(
+            choiceContext,
             this.Owner.Creature,
             this.DynamicVars.Energy.BaseValue,
             this.Owner.Creature,

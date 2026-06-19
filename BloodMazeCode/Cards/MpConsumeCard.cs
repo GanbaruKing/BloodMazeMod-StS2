@@ -92,7 +92,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
                 ValueProp.Unblockable | ValueProp.Unpowered , this);
             AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
-            decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+            decimal restore = attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage);
             await CreatureCmd.Heal(this.Owner.Creature, restore);
             IsVampireForm = false;
         }
@@ -112,7 +112,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
             await CreatureCmd.Damage(choiceContext, this.Owner.Creature, GetStarCostWithModifiers(),
                 ValueProp.Unblockable | ValueProp.Unpowered, this);
             AttackCommand attack = await CommonActions.CardAttack(this, target, hitCount).Execute(choiceContext);
-            decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+            decimal restore = attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage);
             await CreatureCmd.Heal(this.Owner.Creature, restore);
             IsVampireForm = false;
         }
@@ -135,7 +135,7 @@ public abstract class MpConsumeCard(int cost, CardType type, CardRarity rarity, 
             {
                 AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                     .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
-                restore += attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+                restore += attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage);
             }
             await CreatureCmd.Heal(this.Owner.Creature, restore);
             IsVampireForm = false;

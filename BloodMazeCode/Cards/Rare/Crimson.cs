@@ -71,7 +71,7 @@ public class Crimson() : BloodMazeCard(2,
         foreach (var card in generated)
         {
             await CardPileCmd.AddGeneratedCardToCombat(
-                card, PileType.Draw, true, CardPilePosition.Top);
+                card, PileType.Draw, player, CardPilePosition.Top);
 
             card.SetToFreeThisTurn();        
             if (card is MpConsumeCard mp)

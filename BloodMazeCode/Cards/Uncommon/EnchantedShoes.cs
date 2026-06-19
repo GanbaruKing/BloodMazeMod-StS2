@@ -22,6 +22,7 @@ public class EnchantedShoes() : BloodMazeCard(1,
         CardPlay play)
     {
         await PowerCmd.Apply<DexterityPower>(
+            choiceContext,
             this.Owner.Creature,
             DynamicVars["DexterityPower"].BaseValue,
             this.Owner.Creature,

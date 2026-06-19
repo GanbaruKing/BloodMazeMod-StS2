@@ -23,7 +23,7 @@ public class Lacerate() : BloodMazeCard(1,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
-        await PowerCmd.Apply<HemorrhagePower>(play.Target!, DynamicVars["HemorrhagePower"].IntValue, this.Owner.Creature,this);
+        await PowerCmd.Apply<HemorrhagePower>(choiceContext, play.Target!, DynamicVars["HemorrhagePower"].IntValue, this.Owner.Creature,this);
     }
 
     protected override void OnUpgrade()

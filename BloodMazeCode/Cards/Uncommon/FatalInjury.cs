@@ -27,7 +27,7 @@ public class FatalInjury() : BloodMazeCard(1,
         {
             int amount = ((PowerModel)power).Amount;
             int num = amount * ((CardModel)this).DynamicVars["Multiplier"].IntValue - amount;
-            await PowerCmd.ModifyAmount(power, num, this.Owner.Creature, this);
+            await PowerCmd.ModifyAmount(choiceContext, power, num, this.Owner.Creature, this);
         }
 
     }

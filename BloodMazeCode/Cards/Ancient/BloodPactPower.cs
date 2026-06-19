@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BloodMaze.BloodMazeCode.Mp;
 using BloodMaze.BloodMazeCode.Powers;
@@ -16,7 +17,7 @@ public class BloodPactPower : BloodMazePower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
     public int RestoreAmount { get; set; } = 2;
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (!this.Owner.IsPlayer) return;
         if (this.Owner.IsDead) return;

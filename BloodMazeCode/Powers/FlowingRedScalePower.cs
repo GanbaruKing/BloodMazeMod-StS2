@@ -31,9 +31,9 @@ public sealed class FlowingRedScalePower : BloodMazePower
         await CardPileCmd.Draw(choiceContext, DrawAmount, player);
         
         await PowerCmd.Apply<StrengthPower>(
-            this.Owner, this.Amount, this.Owner, null);
+            choiceContext, this.Owner, this.Amount, this.Owner, null);
         
         await PowerCmd.Apply<PlatingPower>(
-            this.Owner, PlatedArmorAmount, this.Owner, null);
+            choiceContext, this.Owner, PlatedArmorAmount, this.Owner, null);
     }
 }

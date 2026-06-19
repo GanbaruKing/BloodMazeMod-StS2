@@ -25,7 +25,7 @@ public class PhysicalHunt() : MpConsumeCard(1,
         if (power == null! || power.Amount <= 0) return;
         int amount = power!.Amount;
         await PowerCmd.Remove<StrengthPower>(play.Target);
-        await PowerCmd.Apply<StrengthPower>(this.Owner.Creature, amount, this.Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, this.Owner.Creature, amount, this.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -23,6 +23,7 @@ public class Intimidate() : BloodMazeCard(0,
         CardPlay play)
     {
         await PowerCmd.Apply<IntimidatePower>(
+            choiceContext,
             play.Target!,
             DynamicVars["IntimidatePower"].IntValue,
             this.Owner.Creature,

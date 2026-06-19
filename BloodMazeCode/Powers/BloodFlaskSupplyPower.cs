@@ -27,7 +27,7 @@ public class BloodFlaskSupplyPower : BloodMazePower
         await Cmd.Wait(0.25f);
         CardCmd.Upgrade(bag!);
 
-        await PowerCmd.ModifyAmount(this, -1, this.Owner, null);
+        await PowerCmd.ModifyAmount(choiceContext, this, -1, this.Owner, null);
         if (((PowerModel)this).Amount <= 0)
             await PowerCmd.Remove<BloodFlaskSupplyPower>(this.Owner);
     }

@@ -17,7 +17,7 @@ public class BloodwavePower : BloodMazePower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         _currentSide = side;
         return Task.CompletedTask;
@@ -41,7 +41,7 @@ public class BloodwavePower : BloodMazePower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;   
 
-    public override Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         _currentSide = side;
         return Task.CompletedTask;

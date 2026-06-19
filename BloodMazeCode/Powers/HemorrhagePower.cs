@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BloodMaze.BloodMazeCode.Mp;
@@ -16,16 +17,16 @@ public class HemorrhagePower : BloodMazePower
     public override PowerStackType StackType => PowerStackType.Counter;
     public override PowerType Type => PowerType.Debuff;
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != this.Owner.Side) return;
         if (this.Owner.IsDead) return;
         if (CombatManager.Instance.IsOverOrEnding) return;
 
-        await PowerCmd.Apply<HemorrhagePower>(this.Owner, 1m, this.Owner, null);
+        await PowerCmd.Apply<HemorrhagePower>(new ThrowingPlayerChoiceContext(), this.Owner, 1m, this.Owner, null);
     }
 
-    public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side != this.Owner.Side) return;
         if (this.Owner.IsDead) return;
@@ -44,7 +45,7 @@ public class HemorrhagePower : BloodMazePower
             ValueProp.Unblockable | ValueProp.Unpowered, null, null);
     }
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier,
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
         CardModel? cardSource)
     {
         if (power != this) return;
@@ -67,9 +68,9 @@ public class HemorrhagePower : BloodMazePower
         await PowerCmd.Remove<HemorrhagePower>(this.Owner);
 
         if (remainder > 0)
-            await PowerCmd.Apply<HemorrhagePower>(this.Owner, remainder, applier, cardSource);
+            await PowerCmd.Apply<HemorrhagePower>(choiceContext, this.Owner, remainder, applier, cardSource);
         else if (remainder == 0)
-            await PowerCmd.Apply<HemorrhagePower>(this.Owner, 1m, applier, cardSource);
+            await PowerCmd.Apply<HemorrhagePower>(choiceContext, this.Owner, 1m, applier, cardSource);
 
         var harvestOwners = players?
             .Where(c => c.HasPower<HarvestPower>());

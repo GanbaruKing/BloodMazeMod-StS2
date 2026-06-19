@@ -21,7 +21,7 @@ public class ManaDrain() : BloodMazeCard(0, CardType.Attack, CardRarity.Rare, Ta
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         AttackCommand attack = await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
-        int damageDealt = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+        int damageDealt = attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage);
         MpSaveData.Restore(damageDealt);
     }
 

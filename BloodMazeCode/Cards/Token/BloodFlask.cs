@@ -29,7 +29,7 @@ public class BloodFlask() : BloodMazeCard(0,
     {
         await CreatureCmd.Heal(this.Owner.Creature, DynamicVars.Heal.IntValue);
         await CommonActions.CardBlock(this, play);
-        await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars["RegenPower"].IntValue, this.Owner.Creature, this);
+        await PowerCmd.Apply<RegenPower>(choiceContext, this.Owner.Creature, DynamicVars["RegenPower"].IntValue, this.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
@@ -41,12 +41,12 @@ public class BloodFlask() : BloodMazeCard(0,
     
     
     
-    public static async Task<CardModel?> CreateInHand(Player owner, CombatState combatState)
+    public static async Task<CardModel?> CreateInHand(Player owner, ICombatState combatState)
     {
         return (await BloodFlask.CreateInHand(owner, 1, combatState)).FirstOrDefault();
     }
 
-    public static async Task<IEnumerable<CardModel>> CreateInHand(Player owner, int count, CombatState combatState)
+    public static async Task<IEnumerable<CardModel>> CreateInHand(Player owner, int count, ICombatState combatState)
     {
         if (count == 0) return [];
         if (CombatManager.Instance.IsOverOrEnding) return [];
@@ -55,7 +55,7 @@ public class BloodFlask() : BloodMazeCard(0,
         for (int i = 0; i < count; i++)
             cards.Add(combatState.CreateCard<BloodFlask>(owner));
     
-        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, owner, CardPilePosition.Top);
         return cards;
     }
     

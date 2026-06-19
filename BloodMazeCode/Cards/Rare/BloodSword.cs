@@ -33,7 +33,7 @@ public class BloodSword() : BloodMazeCard(9,
     {
         int damage = Owner.Creature.CurrentHp;
         AttackCommand attack = await CommonActions.CardAttack(this, play.Target, damage).Execute(choiceContext);
-        decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
+        decimal restore = attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
         await CreatureCmd.Heal(this.Owner.Creature, restore);
         _hpLossTriggers -= 2;
     }

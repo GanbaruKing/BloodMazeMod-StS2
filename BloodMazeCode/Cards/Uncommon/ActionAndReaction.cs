@@ -22,7 +22,7 @@ public class ActionAndReaction() : MpConsumeCard(1,
         CardPlay play)
     {
         AttackCommand attack = await VampirePlay(choiceContext, play.Target);
-        Decimal block = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
+        Decimal block = attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
         await CreatureCmd.GainBlock(this.Owner.Creature, block, ValueProp.Move, play);
     }
 

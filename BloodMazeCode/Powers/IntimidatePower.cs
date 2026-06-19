@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,16 +16,16 @@ public class IntimidatePower : BloodMazePower
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier,
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
         CardModel? cardSource)
     {
         if (power != this) return;
         if (amount <= 0) return;
 
-        await PowerCmd.Apply<StrengthPower>(this.Owner, -amount, applier, cardSource);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, this.Owner, -amount, applier, cardSource);
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side != this.Owner.Side) return;
         if (this.Owner.IsDead) return;
@@ -32,6 +33,6 @@ public class IntimidatePower : BloodMazePower
 
         decimal amount = this.Amount;
         await PowerCmd.Remove<IntimidatePower>(this.Owner);
-        await PowerCmd.Apply<StrengthPower>(this.Owner, amount, this.Owner, null);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, this.Owner, amount, this.Owner, null);
     }
 }

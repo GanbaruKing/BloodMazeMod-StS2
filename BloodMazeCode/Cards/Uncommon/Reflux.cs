@@ -21,7 +21,7 @@ public class Reflux() : MpConsumeCard(2,
     {
         AttackCommand attack = await VampirePlay(choiceContext, play.Target);
         bool shouldTriggerFatal = play.Target!.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
-        if (!shouldTriggerFatal || !attack.Results.Any(r => r.WasTargetKilled)) return;
+        if (!shouldTriggerFatal || !attack.Results.SelectMany(r => r).Any(r => r.WasTargetKilled)) return;
 
         MpSaveData.Restore(IsUpgraded ? MpCost + 2 : MpCost);
     }

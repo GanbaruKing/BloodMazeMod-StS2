@@ -26,7 +26,7 @@ public class Riposte() : BloodMazeCard(1,
     {
         AttackCommand attack = await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
 
-        decimal dealt = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
+        decimal dealt = attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage - r.BlockedDamage);
         decimal block = Math.Floor(dealt / 2m);
 
         if (block > 0)

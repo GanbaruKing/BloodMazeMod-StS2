@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using BloodMaze.BloodMazeCode.Cards;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -25,11 +26,11 @@ public sealed class OverflowPower : BloodMazePower
         return playCount;
     }
     
-    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side == this.Owner.Side)
         {
-            return PowerCmd.ModifyAmount(this, -1m, null, null);
+            return PowerCmd.ModifyAmount(choiceContext, this, -1m, null, null);
         }
         return Task.CompletedTask;
     }

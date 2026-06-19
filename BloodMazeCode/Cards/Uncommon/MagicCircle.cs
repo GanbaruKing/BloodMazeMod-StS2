@@ -23,7 +23,7 @@ public class MagicCircle() : BloodMazeCard(2,
         CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await PowerCmd.Apply<FreeMpAttackPower>(this.Owner.Creature, 1m, this.Owner.Creature, this);
+        await PowerCmd.Apply<FreeMpAttackPower>(choiceContext, this.Owner.Creature, 1m, this.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

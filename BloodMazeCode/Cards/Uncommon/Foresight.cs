@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -26,7 +27,7 @@ public class Foresight() : MpConsumeCard(5, CardType.Attack,
         
     }
 
-    public override async Task AfterTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side == CombatSide.Player
             && this.Owner.PlayerCombatState!.Hand.Cards.Contains(this))

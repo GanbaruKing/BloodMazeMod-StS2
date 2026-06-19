@@ -19,7 +19,7 @@ public class BloodToxicity() : MpConsumeCard(1,
         CardPlay play)
     {
         ConsumeMp();
-        await PowerCmd.Apply<DebilitatePower>(CombatState!.HittableEnemies, this.DynamicVars["DebilitatePower"].BaseValue ,this.Owner.Creature , this);
+        await PowerCmd.Apply<DebilitatePower>(choiceContext, CombatState!.HittableEnemies, this.DynamicVars["DebilitatePower"].BaseValue ,this.Owner.Creature , this);
     }
 
     protected override void OnUpgrade()

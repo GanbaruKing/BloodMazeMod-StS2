@@ -21,8 +21,8 @@ public class ChronoBreak() : MpConsumeCard(3,
         CardPlay play)
     {
         ConsumeMp();
-        await PowerCmd.Apply<ChronoBreakPower>(this.Owner.Creature , DynamicVars["ChronoBreakPower"].IntValue, this.Owner.Creature, this);
-        await PowerCmd.Apply<RetainHandPower>(this.Owner.Creature, 1M, this.Owner.Creature, (CardModel) this);
+        await PowerCmd.Apply<ChronoBreakPower>(choiceContext, this.Owner.Creature , DynamicVars["ChronoBreakPower"].IntValue, this.Owner.Creature, this);
+        await PowerCmd.Apply<RetainHandPower>(choiceContext, this.Owner.Creature, 1M, this.Owner.Creature, (CardModel) this);
     }
 
     protected override void OnUpgrade()

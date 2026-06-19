@@ -22,11 +22,11 @@ public class TimeLimit() : BloodMazeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<RegenPower>(this.Owner.Creature, DynamicVars["RegenPower"].IntValue,
+        await PowerCmd.Apply<RegenPower>(choiceContext, this.Owner.Creature, DynamicVars["RegenPower"].IntValue,
             this.Owner.Creature, this);
-        await PowerCmd.Apply<TimeLimitPower>(this.Owner.Creature, DynamicVars["TimeLimitPower"].IntValue,
+        await PowerCmd.Apply<TimeLimitPower>(choiceContext, this.Owner.Creature, DynamicVars["TimeLimitPower"].IntValue,
             this.Owner.Creature, this);
-        await PowerCmd.Apply<HemorrhagePower>(this.Owner.Creature, DynamicVars["HemorrhagePower"].IntValue,
+        await PowerCmd.Apply<HemorrhagePower>(choiceContext, this.Owner.Creature, DynamicVars["HemorrhagePower"].IntValue,
             this.Owner.Creature, this);
     }
     

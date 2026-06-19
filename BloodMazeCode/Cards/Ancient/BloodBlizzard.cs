@@ -25,9 +25,9 @@ public class BloodBlizzard() : MpConsumeCard(0,
         CardPlay play)
     {
         await VampirePlayAllEnemies(choiceContext);
-        await PowerCmd.Apply<WeakPower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Weak.BaseValue, this.Owner.Creature, (CardModel) this);
-        await PowerCmd.Apply<VulnerablePower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Vulnerable.BaseValue, this.Owner.Creature, (CardModel) this); 
-        await PowerCmd.Apply<HemorrhagePower>((IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars["HemorrhagePower"].BaseValue, this.Owner.Creature, (CardModel) this); 
+        await PowerCmd.Apply<WeakPower>(choiceContext, (IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Weak.BaseValue, this.Owner.Creature, (CardModel) this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, (IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars.Vulnerable.BaseValue, this.Owner.Creature, (CardModel) this); 
+        await PowerCmd.Apply<HemorrhagePower>(choiceContext, (IEnumerable<Creature>)this.CombatState!.HittableEnemies, DynamicVars["HemorrhagePower"].BaseValue, this.Owner.Creature, (CardModel) this); 
     }
 
     protected override void OnUpgrade()

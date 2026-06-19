@@ -29,6 +29,7 @@ public class Extract() : BloodMazeCard(1,
     {
 
         await PowerCmd.Apply<HemorrhagePower>(
+            choiceContext,
             play.Target!, DynamicVars["HemorrhagePower"].IntValue, this.Owner.Creature, this);
         
         var hand = NPlayerHand.Instance;

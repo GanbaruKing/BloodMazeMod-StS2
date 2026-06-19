@@ -20,7 +20,7 @@ public class Overflow() : BloodMazeCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<OverflowPower>(this.Owner.Creature, DynamicVars["OverflowPower"].BaseValue, this.Owner.Creature, (CardModel)this);
+        await PowerCmd.Apply<OverflowPower>(choiceContext, this.Owner.Creature, DynamicVars["OverflowPower"].BaseValue, this.Owner.Creature, (CardModel)this);
     }
 
     protected override void OnUpgrade()

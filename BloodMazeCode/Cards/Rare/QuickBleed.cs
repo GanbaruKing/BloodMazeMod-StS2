@@ -25,7 +25,7 @@ public class QuickBleed() : BloodMazeCard(2,
     {
         if (IsUpgraded)
         {
-            await PowerCmd.Apply<HemorrhagePower>(this.CombatState!.HittableEnemies, 2m, this.Owner.Creature, this);
+            await PowerCmd.Apply<HemorrhagePower>(choiceContext, this.CombatState!.HittableEnemies, 2m, this.Owner.Creature, this);
         }
         AttackCommand attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this).TargetingAllOpponents(this.CombatState!).Execute(choiceContext);
@@ -35,7 +35,7 @@ public class QuickBleed() : BloodMazeCard(2,
             var current  = enemy.GetPowerAmount<HemorrhagePower>();
             var toadd = 20 - current;
             if (current < 10) continue;
-            await PowerCmd.Apply<HemorrhagePower>(enemy, (decimal)toadd, this.Owner.Creature, this);
+            await PowerCmd.Apply<HemorrhagePower>(choiceContext, enemy, (decimal)toadd, this.Owner.Creature, this);
         }
     }
     

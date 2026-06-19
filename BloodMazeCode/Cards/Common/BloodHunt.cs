@@ -20,8 +20,8 @@ public class BloodHunt() : BloodMazeCard(2,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<HemorrhagePower>(CombatState!.HittableEnemies, DynamicVars["HemorrhagePower"].IntValue,this.Owner.Creature, this);
-        await PowerCmd.Apply<WeakPower>(CombatState!.HittableEnemies, DynamicVars["WeakPower"].IntValue,this.Owner.Creature, this);
+        await PowerCmd.Apply<HemorrhagePower>(choiceContext, CombatState!.HittableEnemies, DynamicVars["HemorrhagePower"].IntValue,this.Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, CombatState!.HittableEnemies, DynamicVars["WeakPower"].IntValue,this.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

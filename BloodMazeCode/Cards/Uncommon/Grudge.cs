@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Rooms;
@@ -32,7 +33,7 @@ public class Grudge() : BloodMazeCard(2,
         await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
     }
     
-    public override Task AfterTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterSideTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side == CombatSide.Player
             && !this.Owner.Creature.IsDead

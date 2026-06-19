@@ -20,7 +20,7 @@ public class Hocuspocus() : MpConsumeCard(0,
         CardPlay play)
     {
         ConsumeMp();
-        await PowerCmd.Apply<ShrinkPower>(play.Target!, DynamicVars.Repeat.BaseValue, this.Owner.Creature, (CardModel) this);
+        await PowerCmd.Apply<ShrinkPower>(choiceContext, play.Target!, DynamicVars.Repeat.BaseValue, this.Owner.Creature, (CardModel) this);
     }
 
     protected override void OnUpgrade()

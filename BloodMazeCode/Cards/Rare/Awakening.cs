@@ -46,7 +46,7 @@ public class Awakening() : BloodMazeCard(
             await CommonActions.CardAttack(this, play.Target)
                 .Execute(choiceContext);
 
-        bool killedByThisAttack = attackCommand.Results.Any(
+        bool killedByThisAttack = attackCommand.Results.SelectMany(r => r).Any(
             (Func<DamageResult, bool>)(r => r.WasTargetKilled));
 
         if (!shouldTriggerFatal || !killedByThisAttack)

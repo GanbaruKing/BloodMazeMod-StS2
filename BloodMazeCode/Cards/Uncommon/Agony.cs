@@ -47,7 +47,7 @@ public class Agony() : MpConsumeCard(1, CardType.Attack,
                 .CardAttack(this, play.Target, DynamicVars.CalculatedDamage)
                 .Execute(choiceContext);
 
-            decimal restore = attack.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+            decimal restore = attack.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage);
             await CreatureCmd.Heal(this.Owner.Creature, restore);
 
             IsVampireForm = false;
