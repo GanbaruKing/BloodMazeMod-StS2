@@ -4,6 +4,7 @@ using BaseLib.Cards.Variables;
 using BloodMaze.BloodMazeCode.Mp;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Ascension;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -18,7 +19,8 @@ namespace BloodMaze.BloodMazeCode.Relics;
 public class ManaOrb : BloodMazeRelic
 {
     public const int InitialMaxMp = 65;
-    protected virtual int CombatEndRestore => 6;
+    private const decimal WearyTravelerInitialMpRate = 0.8m;
+    protected virtual int CombatEndRestore => 7;
 
     public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<AncientManaOrb>();
     public override RelicRarity Rarity => RelicRarity.Starter;
@@ -33,8 +35,9 @@ public class ManaOrb : BloodMazeRelic
     {
         if (MpSaveData.RestSiteHealed) return;
         if (MpSaveData.RestSiteEnteredMp == null) return;
-        int cap = MpSaveData.RestSiteEnteredMp.Value + 16;
-        MpSaveData.MaxMp += 4;
+        MpSaveData.MaxMp += 2;
+        int restoreAmount = (int)(MpSaveData.MaxMp * 0.3m);
+        int cap = MpSaveData.RestSiteEnteredMp.Value + restoreAmount;
         int toRestore = cap - MpSaveData.CurrentMp;
         if (toRestore > 0)
         {
@@ -49,7 +52,7 @@ public class ManaOrb : BloodMazeRelic
     {
         MpSaveData.Load();
         if (MpSaveData.MaxMp == 0)
-            MpSaveData.Initialize(InitialMaxMp);
+            InitializeStartingMp();
 
         if (room is RestSiteRoom && !MpSaveData.RestSiteHealed && MpSaveData.RestSiteEnteredMp == null)
             MpSaveData.SaveRestSiteEntered();
@@ -61,7 +64,7 @@ public class ManaOrb : BloodMazeRelic
     {
         MpSaveData.Load();
         if (MpSaveData.MaxMp == 0)
-            MpSaveData.Initialize(InitialMaxMp);
+            InitializeStartingMp();
 
         MpSaveData.SaveCombatStart();
     }
@@ -82,13 +85,34 @@ public class ManaOrb : BloodMazeRelic
     {
         MpSaveData.Load();
         if (MpSaveData.MaxMp == 0)
-            MpSaveData.Initialize(InitialMaxMp);
+        {
+            InitializeStartingMp();
+            return Task.CompletedTask;
+        }
+        else if ((int)Owner.RunState.AscensionLevel >= (int)AscensionLevel.WearyTraveler)
+        {
+            MpSaveData.ApplyActEnteredRecovery(Owner.RunState.CurrentActIndex, 0.8m);
+        }
         else
         {
             MpSaveData.Initialize(MpSaveData.MaxMp);
         }
 
         return Task.CompletedTask;
+    }
+
+    private void InitializeStartingMp()
+    {
+        int currentMp = IsWearyTravelerOrHigher()
+            ? (int)(InitialMaxMp * WearyTravelerInitialMpRate)
+            : InitialMaxMp;
+
+        MpSaveData.Initialize(InitialMaxMp, currentMp, Owner.RunState.CurrentActIndex);
+    }
+
+    private bool IsWearyTravelerOrHigher()
+    {
+        return (int)Owner.RunState.AscensionLevel >= (int)AscensionLevel.WearyTraveler;
     }
     
     private int RestoreAndGetOverflow(int amount)

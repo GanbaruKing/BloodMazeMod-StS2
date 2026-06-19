@@ -1,5 +1,5 @@
 {
-  "BLOODMAZE-MANA_ORB.description": "At the end of combat, restore 5 MP. Excess MP is converted into HP healing.",
+  "BLOODMAZE-MANA_ORB.description": "At the end of combat, restore 7 MP. Excess MP is converted into HP healing.",
   "BLOODMAZE-MANA_ORB.flavor": "A source of magic.",
   "BLOODMAZE-MANA_ORB.title": "Mana Orb",
   "BLOODMAZE-ANCIENT_MANA_ORB.description": "At the end of combat, restore 12 MP.",

@@ -13,7 +13,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
 public class Foresight() : MpConsumeCard(5, CardType.Attack,
-    CardRarity.Uncommon, TargetType.AnyEnemy, 3)
+    CardRarity.Uncommon, TargetType.AnyEnemy, 2)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new DamageVar(24m, ValueProp.Move)];
 

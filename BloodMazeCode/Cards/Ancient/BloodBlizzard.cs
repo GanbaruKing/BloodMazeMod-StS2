@@ -32,7 +32,7 @@ public class BloodBlizzard() : MpConsumeCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
         DynamicVars["WeakPower"].UpgradeValueBy(1m);
         DynamicVars["HemorrhagePower"].UpgradeValueBy(1m);

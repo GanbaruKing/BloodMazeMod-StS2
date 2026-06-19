@@ -19,6 +19,8 @@ public static class MpSaveData
     private static bool _restSiteHealed = false;
     private static int _combatMpConsumeCount = 0;
     private static int? _combatStartMpConsumeCount = null;
+    private static int? _actEnteredMp = null;
+    private static int? _actHealActIndex = null;
 
     public static int CombatMpConsumeCount => _combatMpConsumeCount;
 
@@ -65,7 +67,9 @@ public static class MpSaveData
                 RestSiteEnteredMp = _restSiteEnteredMp,
                 RestSiteHealed = _restSiteHealed,
                 CombatMpConsumeCount = _combatMpConsumeCount,
-                CombatStartMpConsumeCount = _combatStartMpConsumeCount
+                CombatStartMpConsumeCount = _combatStartMpConsumeCount,
+                ActEnteredMp = _actEnteredMp,
+                ActHealActIndex = _actHealActIndex
             };
             File.WriteAllText(SavePath, JsonSerializer.Serialize(payload));
         }
@@ -88,6 +92,8 @@ public static class MpSaveData
             _restSiteEnteredMp = payload.RestSiteEnteredMp;
             _restSiteHealed = payload.RestSiteHealed;
             _combatStartMpConsumeCount = payload.CombatStartMpConsumeCount;
+            _actEnteredMp = payload.ActEnteredMp;
+            _actHealActIndex = payload.ActHealActIndex;
             MaxMp = payload.MaxMp;
             CurrentMp = _combatStartMp ?? payload.CurrentMp;
             _combatMpConsumeCount = _combatStartMpConsumeCount ?? payload.CombatMpConsumeCount;
@@ -112,6 +118,8 @@ public static class MpSaveData
             _maxMp = 0;
             _combatMpConsumeCount = 0;
             _combatStartMpConsumeCount = null;
+            _actEnteredMp = null;
+            _actHealActIndex = null;
             MpChanged?.Invoke();
         }
         catch (Exception e)
@@ -142,13 +150,25 @@ public static class MpSaveData
 
     public static void Initialize(int maxMp)
     {
+        Initialize(maxMp, maxMp);
+    }
+
+    public static void Initialize(int maxMp, int currentMp)
+    {
+        Initialize(maxMp, currentMp, null);
+    }
+
+    public static void Initialize(int maxMp, int currentMp, int? actHealActIndex)
+    {
         _combatStartMp = null;
         _restSiteEnteredMp = null;
         _restSiteHealed = false;
         _combatMpConsumeCount = 0;
         _combatStartMpConsumeCount = null;
+        _actEnteredMp = null;
+        _actHealActIndex = actHealActIndex;
         MaxMp = maxMp;
-        CurrentMp = maxMp;
+        CurrentMp = Math.Min(currentMp, maxMp);
         Save();
     }
 
@@ -188,6 +208,28 @@ public static class MpSaveData
         Save();
     }
 
+    public static void ApplyActEnteredRecovery(int actIndex, decimal missingMpRecoveryRate)
+    {
+        if (_actHealActIndex == actIndex)
+        {
+            Save();
+            return;
+        }
+
+        _combatStartMp = null;
+        _combatStartMpConsumeCount = null;
+        _combatMpConsumeCount = 0;
+        _restSiteEnteredMp = null;
+        _restSiteHealed = false;
+
+        _actHealActIndex = actIndex;
+        _actEnteredMp = CurrentMp;
+        int missingMp = Math.Max(0, MaxMp - _actEnteredMp.Value);
+        int restoreAmount = (int)(missingMp * missingMpRecoveryRate);
+        CurrentMp = Math.Min(MaxMp, _actEnteredMp.Value + restoreAmount);
+        Save();
+    }
+
     private class MpSavePayload
     {
         public int CurrentMp { get; set; }
@@ -197,5 +239,7 @@ public static class MpSaveData
         public bool RestSiteHealed { get; set; }
         public int CombatMpConsumeCount { get; set; }
         public int? CombatStartMpConsumeCount { get; set; }
+        public int? ActEnteredMp { get; set; }
+        public int? ActHealActIndex { get; set; }
     }
 }
