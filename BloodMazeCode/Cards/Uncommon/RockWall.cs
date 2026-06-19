@@ -10,9 +10,9 @@ namespace BloodMaze.BloodMazeCode.Cards.Uncommon;
 
 
 public class RockWall() : MpConsumeCard(1,
-    CardType.Skill, CardRarity.Uncommon, TargetType.Self,2)
+    CardType.Skill, CardRarity.Uncommon, TargetType.Self,3)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new BlockVar(12m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [..base.CanonicalVars, new BlockVar(11m, ValueProp.Move)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -24,6 +24,6 @@ public class RockWall() : MpConsumeCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(4m);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
 }

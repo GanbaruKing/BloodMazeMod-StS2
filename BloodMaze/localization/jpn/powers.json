@@ -65,6 +65,9 @@
   "BLOODMAZE-INTIMIDATE_POWER.description": "#敵のターン終了時まで、*筋力*を失う。",
   "BLOODMAZE-INTIMIDATE_POWER.smartDescription": "#敵のターン終了時まで、*筋力*を失う。",
   "BLOODMAZE-INTIMIDATE_POWER.title": "脅迫",
+  "BLOODMAZE-TEMPORARY_DEXTERITY_POWER.description": "ターン終了時まで、敏捷を得る。",
+  "BLOODMAZE-TEMPORARY_DEXTERITY_POWER.smartDescription": "ターン終了時まで、敏捷を得る。",
+  "BLOODMAZE-TEMPORARY_DEXTERITY_POWER.title": "一時敏捷",
   "BLOODMAZE-TENSION_POWER.description": "ターン終了時まで、筋力を得る。",
   "BLOODMAZE-TENSION_POWER.smartDescription": "ターン終了時まで、筋力を得る。",
   "BLOODMAZE-TENSION_POWER.title": "テンション"
