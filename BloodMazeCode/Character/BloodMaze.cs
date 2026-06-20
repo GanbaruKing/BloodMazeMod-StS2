@@ -21,7 +21,7 @@ public class BloodMaze : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Feminine;
-    public override int StartingHp => 57;
+    public override int StartingHp => 60;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
@@ -72,6 +72,9 @@ public class BloodMaze : PlaceholderCharacterModel
     
     public override string CustomRestSiteAnimPath
         => "res://BloodMaze/scenes/revenant_rest_site.tscn";
+
+    public override string CustomMerchantAnimPath
+        => "res://BloodMaze/scenes/revenant_merchant.tscn";
 }
 
 
