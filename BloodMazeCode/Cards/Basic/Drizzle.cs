@@ -17,7 +17,7 @@ public class Drizzle() : MpConsumeCard(0,
 {
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [..base.CanonicalVars, new DamageVar(4m, ValueProp.Move), new CardsVar(1)];
+        [..base.CanonicalVars, new DamageVar(3m, ValueProp.Move), new CardsVar(1)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromCard<BloodFlask>(this.IsUpgraded)];
