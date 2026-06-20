@@ -5,6 +5,8 @@
   "BLOODMAZE-DEFEND_BLOOD_MAZE.title": "防御", 
   "BLOODMAZE-BLIZZARD.description": "#すべての敵に{Damage:diff()}ダメージを与え、*脱力*{WeakPower:diff()}と*弱体*{VulnerablePower:diff()}を付与する。",
   "BLOODMAZE-BLIZZARD.title": "ブリザード",
+  "BLOODMAZE-DRIZZLE.description": "#すべての敵に{Damage:diff()}ダメージを与える。\n{IfUpgraded:show:[gold]血瓶+[/gold]|[gold]血瓶[/gold]}を1枚*手札*に加える。",
+  "BLOODMAZE-DRIZZLE.title": "霧雨",
   "BLOODMAZE-TORNADO.description": "すべての敵に{Damage:diff()}ダメージを与える。",
   "BLOODMAZE-TORNADO.title": "トルネード",
   "BLOODMAZE-LIGHTNING.description": "{Damage:diff()}ダメージを与える。\nカードを{Cards:diff()}枚引く。",

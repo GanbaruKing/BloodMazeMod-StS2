@@ -5,6 +5,8 @@
   "BLOODMAZE-DEFEND_BLOOD_MAZE.title": "Defend",
   "BLOODMAZE-BLIZZARD.description": "#Deal {Damage:diff()} damage to all enemies. Apply {WeakPower:diff()} *Weak* and {VulnerablePower:diff()} *Vulnerable*.",
   "BLOODMAZE-BLIZZARD.title": "Blizzard",
+  "BLOODMAZE-DRIZZLE.description": "#Deal {Damage:diff()} damage to all enemies.\nAdd {IfUpgraded:show:[gold]Blood Flask+[/gold]|[gold]Blood Flask[/gold]} to your *hand*.",
+  "BLOODMAZE-DRIZZLE.title": "Drizzle",
   "BLOODMAZE-TORNADO.description": "Deal {Damage:diff()} damage to all enemies.",
   "BLOODMAZE-TORNADO.title": "Tornado",
   "BLOODMAZE-LIGHTNING.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} cards.",

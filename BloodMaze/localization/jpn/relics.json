@@ -1,8 +1,8 @@
 {
-  "BLOODMAZE-MANA_ORB.description": "戦闘終了時、MPが7回復する。余剰分はHP回復に変換される",
+  "BLOODMAZE-MANA_ORB.description": "戦闘終了時、MPが9回復する。余剰分はHP回復に変換される",
   "BLOODMAZE-MANA_ORB.flavor": "魔法の源",
   "BLOODMAZE-MANA_ORB.title": "マナオーブ",
-  "BLOODMAZE-ANCIENT_MANA_ORB.description": "戦闘終了時、MPが12回復する",
+  "BLOODMAZE-ANCIENT_MANA_ORB.description": "戦闘終了時、MPが14回復する",
   "BLOODMAZE-ANCIENT_MANA_ORB.flavor": "魔法の源",
   "BLOODMAZE-ANCIENT_MANA_ORB.title": "古代のマナオーブ"
 }

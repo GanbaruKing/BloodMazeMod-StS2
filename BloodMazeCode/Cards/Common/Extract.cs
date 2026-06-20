@@ -58,5 +58,6 @@ public class Extract() : BloodMazeCard(1,
 
     protected override void OnUpgrade()
     {
+        DynamicVars["HemorrhagePower"].UpgradeValueBy(1m);
     }
 }

@@ -14,7 +14,7 @@ namespace BloodMaze.BloodMazeCode.Cards.Common;
 public class Syringe() : MpConsumeCard(1,
     CardType.Attack, CardRarity.Common, TargetType.AnyEnemy,1)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move), new CardsVar(1),..base.CanonicalVars];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move), new CardsVar(2),..base.CanonicalVars];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<BloodFlask>()];
 
@@ -32,6 +32,6 @@ public class Syringe() : MpConsumeCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

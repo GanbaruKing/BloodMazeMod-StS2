@@ -20,7 +20,7 @@ public class ManaOrb : BloodMazeRelic
 {
     public const int InitialMaxMp = 65;
     private const decimal WearyTravelerInitialMpRate = 0.8m;
-    protected virtual int CombatEndRestore => 7;
+    protected virtual int CombatEndRestore => 9;
 
     public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<AncientManaOrb>();
     public override RelicRarity Rarity => RelicRarity.Starter;
