@@ -29,12 +29,12 @@ public class BloodMaze : PlaceholderCharacterModel
         ModelDb.Card<StrikeBloodMaze>(),
         ModelDb.Card<StrikeBloodMaze>(),
         ModelDb.Card<StrikeBloodMaze>(),
-        ModelDb.Card<StrikeBloodMaze>(),
         ModelDb.Card<DefendBloodMaze>(),
         ModelDb.Card<DefendBloodMaze>(),
         ModelDb.Card<DefendBloodMaze>(),
         ModelDb.Card<DefendBloodMaze>(),
         ModelDb.Card<Blizzard>(),
+        ModelDb.Card<Drizzle>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

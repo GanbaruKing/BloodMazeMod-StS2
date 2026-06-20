@@ -33,5 +33,6 @@ public class Drizzle() : MpConsumeCard(0,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Damage.UpgradeValueBy(1);
     }
 }
