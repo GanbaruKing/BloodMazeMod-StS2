@@ -55,7 +55,7 @@
   "BLOODMAZE-FLOWING_RED_SCALE.title": "赫燐躍動",
   "BLOODMAZE-MAGICAL_SPRING.description": "各ターンの開始時、{energyPrefix:energyIcons(1)}を得る。",
   "BLOODMAZE-MAGICAL_SPRING.title": "魔力の泉",
-  "BLOODMAZE-REJUVENATE.description": "#自身の再生の数だけ、1回復を行う。{IfUpgraded:show:+3回行う。|}\n{InCombat:(回復回数は{HealAmount}回)|}",
+  "BLOODMAZE-REJUVENATE.description": "#自身の再生の数だけ、1回復を行う。{IfUpgraded:show:+3回|}",
   "BLOODMAZE-REJUVENATE.title": "若返り",
   "BLOODMAZE-MORE_CHEERFUL.description": "#自身のターンにHPを回復する度に、*筋力*が{MoreCheerfulPower:diff()}増加する。",
   "BLOODMAZE-MORE_CHEERFUL.title": "もっと力を！",

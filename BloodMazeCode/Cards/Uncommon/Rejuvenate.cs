@@ -41,5 +41,5 @@ public class Rejuvenate() : MpConsumeCard(1,
         }
     }
 
-    protected override void OnUpgrade() => this.DynamicVars["HealAmount"].UpgradeValueBy(3m);
+    protected override void OnUpgrade() => DynamicVars.CalculationBase.UpgradeValueBy(3m);
 }

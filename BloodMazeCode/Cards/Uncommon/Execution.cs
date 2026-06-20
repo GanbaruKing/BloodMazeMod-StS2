@@ -19,12 +19,12 @@ public class Execution() : BloodMazeCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CalculationBaseVar(10m),
-        new ExtraDamageVar(0m),
+        new ExtraDamageVar(10m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(
             ((Func<CardModel, Creature, decimal>)((card, target) =>
             {
-                if (target == null) return 1m;
-                return (target.CurrentHp * 2 <= target.MaxHp) ? 2m : 1m;
+                if (target == null) return 0m;
+                return (target.CurrentHp * 2 <= target.MaxHp) ? 1m : 0m;
             })!)!)
     ];
 
@@ -39,5 +39,6 @@ public class Execution() : BloodMazeCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.CalculationBase.UpgradeValueBy(2m);
+        DynamicVars.ExtraDamage.UpgradeValueBy(2m);
     }
 }

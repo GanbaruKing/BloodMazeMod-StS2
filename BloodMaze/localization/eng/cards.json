@@ -55,7 +55,7 @@
   "BLOODMAZE-FLOWING_RED_SCALE.title": "Crimson Scale Surge",
   "BLOODMAZE-MAGICAL_SPRING.description": "At the start of each turn, gain {energyPrefix:energyIcons(1)}.",
   "BLOODMAZE-MAGICAL_SPRING.title": "Mana Spring",
-  "BLOODMAZE-REJUVENATE.description": "#Heal 1 HP for each stack of Regeneration you have. {IfUpgraded:show:Do this 3 additional times.|}\n{InCombat:(Heals: {HealAmount})|}",
+  "BLOODMAZE-REJUVENATE.description": "#Heal 1 HP for each stack of Regeneration you have. {IfUpgraded:show:Do this +3 times.|}\n{InCombat:(Heals: {HealAmount})|}",
   "BLOODMAZE-REJUVENATE.title": "Rejuvenate",
   "BLOODMAZE-MORE_CHEERFUL.description": "#Whenever you heal HP during your turn, gain {MoreCheerfulPower:diff()} *Strength*.",
   "BLOODMAZE-MORE_CHEERFUL.title": "More Power!",

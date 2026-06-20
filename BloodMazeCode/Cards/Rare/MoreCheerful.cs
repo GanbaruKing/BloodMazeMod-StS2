@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace BloodMaze.BloodMazeCode.Cards.Rare;
 
 
-public class MoreCheerful() : BloodMazeCard(1,
+public class MoreCheerful() : BloodMazeCard(2,
     CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<MoreCheerfulPower>(1)];
@@ -23,6 +23,6 @@ public class MoreCheerful() : BloodMazeCard(1,
 
     protected override void OnUpgrade()
     {
-        this.DynamicVars["MoreCheerfulPower"].UpgradeValueBy(1m);
+        EnergyCost.UpgradeBy(-1);
     }
 }
