@@ -25,7 +25,7 @@ A MOD that adds an original character, cards, and relics to Slay the Spire 2.
 Every fight forces a kind of decision the base game never asks of you: **land a powerful blow now, or save your resources for the battles ahead?**
 
 - New character: **Revenant**
-- **87 custom cards** (Attacks / Skills / Powers, across every rarity, including co-op cards)
+- **88 custom cards** (Attacks / Skills / Powers, across every rarity, including co-op cards)
 - New buffs and debuffs
 - Co-op mode supported
 
