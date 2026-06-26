@@ -79,7 +79,7 @@ The cards are organized along two main axes:
 
 ### Download
 
-- Nexus Mods (recommended) — *coming soon*
+- [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3748337242)
 - [GitHub Releases](https://github.com/GanbaruKing/BloodMazeMod-StS2/releases)
 
 > ⚠️ Install MODs at your own risk. Always back up your save data before installing (Step 1).
